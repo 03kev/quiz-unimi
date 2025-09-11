@@ -1,0 +1,4835 @@
+{
+  "quizzes": [
+    {
+      "id": "quiz1",
+      "title": "Quiz 1",
+      "questions": [
+        {
+          "id": "quiz1_q1",
+          "text": "L'operazione che associa un'identità a un individuo può essere distinta in 'autenticazione' e 'identificazione'.",
+          "choices": [
+            {
+              "text": "Vero"
+            },
+            {
+              "text": "Falso"
+            }
+          ],
+          "correctIndexes": [
+            0
+          ]
+        },
+        {
+          "id": "quiz1_q2",
+          "text": "Considerare la seguente situazione: un utente non entra nella propria casaperché il sistema biometrico ritiene che il suo template non assomigli abbastanza a quello/i registrati.",
+          "choices": [
+            {
+              "text": "Si tratta di un caso diFalse Non Match"
+            },
+            {
+              "text": "Si tratta di un caso diFalse Match"
+            },
+            {
+              "text": "Si tratta di un caso diFalse Accept"
+            },
+            {
+              "text": "Si tratta di un errore di tipo I"
+            },
+            {
+              "text": "Nessuna delle altre risposte"
+            }
+          ],
+          "correctIndexes": [
+            0,
+            3
+          ]
+        },
+        {
+          "id": "quiz1_q3",
+          "text": "A livello locale esistono circa",
+          "choices": [
+            {
+              "text": "due tipi di minutiae"
+            },
+            {
+              "text": "sette tipi di minutiae"
+            },
+            {
+              "text": "oltre 150 tipi di minutiae"
+            }
+          ],
+          "correctIndexes": [
+            2
+          ]
+        },
+        {
+          "id": "quiz1_q4",
+          "text": "La probabilità che due persone abbiano in comune tutte le 12 minutiae presenti in una impronta latente comparata con una immagine completa del dito, con un'area di tolleranza relativa fissata a 1/70, è vicina a",
+          "choices": [
+            {
+              "text": "5%"
+            },
+            {
+              "text": "0.05%"
+            },
+            {
+              "text": "0.0000000001%"
+            }
+          ],
+          "correctIndexes": [
+            2
+          ]
+        },
+        {
+          "id": "quiz1_q5",
+          "text": "Gli utenti registrati con feature che si sovrappongono estesamente con quellidegli altri utenti registrati, quindi con bassa distanza interclasse,sonochiamati",
+          "choices": [
+            {
+              "text": "pecore"
+            },
+            {
+              "text": "capre"
+            },
+            {
+              "text": "agnelli"
+            },
+            {
+              "text": "lupi"
+            }
+          ],
+          "correctIndexes": [
+            2
+          ]
+        },
+        {
+          "id": "quiz1_q6",
+          "text": "Cosa succede se la soglia di decisione con la quale si confrontano i matchscore di un sistema biometrico è posta uguale a zero?",
+          "choices": [
+            {
+              "text": "Tutti gli utenti sono abilitati dal sistema"
+            },
+            {
+              "text": "Nessun utente è abilitato dal sistema"
+            }
+          ],
+          "correctIndexes": [
+            0
+          ]
+        },
+        {
+          "id": "quiz1_q7",
+          "text": "La variabilità temporale del tratto biometrico può contribuire a",
+          "choices": [
+            {
+              "text": "aumentare la distanza intraclasse"
+            },
+            {
+              "text": "diminuire la distanza intraclasse"
+            }
+          ],
+          "correctIndexes": [
+            0
+          ]
+        },
+        {
+          "id": "quiz1_q8",
+          "text": "La compressione delle immagini diimpronte digitali",
+          "choices": [
+            {
+              "text": "non è possibile senza rovinare l'informazione in esse contenute"
+            },
+            {
+              "text": "è possibile esclusivamente con formati di compressioni 'lossless'"
+            },
+            {
+              "text": "è possibile con il formato standard JPEG, con fattori di compressione vicini a 20"
+            },
+            {
+              "text": "è possibile a patto di usare un formato di compressione dedicato se si vuole ottenere un fattore di compressione elevato"
+            }
+          ],
+          "correctIndexes": [
+            3
+          ]
+        },
+        {
+          "id": "quiz1_q9",
+          "text": "Nel 2005, meno di 350000 persone sono state registrate in sistemi biometrici,ma è previsto un fortissimo tasso di crescita nell'impiego dei sistemi biometrici nei prossimi anni.",
+          "choices": [
+            {
+              "text": "Vero"
+            },
+            {
+              "text": "Falso"
+            }
+          ],
+          "correctIndexes": [
+            1
+          ]
+        },
+        {
+          "id": "quiz1_q10",
+          "text": "Le impronte digitali possono essere considerate come un tratto biometricostabile a partire",
+          "choices": [
+            {
+              "text": "dall'ottavo mese di gestazione"
+            },
+            {
+              "text": "dal terzo mese dalla nascita"
+            },
+            {
+              "text": "dal primo anno di vita"
+            },
+            {
+              "text": "dal dodicesimo anno di vita"
+            }
+          ],
+          "correctIndexes": [
+            0
+          ]
+        },
+        {
+          "id": "quiz1_q11",
+          "text": "La gestione di databasebiometrici di grandi dimensioni può essere migliorata se",
+          "choices": [
+            {
+              "text": "si aumenta il numero di macchine che in parallelo effettuano il matching nel database"
+            },
+            {
+              "text": "si impiega un algoritmo che, per un dato template in ingresso, riescaaconfrontare sotto-partizioni del database, e non la sua interezza"
+            },
+            {
+              "text": "si riduce il tempo per effettuare un singolo match"
+            },
+            {
+              "text": "Tutte le altre risposte"
+            }
+          ],
+          "correctIndexes": [
+            3
+          ]
+        },
+        {
+          "id": "quiz1_q12",
+          "text": "Memorizzare nei sistemi biometrici il template,e non direttamente il campione, permette di salvaguardare la privacy dell'utente.",
+          "choices": [
+            {
+              "text": "Questa affermazione è stata a lungo condivisa nella comunità scientifica, ma ora vi sono prove che sia possibile risalire al campione partendo dal template"
+            },
+            {
+              "text": "Vero: il template è sicuro perché non è possibile in alcun modo risalire con adeguata approssimazione al campione che lo ha generato"
+            },
+            {
+              "text": "Falso: nel sistema biometrico viene memorizzata solo la soglia di decisione legata al template stesso"
+            }
+          ],
+          "correctIndexes": [
+            0
+          ]
+        },
+        {
+          "id": "quiz1_q13",
+          "text": "Il sistema Bertillon è da considerarsi come il primo sistema di identificazione biometrico",
+          "choices": [
+            {
+              "text": "che tuttavia non andò mai oltre la fase di sperimentazione per via della complessità delle operazioni"
+            },
+            {
+              "text": "che, nonostante la complessità delle operazioni, ebbe un buon successo in tutto il mondo e fu usato massicciamente fino al 1950"
+            },
+            {
+              "text": "che, nonostante la complessità delle operazioni, ebbe un buon successo in tutto il mondo e fu usato fino a essere soppiantato con gradualità dalle impronte dopo il 1900"
+            },
+            {
+              "text": "Falso: essendo un semplice sistema di misura antropometrico, non può essere usato per realizzare identificazione biometrica"
+            }
+          ],
+          "correctIndexes": [
+            2
+          ]
+        },
+        {
+          "id": "quiz1_q14",
+          "text": "I livelli di analisi di un'impronta sono tipicamente",
+          "choices": [
+            {
+              "text": "uno"
+            },
+            {
+              "text": "due"
+            },
+            {
+              "text": "tre"
+            },
+            {
+              "text": "quattro"
+            }
+          ],
+          "correctIndexes": [
+            2
+          ]
+        },
+        {
+          "id": "quiz1_q15",
+          "text": "La definizione più corretta di 'tecniche per i sistemi biometrici' è la seguente:",
+          "choices": [
+            {
+              "text": "insieme di tecniche per l'identificazione basata sulle caratteristiche fisiche degli individui"
+            },
+            {
+              "text": "insieme di tecniche automatiche per l'identificazione basata sulle caratteristiche comportamentali degli individui"
+            },
+            {
+              "text": "insieme di tecniche automatiche per l'identificazione basata sulle caratteristiche fisiche e comportamentali degli individui"
+            },
+            {
+              "text": "la branca delle scienze matematiche e statistiche preposta alla misura dei parametri fisici, comportamentali e biologici dell'uomo"
+            }
+          ],
+          "correctIndexes": [
+            2
+          ]
+        },
+        {
+          "id": "quiz1_q16",
+          "text": "È più probabile che la dimensione del database di un sistema biometrico tenda nel tempo",
+          "choices": [
+            {
+              "text": "a diminuire"
+            },
+            {
+              "text": "ad aumentare"
+            },
+            {
+              "text": "a rimanere pressoché costante"
+            }
+          ],
+          "correctIndexes": [
+            1
+          ]
+        },
+        {
+          "id": "quiz1_q17",
+          "text": "Secondo i requisiti FBI (500 DPI), l'acquisizione mediante scanner delle 10 immagini di impronte offline in formato non compresso occupacirca",
+          "choices": [
+            {
+              "text": "1kB"
+            },
+            {
+              "text": "10kB"
+            },
+            {
+              "text": "1MB"
+            },
+            {
+              "text": "10 MB"
+            }
+          ],
+          "correctIndexes": [
+            3
+          ]
+        },
+        {
+          "id": "quiz1_q18",
+          "text": "La percezione degli utenti rispetto ai sistemi biometrici",
+          "choices": [
+            {
+              "text": "è sostanzialmente positiva, in quanto sono assolutamente chiari a tutti i miglioramenti in termini di sicurezza che i sistemi biometrici offrono"
+            },
+            {
+              "text": "è duplice: vengono percepiti i vantaggi dovuti alla maggiore sicurezza, ma anche gli aspetti negativi che vogliono i sistemi biometrici come possibile invasione della privacy"
+            },
+            {
+              "text": "è sostanzialmente negativa"
+            }
+          ],
+          "correctIndexes": [
+            1
+          ]
+        },
+        {
+          "id": "quiz1_q19",
+          "text": "La variabilità temporale del tratto biometrico può portare ad avere campioni diversi per lo stesso individuo, ma i rispettivi template sono sempre uguali.",
+          "choices": [
+            {
+              "text": "Vero"
+            },
+            {
+              "text": "Falso"
+            }
+          ],
+          "correctIndexes": [
+            1
+          ]
+        },
+        {
+          "id": "quiz1_q20",
+          "text": "Qualè la percentuale stimata di persone in una popolazione che ha impronte digitali non idonee a essere acquisite da un sistema biometrico?",
+          "choices": [
+            {
+              "text": "30%"
+            },
+            {
+              "text": "4%"
+            },
+            {
+              "text": "0.3%"
+            },
+            {
+              "text": "0.04%"
+            }
+          ],
+          "correctIndexes": [
+            1
+          ]
+        },
+        {
+          "id": "quiz1_q21",
+          "text": "Il miglior sensore possibile per le impronte digitali dovrebbe",
+          "choices": [
+            {
+              "text": "catturare al meglio solo la struttura dei ridge della pelle e tralasciare glialtri dettagli che per il sistema biometrico costituiscono il background,ovveroinformazionifiltrate via dagli algoritmi in un secondo momento"
+            },
+            {
+              "text": "catturare il numero maggiore di dettagli possibile della pelle del dito: più dettagli il sistema cattura, migliore è la sua capacità di identificare/verificare l'identità delle persone"
+            },
+            {
+              "text": "catturare un'immagine fedele e alla massima risoluzione possible del dito: più dettagli il sistema cattura, migliore è la sua capacità di identificare/verificare l'identità delle persone"
+            }
+          ],
+          "correctIndexes": [
+            1
+          ]
+        },
+        {
+          "id": "quiz1_q22",
+          "text": "La fase di 'enrollment'corrisponde alla fase di identificazione.",
+          "choices": [
+            {
+              "text": "Vero"
+            },
+            {
+              "text": "Falso"
+            }
+          ],
+          "correctIndexes": [
+            1
+          ]
+        },
+        {
+          "id": "quiz1_q23",
+          "text": "I sistemi biometrici possono essere considerati come sistemi di'pattern recognition'.",
+          "choices": [
+            {
+              "text": "Vero: hanno una struttura concettuale molto simile"
+            },
+            {
+              "text": "Falso: i sistemi di 'pattern recognition'servono per confrontare forme dioggetti contenuti in grossi database"
+            },
+            {
+              "text": "Falso: la struttura diventa simile solo nel caso di 'face recognition'"
+            }
+          ],
+          "correctIndexes": [
+            0
+          ]
+        },
+        {
+          "id": "quiz1_q24",
+          "text": "L'acquisizione offlinedi impronte è tipicamente eseguita con sensori allo stato solido, appoggiando delicatamente il dito sul sensore.",
+          "choices": [
+            {
+              "text": "Vero"
+            },
+            {
+              "text": "Falso"
+            }
+          ],
+          "correctIndexes": [
+            1
+          ]
+        },
+        {
+          "id": "quiz1_q25",
+          "text": "I sistemi di classificazione per le impronte digitali attuali prevedono",
+          "choices": [
+            {
+              "text": "ottoclassi con tresotto-classi ognuna"
+            },
+            {
+              "text": "tre classi principali con un totale di otto sotto-classi"
+            },
+            {
+              "text": "due classi principali con numerose sotto-classi"
+            }
+          ],
+          "correctIndexes": [
+            1
+          ]
+        },
+        {
+          "id": "quiz1_q26",
+          "text": "Gli animali e gli esseri umani riescono a riconoscersi fra loro grazie apeculiari caratteristiche biologiche e comportamentali: questo approccio è simile aquello di un sistema biometrico?",
+          "choices": [
+            {
+              "text": "Sì, perché un sistema biometrico impiega proprio queste caratteristiche per effettuare un'operazione di autenticazione o di identificazione"
+            },
+            {
+              "text": "No, perché l'aspetto metodologico della misura di caratteristiche e relativa analisi matematica e statistica, peculiare di un sistema biometrico, manca completamente"
+            }
+          ],
+          "correctIndexes": [
+            1
+          ]
+        },
+        {
+          "id": "quiz1_q27",
+          "text": "I primi reperti o documenti che dimostrano l'uso di un tratto biometrico ascopo di autenticazione personale sono da attribuirsi intorno al",
+          "choices": [
+            {
+              "text": "65000 A.C., nelle pitture rupestri in Asia"
+            },
+            {
+              "text": "1800 A.C. in Babilonia"
+            },
+            {
+              "text": "420 D.C. in Cina"
+            },
+            {
+              "text": "1903, presso il New YorkPrison State Department"
+            }
+          ],
+          "correctIndexes": [
+            1
+          ]
+        },
+        {
+          "id": "quiz1_q28",
+          "text": "Il problema della proscription si verifica quando",
+          "choices": [
+            {
+              "text": "il tempo di risposta del sistema biometrico si allunga oltre il tempo massimoconsentito,e il sistema di backup deve entrare in funzione"
+            },
+            {
+              "text": "le informazioni inviate al sistema biometrico vengono usate per scopi illegali"
+            },
+            {
+              "text": "le informazioni inviate al sistema biometrico vengono usate per scopi diversida quelliper cui sono stati inviatee/o vengono inoltrate ad altri sistemi, per inserire gli utentiin elenchi sullabase delleloro caratteristiche e/o dei loro comportamenti"
+            },
+            {
+              "text": "vengono estratte informazioni di tipo medico dal campione inviato, per esempio nel caso della rilevazione del diabete esaminando il campione di unaretina"
+            }
+          ],
+          "correctIndexes": [
+            2
+          ]
+        },
+        {
+          "id": "quiz1_q29",
+          "text": "Quali dei seguenti gruppi di feature appartengono TUTTI al livello globale?",
+          "choices": [
+            {
+              "text": "Incipient ridges, ridge counting, delta"
+            },
+            {
+              "text": "Delta, core, ridge counting"
+            },
+            {
+              "text": "Mappa dellefrequenze di ridge, mappa degli orientamenti, biforcazioni"
+            }
+          ],
+          "correctIndexes": [
+            1
+          ]
+        },
+        {
+          "id": "quiz1_q30",
+          "text": "La funzione di matching",
+          "choices": [
+            {
+              "text": "è l'unica metrica possibile nello spazio delle feature"
+            },
+            {
+              "text": "è una delle possibili metriche nello spazio delle feature"
+            },
+            {
+              "text": "non è una metrica"
+            }
+          ],
+          "correctIndexes": [
+            1
+          ]
+        },
+        {
+          "id": "quiz1_q31",
+          "text": "Qual è la sequenza più corretta di moduli che compongono un generico sistema biometrico funzionante in enrollment?",
+          "choices": [
+            {
+              "text": "1) Modulo di acquisizione 2) Creazione del template 3) Estrazione di caratteristica 4) Memorizzazione nel database"
+            },
+            {
+              "text": "1) Modulo di acquisizione 2) Estrazione di caratteristica 3) Creazione del template 4) Memorizzazione nel database"
+            },
+            {
+              "text": "1) Modulo di acquisizione 2) Codifica 3) Creazione del template 4) Memorizzazione nel database"
+            }
+          ],
+          "correctIndexes": [
+            1
+          ]
+        },
+        {
+          "id": "quiz1_q32",
+          "text": "Durante l'operazionedi identificazione dell'individuo,il modulo dimatching",
+          "choices": [
+            {
+              "text": "compara il template in ingresso con alcuni template registrati nel database"
+            },
+            {
+              "text": "compara il template in ingresso con un solo template registrato nel database"
+            }
+          ],
+          "correctIndexes": [
+            0
+          ]
+        },
+        {
+          "id": "quiz1_q33",
+          "text": "Se durante la fase di enrollment ilsistema biometrico impiega un modulo per ilcontrollo della qualità del campione, in quale posizione della catena di moduli esso dovrebbe essere inserito?",
+          "choices": [
+            {
+              "text": "Immediatamente dopo il modulo di matching"
+            },
+            {
+              "text": "Immediatamente dopo il modulo di acquisizione"
+            },
+            {
+              "text": "Non deve essere impiegato nella fase di enrollment"
+            }
+          ],
+          "correctIndexes": [
+            1
+          ]
+        },
+        {
+          "id": "quiz1_q34",
+          "text": "La migliore rappresentazione dell'informazione perun sistema biometrico è quella che assicura sia la massima variabilità interclasse sia la minima variabilità intraclasse.",
+          "choices": [
+            {
+              "text": "Parzialmente vero: massimizzare un aspetto porta automaticamente a ridurre l'altro"
+            },
+            {
+              "text": "Vero"
+            },
+            {
+              "text": "Falso"
+            }
+          ],
+          "correctIndexes": [
+            1
+          ]
+        },
+        {
+          "id": "quiz1_q35",
+          "text": "La maggiorparte delle immagini acquisite dai sensori per impronte digitalisono",
+          "choices": [
+            {
+              "text": "a colori"
+            },
+            {
+              "text": "in toni di grigio"
+            },
+            {
+              "text": "binarizzate in bianco e nero"
+            }
+          ],
+          "correctIndexes": [
+            1
+          ]
+        },
+        {
+          "id": "quiz1_q36",
+          "text": "Inserire nel database nuovi utenti con feature che si sovrappongono estesamente conquelli di altri utenti registrati (quindi con bassa distanza interclasse)",
+          "choices": [
+            {
+              "text": "tende a far aumentare il False Accept Rate"
+            },
+            {
+              "text": "tende a far diminuire il False Accept Rate"
+            },
+            {
+              "text": "non modifica il False Accept Rate"
+            }
+          ],
+          "correctIndexes": [
+            0
+          ]
+        },
+        {
+          "id": "quiz1_q37",
+          "text": "Teoricamente, tutti i tratti biometrici possonoessere usati per eseguireoperazioni di identificazione e di verifica dell'identità.",
+          "choices": [
+            {
+              "text": "Falso, la teoria dice che è possibile eseguire operazioni di identificazione e di verifica dell'identità solo per un sottinsieme dei tratti biometrici"
+            },
+            {
+              "text": "Vero"
+            }
+          ],
+          "correctIndexes": [
+            0
+          ]
+        },
+        {
+          "id": "quiz1_q38",
+          "text": "I moduli di riconoscimento della qualità di un campione",
+          "choices": [
+            {
+              "text": "(A) solitamente devono scontrarsi con il problema che non è facile produrre un modello di tratto biometrico ideale da usare come riferimento"
+            },
+            {
+              "text": "(B) solitamente devono scontrarsi con il problema che non è facile implementare una metrica di paragone con un campione di riferimento"
+            },
+            {
+              "text": "Entrambe le risposte (A) e (B)"
+            },
+            {
+              "text": "Nessuna delle altre risposte"
+            }
+          ],
+          "correctIndexes": [
+            2
+          ]
+        },
+        {
+          "id": "quiz1_q39",
+          "text": "Il tasso di errore FMR per una data soglia T di decisione è un ottimo indicatore delle performance del sistema biometrico per una specifica applicazione",
+          "choices": [
+            {
+              "text": "Vero"
+            },
+            {
+              "text": "Falso"
+            }
+          ],
+          "correctIndexes": [
+            1
+          ]
+        },
+        {
+          "id": "quiz1_q40",
+          "text": "Esistono tre approcci fondamentali per il riconoscimento delle improntedigitali:",
+          "choices": [
+            {
+              "text": "basati sulla correlazione delle immagini, sul confronto dei ridge e sulconfronto delleminutiae"
+            },
+            {
+              "text": "basati sul confronto dei pori, delle biforcazioni e delle terminazioni deiridge"
+            },
+            {
+              "text": "basati su sensori ottici, a ultrasuoni e capacitivi"
+            }
+          ],
+          "correctIndexes": [
+            0
+          ]
+        },
+        {
+          "id": "quiz1_q41",
+          "text": "Nei sistemi biometrici on-card",
+          "choices": [
+            {
+              "text": "La fase di matching è solitamente eseguita nel dispositivo lettore di smart card, o in un sistema diverso a cui quello biometrico è collegato"
+            },
+            {
+              "text": "La fase di matching è solitamente eseguita nel chip della smart card"
+            }
+          ],
+          "correctIndexes": [
+            0
+          ]
+        },
+        {
+          "id": "quiz1_q42",
+          "text": "Come vengono chiamati gli individui capaci di manipolare un tratto biometrico per impersonare un utentelegittimato?",
+          "choices": [
+            {
+              "text": "Pecore"
+            },
+            {
+              "text": "Capre"
+            },
+            {
+              "text": "Agnelli"
+            },
+            {
+              "text": "Lupi"
+            }
+          ],
+          "correctIndexes": [
+            3
+          ]
+        },
+        {
+          "id": "quiz1_q43",
+          "text": "Le impronte latenti sono di tipo live scan",
+          "choices": [
+            {
+              "text": "Vero"
+            },
+            {
+              "text": "Falso"
+            }
+          ],
+          "correctIndexes": [
+            1
+          ]
+        },
+        {
+          "id": "quiz1_q44",
+          "text": "Una webcam non può essere impiegata come sensore per il riconoscimento del volto a causa della definizione del CCD troppo bassa",
+          "choices": [
+            {
+              "text": "Vero: i dispositivi per il riconoscimento facciale devono avere alta definizione e ottiche speciali per inquadrare automaticamente il volto"
+            },
+            {
+              "text": "Falso: può essere impiegata"
+            },
+            {
+              "text": "Parzialmente falso: non è la definizione il problema bensì lo spettro di frequenza, visto che il sistema dovrebbe funzionare con CCD in IR"
+            }
+          ],
+          "correctIndexes": [
+            1
+          ]
+        },
+        {
+          "id": "quiz1_q45",
+          "text": "Vi sono circa 17 fattori diversi di cui tenere conto quando si progetta o sivaluta un sistema biometrico",
+          "choices": [
+            {
+              "text": "Falso: gli unici fattori dei quali è disponibile un protocollo corretto di sperimentazione sono l'accuratezza e il gradimento degli utenti; gli altri sono fattori qualitativi, quindi non misurabili"
+            },
+            {
+              "text": "Parzialmente vero: i fattori si riducono a cinque in base all'analisi standardizzata nel 2001 dal Consorzio Biometrico Internazionale"
+            },
+            {
+              "text": "Vero, tuttavia il peso da dare ai vari fattori dipende dalla tipologia di applicazione"
+            }
+          ],
+          "correctIndexes": [
+            2
+          ]
+        },
+        {
+          "id": "quiz1_q46",
+          "text": "Un singolo campionebiometrico codificato nello spazio delle featurecorrisponde a",
+          "choices": [
+            {
+              "text": "un insieme di punti"
+            },
+            {
+              "text": "un punto"
+            },
+            {
+              "text": "un volume"
+            }
+          ],
+          "correctIndexes": [
+            1
+          ]
+        },
+        {
+          "id": "quiz1_q47",
+          "text": "Il peggioramento delle prestazioni di un sistema biometricopuò essere in proporzione minore del numero di nuovi utenti immessinel database.",
+          "choices": [
+            {
+              "text": "Vero"
+            },
+            {
+              "text": "Falso"
+            }
+          ],
+          "correctIndexes": [
+            0
+          ]
+        },
+        {
+          "id": "quiz1_q48",
+          "text": "La similitudine intraclasse",
+          "choices": [
+            {
+              "text": "è un problema per il funzionamento del sistema biometrico"
+            },
+            {
+              "text": "produce vantaggi utili per il funzionamento del sistema biometrico"
+            },
+            {
+              "text": "è solo un aspetto teorico che nella maggior parte dei sistemi biometrici sul mercato non produce alcun effetto rilevabile"
+            }
+          ],
+          "correctIndexes": [
+            1
+          ]
+        },
+        {
+          "id": "quiz1_q49",
+          "text": "Si consideri la seguente formulazione:dato in ingresso un insieme dicaratteristiche X_Q e la dichiarata identità I, occorre determinare se (I, X_Q) appartengano a D_1 o D_2, dove D_1 indica che la richiesta è vera (utente genuino) e D_2 che la richiesta è falsa (impostore).",
+          "choices": [
+            {
+              "text": "È la formulazione del problema di verifica dell'identità dell'utente"
+            },
+            {
+              "text": "È la formulazione del problema di identificazione dell'identità dell'utente"
+            },
+            {
+              "text": "Non è corretta né per il problema della verifica né per quello dell'identificazione dell'utente"
+            }
+          ],
+          "correctIndexes": [
+            0
+          ]
+        },
+        {
+          "id": "quiz1_q50",
+          "text": "Qualè la formulazione esatta del problema di rappresentazione dell'informazione nei sistemi biometrici?",
+          "choices": [
+            {
+              "text": "Il problema consiste nell'individuare quale rappresentazione sia invariante rispetto alla misura in ingresso"
+            },
+            {
+              "text": "Il problema consiste nell'individuare quale rappresentazione possa catturare completamente le variazioni del tratto biometrico"
+            },
+            {
+              "text": "Il problema consiste nell'individuare quale rappresentazione machine-readable cattura completamente l'informazione invariante e discriminatoria della misura in ingresso"
+            }
+          ],
+          "correctIndexes": [
+            2
+          ]
+        }
+      ]
+    },
+    {
+      "id": "quiz2",
+      "title": "Quiz 2",
+      "questions": [
+        {
+          "id": "quiz2_q1",
+          "text": "Il pattern dell'iride contiene",
+          "choices": [
+            {
+              "text": "numerosissime caratteristiche instabili nel tempo"
+            },
+            {
+              "text": "numerosissime caratteristiche stabili nel tempo"
+            },
+            {
+              "text": "poche caratteristiche stabili nel tempo"
+            },
+            {
+              "text": "poche caratteristiche instabili nel tempo"
+            }
+          ],
+          "correctIndexes": [
+            1
+          ]
+        },
+        {
+          "id": "quiz2_q2",
+          "text": "Gli algoritmi per l'estrazione delle palpebre e delle ciglia lavorano usandoin ingresso",
+          "choices": [
+            {
+              "text": "l'IrisCode"
+            },
+            {
+              "text": "l'immagine linearizzata"
+            },
+            {
+              "text": "l'immagine in coordinate polari"
+            },
+            {
+              "text": "l'immagine in toni di grigio dell'iride"
+            }
+          ],
+          "correctIndexes": [
+            3
+          ]
+        },
+        {
+          "id": "quiz2_q3",
+          "text": "Rispetto all'immagine, la PCA è una tecnica di analisi",
+          "choices": [
+            {
+              "text": "globale"
+            },
+            {
+              "text": "locale"
+            }
+          ],
+          "correctIndexes": [
+            0
+          ]
+        },
+        {
+          "id": "quiz2_q4",
+          "text": "Il calcolo esatto e robusto dell'orientamento dei ridge è fondamentale nelle fasi di enhancement, nell'identificazione delle minutiae e nella classificazione delle impronte.",
+          "choices": [
+            {
+              "text": "Vero"
+            },
+            {
+              "text": "Falso"
+            }
+          ],
+          "correctIndexes": [
+            0
+          ]
+        },
+        {
+          "id": "quiz2_q5",
+          "text": "I sistemi biometrici basati sull'IrisCode si prestano a essere usati",
+          "choices": [
+            {
+              "text": "in sistemi di verifica in condizioni operative estremamente difficili (peresempio con soggetti non collaborativi)"
+            },
+            {
+              "text": "in sistemi di identificazione con database contenenti poche decine ditemplate, e non per database di grandi dimensioni"
+            },
+            {
+              "text": "in sistemi di identificazione con database anche di grandi dimensioni"
+            },
+            {
+              "text": "in sistemi di identificazione in condizioni operative estremamente difficili(per esempio con soggetti non collaborativi)"
+            }
+          ],
+          "correctIndexes": [
+            2
+          ]
+        },
+        {
+          "id": "quiz2_q6",
+          "text": "Il pattern dell'iride si deforma elasticamente.",
+          "choices": [
+            {
+              "text": "Vero"
+            },
+            {
+              "text": "Falso"
+            }
+          ],
+          "correctIndexes": [
+            0
+          ]
+        },
+        {
+          "id": "quiz2_q7",
+          "text": "La probabilità che ogni singolo bit sia 1 o 0 nell'IrisCode è di circa il 50%.",
+          "choices": [
+            {
+              "text": "Vero: è possible inserirlo nella categoria dei codici a massima entropia"
+            },
+            {
+              "text": "Falso: se così fosse sarebbe un codice casuale e quindi non sarebbe possibile eseguire un matching sensato"
+            }
+          ],
+          "correctIndexes": [
+            0
+          ]
+        },
+        {
+          "id": "quiz2_q8",
+          "text": "I sistemi biometrici basati sull'IrisCode possono essere attaccati",
+          "choices": [
+            {
+              "text": "solo a livello di sensore"
+            },
+            {
+              "text": "in tutti i moduli della catena, ma non a livello di sensore"
+            },
+            {
+              "text": "in tutti i moduli della catena,anche a livello di sensore"
+            }
+          ],
+          "correctIndexes": [
+            2
+          ]
+        },
+        {
+          "id": "quiz2_q9",
+          "text": "I termografi",
+          "choices": [
+            {
+              "text": "possono essere usati per fare acquisizioni dei volti per sistemi biometrici"
+            },
+            {
+              "text": "non possono essere usati per fare acquisizioni dei volti per sistemibiometrici, ma solo per controllare se vi sono maschere sul volto dell'utente"
+            }
+          ],
+          "correctIndexes": [
+            0
+          ]
+        },
+        {
+          "id": "quiz2_q10",
+          "text": "La probabilità che due persone abbiano in comune tutte le 12 presenti in un'impronta latente comparata con una immagine completa del dito, con un'area di tolleranza relativa fissata a 1/70, è vicina al",
+          "choices": [
+            {
+              "text": "5%"
+            },
+            {
+              "text": "0.05%"
+            },
+            {
+              "text": "0.0000000001%"
+            }
+          ],
+          "correctIndexes": [
+            2
+          ]
+        },
+        {
+          "id": "quiz2_q11",
+          "text": "Le palpebre e le ciglia che si sovrappongono all'iride nell'immagine",
+          "choices": [
+            {
+              "text": "devono essere individuate, segmentate e rimosse"
+            },
+            {
+              "text": "vengono lasciate nel template e considerate nel matching in quanto fannoparte del tratto biometrico della persona"
+            },
+            {
+              "text": "se presenti in ragione maggiore del 25% rispetto all'area dell'iride, rendononecessaria una nuova acquisizione"
+            }
+          ],
+          "correctIndexes": [
+            0
+          ]
+        },
+        {
+          "id": "quiz2_q12",
+          "text": "Le Orientation Field Flow Curves servono a",
+          "choices": [
+            {
+              "text": "prefiltrare in modo adattativo le immagini delle impronte digitali"
+            },
+            {
+              "text": "classificare le impronte"
+            },
+            {
+              "text": "calcolare la mappa degli orientamenti"
+            }
+          ],
+          "correctIndexes": [
+            1
+          ]
+        },
+        {
+          "id": "quiz2_q13",
+          "text": "Le feature estraibili da un'impronta possono provenire dai livelli di analisi",
+          "choices": [
+            {
+              "text": "I e II"
+            },
+            {
+              "text": "I, II,III"
+            },
+            {
+              "text": "I, II, III, IV"
+            }
+          ],
+          "correctIndexes": [
+            1
+          ]
+        },
+        {
+          "id": "quiz2_q14",
+          "text": "La mappa degli orientamenti di un'impronta si può ottenere",
+          "choices": [
+            {
+              "text": "dalle immagini gradiente lungo gli assi x e y"
+            },
+            {
+              "text": "direttamente dalla mappa di frequenza dei ridge"
+            },
+            {
+              "text": "da una Orientation Field Flow Curve"
+            }
+          ],
+          "correctIndexes": [
+            0
+          ]
+        },
+        {
+          "id": "quiz2_q15",
+          "text": "La registrazione direttamente in enrollment di un'impronta sintetica",
+          "choices": [
+            {
+              "text": "rappresenta uno dei possibili casi di attacco"
+            },
+            {
+              "text": "non è considerabile come un attacco"
+            },
+            {
+              "text": "non è possibile nei casi reali"
+            }
+          ],
+          "correctIndexes": [
+            0
+          ]
+        },
+        {
+          "id": "quiz2_q16",
+          "text": "Controllare la messa a fuoco dell'immagine dell'iride è un problema",
+          "choices": [
+            {
+              "text": "marginale in quanto capita solo in condizioni estreme di utilizzo del sistema"
+            },
+            {
+              "text": "fondamentale in quanto la possibilità di avere l'iride fuori fuoco può essere sempre presente, anche in condizioni ideali"
+            }
+          ],
+          "correctIndexes": [
+            1
+          ]
+        },
+        {
+          "id": "quiz2_q17",
+          "text": "Il valore finale del matching di due IrisCode è ottenuto",
+          "choices": [
+            {
+              "text": "da una singola comparazione delle due stringhe, misurata con la distanza di Hamming"
+            },
+            {
+              "text": "da almeno tre comparazioni fra le stringhe (di cui una traslata), misurata con la distanza di Hamming"
+            }
+          ],
+          "correctIndexes": [
+            1
+          ]
+        },
+        {
+          "id": "quiz2_q18",
+          "text": "Il filtro di Wiener",
+          "choices": [
+            {
+              "text": "può essere usato su tutte le immagini di impronte in quanto non ha parametri da impostare"
+            },
+            {
+              "text": "può essere usato su tutte le immagini di impronte, ma funziona correttamente solo se si conoscono le proprietà spettrali dell'impronta e del rumore"
+            },
+            {
+              "text": "è la migliore tecnica usabile per normalizzare le immagini"
+            }
+          ],
+          "correctIndexes": [
+            1
+          ]
+        },
+        {
+          "id": "quiz2_q19",
+          "text": "Un sistema di acquisizione basato solo su telecamera, moduli di filtraggio eper il calcolo dell'IrisCode potrebbe essere ingannato da un'immagine stampata.",
+          "choices": [
+            {
+              "text": "Vero: una stampa di sufficiente qualità posizionata nel modo corretto potrebbe ingannare il sistema"
+            },
+            {
+              "text": "Falso: non è possibile produrre un IrisCode da un'immagine stampata"
+            }
+          ],
+          "correctIndexes": [
+            0
+          ]
+        },
+        {
+          "id": "quiz2_q20",
+          "text": "La definizione 'misura dei ridge che attraversano una linea immaginariapassante tra due minutiae'si riferisce a una feature chiamata",
+          "choices": [
+            {
+              "text": "ridge count"
+            },
+            {
+              "text": "ridge frequency"
+            },
+            {
+              "text": "mappa di orientamento"
+            },
+            {
+              "text": "Nessuna delle altre risposte"
+            }
+          ],
+          "correctIndexes": [
+            0
+          ]
+        },
+        {
+          "id": "quiz2_q21",
+          "text": "Un sistema biometrico basato sulle impronte digitali può essere attaccato solo attraverso il suo sensore in ingresso.",
+          "choices": [
+            {
+              "text": "Vero"
+            },
+            {
+              "text": "Falso"
+            }
+          ],
+          "correctIndexes": [
+            1
+          ]
+        },
+        {
+          "id": "quiz2_q22",
+          "text": "I sistemi biometrici basati sul volto 2D hanno la caratteristica di",
+          "choices": [
+            {
+              "text": "poter effettuare la scansione anche senza la collaborazione dell'utente"
+            },
+            {
+              "text": "impiegare illuminazione ditipo Coded Light"
+            },
+            {
+              "text": "Nessuna delle altre risposte"
+            }
+          ],
+          "correctIndexes": [
+            2
+          ]
+        },
+        {
+          "id": "quiz2_q23",
+          "text": "La tecnica più diffusa di segmentazione",
+          "choices": [
+            {
+              "text": "lavora su blocchi, e controlla la varianza dei toni di grigio in ognuno per classificarlo come foreground o background"
+            },
+            {
+              "text": "è una delle tecniche di prefiltraggio impiegate per evidenziare i singoli ridge"
+            }
+          ],
+          "correctIndexes": [
+            0
+          ]
+        },
+        {
+          "id": "quiz2_q24",
+          "text": "Nell'IrisCode vi sono alcune correlazioni fra gruppi di bit: questo aspettoè anche legato al fatto che la struttura dell'iride presenta caratteristiche spesso radiali.",
+          "choices": [
+            {
+              "text": "Vero"
+            },
+            {
+              "text": "Falso"
+            }
+          ],
+          "correctIndexes": [
+            0
+          ]
+        },
+        {
+          "id": "quiz2_q25",
+          "text": "La normalizzazione è una tecnica di filtraggio che",
+          "choices": [
+            {
+              "text": "riporta la media e la varianza dell'intensità dei pixel dell'immagine di un'impronta a valori prefissati"
+            },
+            {
+              "text": "produce uno zoom adattativo che riporta l'impronta al centro dell'immagine, dandole un'area prefissata"
+            },
+            {
+              "text": "produce uno zoom adattativo che riporta l'impronta ad avere una distanza prefissata fra i ridge"
+            }
+          ],
+          "correctIndexes": [
+            0
+          ]
+        },
+        {
+          "id": "quiz2_q26",
+          "text": "La tecnica che individua i contorni delle possibili facce in un'immagine sichiama",
+          "choices": [
+            {
+              "text": "face recognition"
+            },
+            {
+              "text": "face detection"
+            },
+            {
+              "text": "face verification"
+            }
+          ],
+          "correctIndexes": [
+            1
+          ]
+        },
+        {
+          "id": "quiz2_q27",
+          "text": "La distorsione dell'impronta dovuta per esempio a rototraslazioni del ditodurante l'acquisizione",
+          "choices": [
+            {
+              "text": "è un problema non risolubile per l'algoritmo di matching perché tende a far sembrare diverse le impronte dello stesso individuo"
+            },
+            {
+              "text": "non è un problema perché esistono tecniche per ridurre gli effetti della deformazione elastica"
+            },
+            {
+              "text": "è un problema, ma esistono tecniche per ridurre gli effetti della deformazione elastica che possono aiutare a risolverlo riducendo i False Non Match, ma che aumentano anche i False Match"
+            }
+          ],
+          "correctIndexes": [
+            2
+          ]
+        },
+        {
+          "id": "quiz2_q28",
+          "text": "Nel caso delle impronte digitali, il problema della scrittura di un algoritmodi matching è ormai considerato in letteratura come un problema risolto.",
+          "choices": [
+            {
+              "text": "Vero: sono presenti in letteratura metodi per ottenere l'EER che desidera il cliente, a patto di aumentare la complessità degli algoritmi"
+            },
+            {
+              "text": "Falso: NON sono presenti in letteratura metodi per ottenere l'EER che desidera il cliente, anche aumentando la complessità degli algoritmi"
+            }
+          ],
+          "correctIndexes": [
+            1
+          ]
+        },
+        {
+          "id": "quiz2_q29",
+          "text": "Le dimensioni massime raggiunte finora da sistemi basati sull'iride sonoquelle corrispondenti a un database di",
+          "choices": [
+            {
+              "text": "un centinaio di persone"
+            },
+            {
+              "text": "migliaia di persone"
+            },
+            {
+              "text": "milioni di persone"
+            }
+          ],
+          "correctIndexes": [
+            2
+          ]
+        },
+        {
+          "id": "quiz2_q30",
+          "text": "Le proprietà dell'IrisCode rendono la rappresentazione",
+          "choices": [
+            {
+              "text": "invariante rispetto alla dilatazione della pupilla, ma non rispetto al livello di zoom"
+            },
+            {
+              "text": "invariante rispetto al livello di zoom, ma non rispetto alla dilatazione della pupilla"
+            },
+            {
+              "text": "invariante rispetto al livello di zoom e anche rispetto alla dilatazione della pupilla, ma non rispetto alle condizioni di illuminazione media dell'immagine"
+            },
+            {
+              "text": "Nessuna delle altre risposte"
+            }
+          ],
+          "correctIndexes": [
+            3
+          ]
+        },
+        {
+          "id": "quiz2_q31",
+          "text": "Qual è l'ordine corretto per queste fasi di face detection?",
+          "choices": [
+            {
+              "text": "1) Lighting compensation 2) Skin tone detection 3) Localization of facial features"
+            },
+            {
+              "text": "1) Localization of facial features 2) Lighting compensation 3) Skin tone detection"
+            },
+            {
+              "text": "1) Skin tone detection 2) Localization of facial features 3) Lighting compensation"
+            }
+          ],
+          "correctIndexes": [
+            0
+          ]
+        },
+        {
+          "id": "quiz2_q32",
+          "text": "Quale test di liveness NON può essere applicato nel caso di un sensore ottico?",
+          "choices": [
+            {
+              "text": "Rilevamento della presenza di pori in quanto difficilmente ricostruibili in un dito finto"
+            },
+            {
+              "text": "Misura delle differenze di potenziale elettrico dovuto all'attività muscolare del dito"
+            },
+            {
+              "text": "Rilevamento della pulsazione cardiaca nel dito"
+            }
+          ],
+          "correctIndexes": [
+            1
+          ]
+        },
+        {
+          "id": "quiz2_q33",
+          "text": "Skin tone detection è una tecnica di",
+          "choices": [
+            {
+              "text": "face matching"
+            },
+            {
+              "text": "face detection"
+            },
+            {
+              "text": "face modeling"
+            }
+          ],
+          "correctIndexes": [
+            1
+          ]
+        },
+        {
+          "id": "quiz2_q34",
+          "text": "I gemelli omozigoti hanno impronte digitali",
+          "choices": [
+            {
+              "text": "perfettamente uguali"
+            },
+            {
+              "text": "con struttura simile, ma con dettagli diversi che ne permettono sempre unachiara distinzione"
+            },
+            {
+              "text": "del tutto diverse, anche nella struttura"
+            }
+          ],
+          "correctIndexes": [
+            1
+          ]
+        },
+        {
+          "id": "quiz2_q35",
+          "text": "Il filtro di Gabor",
+          "choices": [
+            {
+              "text": "migliora le caratteristiche del contrasto di un'immagine che è già stata binarizzata"
+            },
+            {
+              "text": "migliora le caratteristiche dei ridge di un'immagine che è già stata binarizzata"
+            },
+            {
+              "text": "migliora le caratteristiche del contrasto di una immagine a toni di grigio"
+            },
+            {
+              "text": "migliora le caratteristiche dei ridge di una immagine in toni di grigio"
+            }
+          ],
+          "correctIndexes": [
+            3
+          ]
+        },
+        {
+          "id": "quiz2_q36",
+          "text": "Durante l'acquisizione dell'iride, il fuoco dell'immagine contenente l'irideè controllato",
+          "choices": [
+            {
+              "text": "dall'operatore addetto al controllo del sensore"
+            },
+            {
+              "text": "da un sistema software quando l'utente si avvicina prima della scansione"
+            },
+            {
+              "text": "da un sistema software in tempo reale, a livello di frame in acquisizione"
+            }
+          ],
+          "correctIndexes": [
+            2
+          ]
+        },
+        {
+          "id": "quiz2_q37",
+          "text": "Un'immagine fuori fuoco deve essere scartata perché produrrebbe un IrisCode pressochè casuale e quindi inutile sia in sede di enrollment, sia in sede di verification/identification.",
+          "choices": [
+            {
+              "text": "Vero"
+            },
+            {
+              "text": "Falso"
+            }
+          ],
+          "correctIndexes": [
+            0
+          ]
+        },
+        {
+          "id": "quiz2_q38",
+          "text": "La ridge frequency è",
+          "choices": [
+            {
+              "text": "la distanza media tra due picchi consecutivi"
+            },
+            {
+              "text": "l'inverso della distanza media tra due picchi consecutivi"
+            },
+            {
+              "text": "la misura dei ridge che attraversano una linea immaginaria passante tra due minutiae"
+            }
+          ],
+          "correctIndexes": [
+            1
+          ]
+        },
+        {
+          "id": "quiz2_q39",
+          "text": "Attraverso il calco di un'impronta digitale e la sua riscostruzione inlattice o gelatina",
+          "choices": [
+            {
+              "text": "è solo possibile ricreare la struttura dei ridge, non la disposizione delle minutiae"
+            },
+            {
+              "text": "è possibile ricreare la struttura dei ridge e la disposizione delle minutiae"
+            }
+          ],
+          "correctIndexes": [
+            1
+          ]
+        },
+        {
+          "id": "quiz2_q40",
+          "text": "Perché l'acquisizione dell'iride sia considerata valida deve essere presente una percentuale della corona dell'iride almeno pari al",
+          "choices": [
+            {
+              "text": "5%"
+            },
+            {
+              "text": "25%"
+            },
+            {
+              "text": "50%"
+            },
+            {
+              "text": "75%"
+            }
+          ],
+          "correctIndexes": [
+            2
+          ]
+        },
+        {
+          "id": "quiz2_q41",
+          "text": "I template dei sistemi biometrici basati sul volto presentano tipicamente unabassissima variabilità intraclasse.",
+          "choices": [
+            {
+              "text": "Vero"
+            },
+            {
+              "text": "Falso"
+            }
+          ],
+          "correctIndexes": [
+            1
+          ]
+        },
+        {
+          "id": "quiz2_q42",
+          "text": "Posizioni diverse della testa in diverse acquisizioni portano ad aumentareleggermente",
+          "choices": [
+            {
+              "text": "la variabilità intraclasse"
+            },
+            {
+              "text": "la dimensioni del template"
+            },
+            {
+              "text": "i tempi di acquisizione"
+            }
+          ],
+          "correctIndexes": [
+            0
+          ]
+        },
+        {
+          "id": "quiz2_q43",
+          "text": "Nel caso dei sistemi basati sul volto, quale ordine delle fasi dielaborazione è corretto?",
+          "choices": [
+            {
+              "text": "1. Face detection 2. Face normalization 3. Face segmentation"
+            },
+            {
+              "text": "1. Face normalization 2. Face detection 3. Face segmentation"
+            },
+            {
+              "text": "1. Face detection 2. Face segmentation 3. Face normalization"
+            }
+          ],
+          "correctIndexes": [
+            2
+          ]
+        },
+        {
+          "id": "quiz2_q44",
+          "text": "L'indice di Poincaré calcolato in ogni regione di un'immagine serve a",
+          "choices": [
+            {
+              "text": "trovare i core"
+            },
+            {
+              "text": "trovare i delta"
+            },
+            {
+              "text": "trovare i delta e i core"
+            },
+            {
+              "text": "Nessuna delle altre risposte"
+            }
+          ],
+          "correctIndexes": [
+            2
+          ]
+        },
+        {
+          "id": "quiz2_q45",
+          "text": "Perché uno spettrometro potrebbe aiutare a controllare se l'acquisizione è avvenuta in modo corretto?",
+          "choices": [
+            {
+              "text": "Perché permette di controllare la distanza del soggetto e quindi la messa a fuoco"
+            },
+            {
+              "text": "Perché permette di classificare la natura del materiale in esame (tessuto, grasso, plastico, cartaceo, \\'85)"
+            },
+            {
+              "text": "Falso: non sarebbe di alcuna utilità"
+            }
+          ],
+          "correctIndexes": [
+            1
+          ]
+        },
+        {
+          "id": "quiz2_q46",
+          "text": "L'analisi lineare è un modo per",
+          "choices": [
+            {
+              "text": "estrarre feature locali sul volto"
+            },
+            {
+              "text": "effettuare face detection"
+            },
+            {
+              "text": "esaminare sottospazi a dimensionalità minore dello spazio delle facce"
+            },
+            {
+              "text": "Nessuna delle altre risposte"
+            }
+          ],
+          "correctIndexes": [
+            2
+          ]
+        },
+        {
+          "id": "quiz2_q47",
+          "text": "Se un sistema biometrico acquisisce più dita di una persona durante il suo funzionamento, la sua accuratezza tende a",
+          "choices": [
+            {
+              "text": "aumentare per il numero di caratteristiche maggiore che possono essere controllate"
+            },
+            {
+              "text": "diminuire essendo possibile fare più errori nel complesso"
+            },
+            {
+              "text": "rimane stabile perché il tasso totale di errore non può cambiare, visto che gli algoritmi impiegati sono sempre gli stessi per tutte le dita"
+            }
+          ],
+          "correctIndexes": [
+            0
+          ]
+        },
+        {
+          "id": "quiz2_q48",
+          "text": "In che modo la pressione influenza l'acquisizione del dito da parte delsensore?",
+          "choices": [
+            {
+              "text": "Maggiore è la pressione, maggiore è la continuità dei ridge nell'impronta; quindi si ottiene una maggiore qualità dell'acquisizione"
+            },
+            {
+              "text": "Maggiore è la pressione, maggiore è la continuità dei ridge nell'impronta; quindi si ottiene una maggiore qualità dell'acquisizione. Oltre un certo limite però, i ridge iniziano a unirsi fino a confondersi, peggiorando notevolemente la qualità dell'acquisizione"
+            },
+            {
+              "text": "Minore è la pressione, maggiore è la continuità dei ridge nell'impronta; quindi si ottiene una maggiore qualità dell'acquisizione"
+            },
+            {
+              "text": "Molto debolmente: si tratta solo di un fenomeno che riguarda dettagli del terzo livello come gli incipient ridge"
+            }
+          ],
+          "correctIndexes": [
+            1
+          ]
+        },
+        {
+          "id": "quiz2_q49",
+          "text": "I sistemi basati sull'iride, rispetto agli altri sistemi biometrici, sono",
+          "choices": [
+            {
+              "text": "molto economici ma facili da frodare"
+            },
+            {
+              "text": "costosi ma difficili da frodare"
+            }
+          ],
+          "correctIndexes": [
+            1
+          ]
+        },
+        {
+          "id": "quiz2_q50",
+          "text": "Le iridi in un sistema biometrico basato sull'irisCode sono rappresentate come",
+          "choices": [
+            {
+              "text": "i centri ed i raggi della pupilla e dell'iride"
+            },
+            {
+              "text": "una stringa digitale di 256 byte"
+            },
+            {
+              "text": "una mappa di toni di grigio in coordinate polari"
+            }
+          ],
+          "correctIndexes": [
+            1
+          ]
+        },
+        {
+          "id": "quiz2_q51",
+          "text": "L'approccio classico per l'estrazione della minutiae in un'impronta è composto esattamente da questa sequenza di passi:",
+          "choices": [
+            {
+              "text": "1) Prefiltraggio ed enhacement 2) Postprocessing 3) Binarization 4) Thinning 5) Estrazione delle minutiae"
+            },
+            {
+              "text": "1) Prefiltraggio ed enhacement 2) Binarization 3) Thinning 4) Estrazione delle minutiae 5) Postprocessing"
+            },
+            {
+              "text": "1) Prefiltraggio ed enhacement 2) Postprocessing 3) Estrazione delle minutiae 4) Binarization 5) Thinning"
+            },
+            {
+              "text": "1) Binarization 2) Prefiltraggio ed enhacement 3) Postprocessing 4) Estrazione delle minutiae"
+            }
+          ],
+          "correctIndexes": [
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "id": "quiz3",
+      "title": "Quiz 3",
+      "questions": [
+        {
+          "id": "quiz3_q1",
+          "text": "I sensori della mano presentano le seguenti caratteristiche",
+          "choices": [
+            {
+              "text": "sono robusti, costano circa 100 dollari, solitamente contengono ottiche e lenti"
+            },
+            {
+              "text": "contengono ottiche e lenti e sono piuttosto robusti, costano circa 1000dollari, l'utente può non essere collaborativo"
+            },
+            {
+              "text": "costano circa 1000 dollari e l'utente deve essere collaborativo"
+            }
+          ],
+          "correctIndexes": [
+            2
+          ]
+        },
+        {
+          "id": "quiz3_q2",
+          "text": "La retina è un tratto biometrico considerato come tra i più affidabili e accurati nel panorama delle tecniche biometriche.",
+          "choices": [
+            {
+              "text": "Vero"
+            },
+            {
+              "text": "Falso"
+            }
+          ],
+          "correctIndexes": [
+            0
+          ]
+        },
+        {
+          "id": "quiz3_q3",
+          "text": "La tecnica del Dinamic Time Warping serve ad allineare temporalmente itracciati di due firme offline per eseguire un corretto matching.",
+          "choices": [
+            {
+              "text": "Vero"
+            },
+            {
+              "text": "Falso"
+            }
+          ],
+          "correctIndexes": [
+            1
+          ]
+        },
+        {
+          "id": "quiz3_q4",
+          "text": "Attualmente non esistono sistemi biometrici completamente automatici per ilriconoscimento della voce.",
+          "choices": [
+            {
+              "text": "Vero: è sempre necessaria la presenza di un esperto che supervisioni le feature prodotte per poi eseguire la decisione finale"
+            },
+            {
+              "text": "Falso: esistono sistemi anche completamente automatici"
+            }
+          ],
+          "correctIndexes": [
+            1
+          ]
+        },
+        {
+          "id": "quiz3_q5",
+          "text": "L'uso di illuminatori e sensori multispettrali",
+          "choices": [
+            {
+              "text": "permette di classificare alcune classi di sostanze presenti sul volto equindi individuare alcuni tipi di attacchi al sensore"
+            },
+            {
+              "text": "non è utile in quanto il volto si presenta con tessiture di grigio molto simili anche in bande diverse dello spettro"
+            }
+          ],
+          "correctIndexes": [
+            0
+          ]
+        },
+        {
+          "id": "quiz3_q6",
+          "text": "La percentuale di DNA che cambia da individuo a individuo",
+          "choices": [
+            {
+              "text": "è una frazione molto piccola, tra lo 0.1 e lo 0.5%"
+            },
+            {
+              "text": "è una frazione cospicua, intorno al 15%, che permette infatti di avere identificazioni assolutamente certe"
+            }
+          ],
+          "correctIndexes": [
+            0
+          ]
+        },
+        {
+          "id": "quiz3_q7",
+          "text": "In un sistema biometrico multimodale generico, è possible eseguire tecniche di fusione dell'informazione",
+          "choices": [
+            {
+              "text": "in un solo livello, quello del modulo decisionale"
+            },
+            {
+              "text": "in due livelli: 1) a livello di match score 2) a livello di modulo decisionale"
+            },
+            {
+              "text": "in tre livelli: 1) a livello di feature 2) a livello di match score 3) a livello di modulo decisionale"
+            },
+            {
+              "text": "in due livelli: 1) a livello di feature 2) a livello di match score"
+            }
+          ],
+          "correctIndexes": [
+            2
+          ]
+        },
+        {
+          "id": "quiz3_q8",
+          "text": "I recenti tassi di errore dei sistemi di riconoscimento biometrico basatisulla firma online mostrano un EER di circa",
+          "choices": [
+            {
+              "text": "0.4%"
+            },
+            {
+              "text": "4%"
+            },
+            {
+              "text": "14%"
+            }
+          ],
+          "correctIndexes": [
+            1
+          ]
+        },
+        {
+          "id": "quiz3_q9",
+          "text": "I sistemi biometrici basati sul volto 3D attualmente disponibili sono ingrado di gestire correttamente un'acquisizione",
+          "choices": [
+            {
+              "text": "1) frontale 2) con espressione facciale neutra"
+            },
+            {
+              "text": "1) frontale 2) con ogni tipo di espressione facciale"
+            },
+            {
+              "text": "1) frontale 2) con ogni tipo di espressione facciale3) anche da lunga distanza (tecniche a scansione laser)"
+            }
+          ],
+          "correctIndexes": [
+            0
+          ]
+        },
+        {
+          "id": "quiz3_q10",
+          "text": "Controllare la sincronia fra il parlato e i movimenti del volto permette diindividuare un attacco portato al sistema mediante la proiezione di un video.",
+          "choices": [
+            {
+              "text": "Vero"
+            },
+            {
+              "text": "Falso"
+            }
+          ],
+          "correctIndexes": [
+            0
+          ]
+        },
+        {
+          "id": "quiz3_q11",
+          "text": "I sistemi più aggiornati di riconoscimento facciale basati su tecniche 2D e 3D arrivano ad avere un verification rate",
+          "choices": [
+            {
+              "text": "dell'80% con FAR pari a 0.001"
+            },
+            {
+              "text": "del 90% con FAR pari a 0.001"
+            },
+            {
+              "text": "del 99.9% con FAR pari a 0.001"
+            }
+          ],
+          "correctIndexes": [
+            2
+          ]
+        },
+        {
+          "id": "quiz3_q12",
+          "text": "Lo spazio delle facce è uno spazio che normalmente ha",
+          "choices": [
+            {
+              "text": "elevatissima dimensionalità"
+            },
+            {
+              "text": "bassissima dimensionalità"
+            }
+          ],
+          "correctIndexes": [
+            0
+          ]
+        },
+        {
+          "id": "quiz3_q13",
+          "text": "Il modello del parlatore basato sulla voce che viene impiegato in alcunisistemi biometrici può riflettere la sua fisiologia e il suo comportamento.",
+          "choices": [
+            {
+              "text": "Vero"
+            },
+            {
+              "text": "Falso"
+            }
+          ],
+          "correctIndexes": [
+            0
+          ]
+        },
+        {
+          "id": "quiz3_q14",
+          "text": "I tempi di pressione possono contribuire a migliorare le performance di unsistema che usa già i tempi di latenza dei tasti.",
+          "choices": [
+            {
+              "text": "Vero"
+            },
+            {
+              "text": "Falso"
+            }
+          ],
+          "correctIndexes": [
+            0
+          ]
+        },
+        {
+          "id": "quiz3_q15",
+          "text": "Le latenze dei tasti possono essere impiegate anche per attaccare un sistemadi login su canale protetto da SSH.",
+          "choices": [
+            {
+              "text": "Vero"
+            },
+            {
+              "text": "Falso"
+            }
+          ],
+          "correctIndexes": [
+            0
+          ]
+        },
+        {
+          "id": "quiz3_q16",
+          "text": "L'energia del suono della voce nelle varie bande spettrali dellospettrogramma è una feature",
+          "choices": [
+            {
+              "text": "linguistica (di alto livello)"
+            },
+            {
+              "text": "acustica (di basso livello)"
+            }
+          ],
+          "correctIndexes": [
+            1
+          ]
+        },
+        {
+          "id": "quiz3_q17",
+          "text": "Nel caso di sistemi biometrici basati sui volti, è necessario confrontare immagini 2D sempre e solo con immagini 2D, oppure superfici 3D con superfici 3D.",
+          "choices": [
+            {
+              "text": "Vero: altrimenti, i dati sarebbero di formati diversi e il matching non sarebbe corretto"
+            },
+            {
+              "text": "Falso: è possibile partire da dati di formato diverso e arrivare ugualmente alla fase di matching grazie a opportune conversioni"
+            }
+          ],
+          "correctIndexes": [
+            1
+          ]
+        },
+        {
+          "id": "quiz3_q18",
+          "text": "Una possibile contromisura per un attacco mediante maschere faccialisintetiche portato a un sistema biometrico basato sul volto 3D",
+          "choices": [
+            {
+              "text": "consiste nell'impiegare la tecnica basata sulla trasformata di Fourier perindividuare le ripetizioni del pattern di stampa"
+            },
+            {
+              "text": "consiste nell'usare un sistema in grado anche di scandire termograficamenteil volto"
+            }
+          ],
+          "correctIndexes": [
+            1
+          ]
+        },
+        {
+          "id": "quiz3_q19",
+          "text": "In caso di sistemi multimodali gerarchici, ponendo in cima alla catena isistemi meno accurati",
+          "choices": [
+            {
+              "text": "si aumenta il tempo medio di verifica"
+            },
+            {
+              "text": "si diminuisce il tempo medio di verifica"
+            }
+          ],
+          "correctIndexes": [
+            0
+          ]
+        },
+        {
+          "id": "quiz3_q20",
+          "text": "Il sensore di acquisizione di un sistema biometrico basato sull'odore è un sistema di detettori spesso chiamato 'naso elettronico'.",
+          "choices": [
+            {
+              "text": "Vero"
+            },
+            {
+              "text": "Falso"
+            }
+          ],
+          "correctIndexes": [
+            0
+          ]
+        },
+        {
+          "id": "quiz3_q21",
+          "text": "Negli algoritmi per il matching di superfici 3Ddi volti, ilvalore di matching è direttamente legato alla distanza minima che intercorre fra le due superfici dei volti al termine della fase di allineamento.",
+          "choices": [
+            {
+              "text": "Vero"
+            },
+            {
+              "text": "Falso"
+            }
+          ],
+          "correctIndexes": [
+            0
+          ]
+        },
+        {
+          "id": "quiz3_q22",
+          "text": "Può un telefono essere usato come sensore per un sistema biometrico basato sulla voce?",
+          "choices": [
+            {
+              "text": "Sì, la qualità del suono è perfettamente sufficiente per eseguire l'identificazione biometrica senza problemi"
+            },
+            {
+              "text": "Sì, ma il peggioramento del segnale è notevole e solo una parte delle informazioni contenute nella voce può essere estratta"
+            },
+            {
+              "text": "No, la banda passata dal telefono è troppo ridotta per effettuare un riconoscimento biometrico sulla voce"
+            }
+          ],
+          "correctIndexes": [
+            1
+          ]
+        },
+        {
+          "id": "quiz3_q23",
+          "text": "I sistemi biometrici basati sul volto 3D con scansione laser automatica",
+          "choices": [
+            {
+              "text": "sono fra i sistemi più precisi ma anche i più costosi"
+            },
+            {
+              "text": "sono fra i sistemi più lenti ma anche i meno costosi"
+            },
+            {
+              "text": "sono solo a livello prototipale e non esistono in commercio"
+            }
+          ],
+          "correctIndexes": [
+            0
+          ]
+        },
+        {
+          "id": "quiz3_q24",
+          "text": "Attraverso l'ICAO si sta affermando un formato di intercambio basato su",
+          "choices": [
+            {
+              "text": "requisiti di ripresa e di inquadratura, compressione, e risoluzione (dellascannerizzazione o dell'immagine)"
+            },
+            {
+              "text": "un requisito sulla risoluzione delle scannerizzazioni o delle immagini"
+            },
+            {
+              "text": "un requisito sulla massima dimensione in byte pari a 112 kB per immagine"
+            }
+          ],
+          "correctIndexes": [
+            0
+          ]
+        },
+        {
+          "id": "quiz3_q25",
+          "text": "Considerando l'essere umano come un sistema capace di identificare unapersona impiegando le informazioni provenienti da più sensi e comparandole con quelle memorizzate, si potrebbe definirlo come operante in modalità multimodale.",
+          "choices": [
+            {
+              "text": "Vero"
+            },
+            {
+              "text": "Falso"
+            }
+          ],
+          "correctIndexes": [
+            0
+          ]
+        },
+        {
+          "id": "quiz3_q26",
+          "text": "Le caratteristiche che possono essere estratte da un array di sensori di unsistema biometrico basato sull'odore sono circa",
+          "choices": [
+            {
+              "text": "5"
+            },
+            {
+              "text": "90"
+            },
+            {
+              "text": "1000"
+            }
+          ],
+          "correctIndexes": [
+            2
+          ]
+        },
+        {
+          "id": "quiz3_q27",
+          "text": "La risoluzione di un sistema biometrico 3D si misura",
+          "choices": [
+            {
+              "text": "in mm sulla superficie del soggetto posto a distanza prefissata"
+            },
+            {
+              "text": "con il numero di pixel dell'immagine prodotta"
+            },
+            {
+              "text": "con il numero di poligoni ottenibili"
+            }
+          ],
+          "correctIndexes": [
+            0
+          ]
+        },
+        {
+          "id": "quiz3_q28",
+          "text": "I sistemi biometrici di identificazione basati sul DNA sono considerati come",
+          "choices": [
+            {
+              "text": "isistemi che possiedono l'accuratezza potenziale più elevata di tutti gli altri sistemi biometrici"
+            },
+            {
+              "text": "i sistemi che possiedono l'accuratezza potenziale più elevata dopo i sistemi basati sull'iride"
+            }
+          ],
+          "correctIndexes": [
+            0
+          ]
+        },
+        {
+          "id": "quiz3_q29",
+          "text": "Nei sistemi biometrici basati sull'odore, i sensori conduttivi che compongonol'array del sensore di acquisizione rilevano le molecole dell'odore in base avariazioni della conducibilità della superficie del sensore esposta alle molecole stesse.",
+          "choices": [
+            {
+              "text": "Vero"
+            },
+            {
+              "text": "Falso"
+            }
+          ],
+          "correctIndexes": [
+            0
+          ]
+        },
+        {
+          "id": "quiz3_q30",
+          "text": "Normalmente si ottengono maggiori incrementi di accuratezza usando duecampioni dello stesso tipo di tratto biometrico in un sistema multibiometrico,oppure usando lo stesso campione ma due diversi metodi di matching conprestazioni simili?",
+          "choices": [
+            {
+              "text": "Usando due campioni"
+            },
+            {
+              "text": "Usando due matching diversi"
+            }
+          ],
+          "correctIndexes": [
+            0
+          ]
+        },
+        {
+          "id": "quiz3_q31",
+          "text": "Il template di una firma online occupa una dimensione di memoria di circa",
+          "choices": [
+            {
+              "text": "10 kB"
+            },
+            {
+              "text": "1 MB"
+            },
+            {
+              "text": "10 MB"
+            }
+          ],
+          "correctIndexes": [
+            0
+          ]
+        },
+        {
+          "id": "quiz3_q32",
+          "text": "Il numero di feature estraibili dalla mano è",
+          "choices": [
+            {
+              "text": "molto limitato vista la semplicità della forma della mano"
+            },
+            {
+              "text": "elevato: si può arrivare a quasi un centinaio di feature utili per il sistema biometrico"
+            }
+          ],
+          "correctIndexes": [
+            1
+          ]
+        },
+        {
+          "id": "quiz3_q33",
+          "text": "Attualmente i sistemi biometrici basati sulla mano sono",
+          "choices": [
+            {
+              "text": "più diffusi dei sistemi basati sull'iride"
+            },
+            {
+              "text": "più diffusi dei sistemi basati sul volto"
+            },
+            {
+              "text": "più diffusi dei sistemi basati sull'impronta"
+            }
+          ],
+          "correctIndexes": [
+            0
+          ]
+        },
+        {
+          "id": "quiz3_q34",
+          "text": "L'accelerazione della penna è una caratteristica tipica dei sistemi biometrici basati sulla firma",
+          "choices": [
+            {
+              "text": "online"
+            },
+            {
+              "text": "offline"
+            }
+          ],
+          "correctIndexes": [
+            0
+          ]
+        },
+        {
+          "id": "quiz3_q35",
+          "text": "I migliori sistemi biometrici basati sul volto, nel caso di immaginiacquisite con condizioni favorevoli, arrivano ad avere performance che",
+          "choices": [
+            {
+              "text": "sono ancora molto peggiori di quelle di un umano"
+            },
+            {
+              "text": "sono del tutto comparabili con quelle di un umano"
+            },
+            {
+              "text": "sono migliori di quelle di un umano"
+            }
+          ],
+          "correctIndexes": [
+            2
+          ]
+        },
+        {
+          "id": "quiz3_q36",
+          "text": "La tecnica PCR è uno dei passi fondamentali per l'analisi del DNA per l'identificazione. Essa serve per",
+          "choices": [
+            {
+              "text": "fotografare le bande nell'agarose gel in modo da misurare le lunghezze dei segmenti di DNA"
+            },
+            {
+              "text": "moltiplicare piccole quantità di DNA per riuscire a fare un'analisi"
+            },
+            {
+              "text": "eseguire la quantizzazione del campione"
+            }
+          ],
+          "correctIndexes": [
+            1
+          ]
+        },
+        {
+          "id": "quiz3_q37",
+          "text": "I sistemi multimodali sono di solito più accurati degli elementi che li compongono.",
+          "choices": [
+            {
+              "text": "Vero: l'accuratezza aumenta grazie alla possibilità di valutare congiuntamente informazioni provenenti da tratti diversi"
+            },
+            {
+              "text": "Falso: è la robustezza che aumenta, perché è più difficile frodare contemporaneamente tutti i sensori, ma l'accuratezza del sistema non può superare quella del suo elemento più accurato"
+            }
+          ],
+          "correctIndexes": [
+            0
+          ]
+        },
+        {
+          "id": "quiz3_q38",
+          "text": "Tutto il DNA è composto dall'alternanza di",
+          "choices": [
+            {
+              "text": "quattro basi"
+            },
+            {
+              "text": "otto basi"
+            },
+            {
+              "text": "quattro nuclei cellulari"
+            },
+            {
+              "text": "otto nuclei cellulari"
+            }
+          ],
+          "correctIndexes": [
+            0
+          ]
+        },
+        {
+          "id": "quiz3_q39",
+          "text": "Esistono sistemi in commercio che integrano automaticamente la scansione 3Ddel volto e le immagini termografiche.",
+          "choices": [
+            {
+              "text": "Vero"
+            },
+            {
+              "text": "Falso"
+            }
+          ],
+          "correctIndexes": [
+            0
+          ]
+        },
+        {
+          "id": "quiz3_q40",
+          "text": "Nell'analisi e comparazione di volti basata sulle autofacce, la distanza fral'immagine ricostruita e quella iniziale rispetto alle distanze degli altrivolti indica",
+          "choices": [
+            {
+              "text": "l'accuratezza della ricostruzione, permettendo di capire se si tratta di un volto genuino o un impostore"
+            },
+            {
+              "text": "in caso di verifica che è necessario rifare l'acquisizione, perché è presente troppo rumore sui dati"
+            },
+            {
+              "text": "la dimensionalità del problema"
+            }
+          ],
+          "correctIndexes": [
+            0
+          ]
+        },
+        {
+          "id": "quiz3_q41",
+          "text": "Nel caso dei sistemi biometrici basati sul volto, è possibile ricreare un campione da template memorizzati in un sistema?",
+          "choices": [
+            {
+              "text": "Assolutamente no, perché il template è ottenuto dal campione attraverso un processo che estrae solo alcune informazioni e quindi non è reversibile"
+            },
+            {
+              "text": "Sì, basta avere accesso al match score e un numero di tentativi sufficiente"
+            }
+          ],
+          "correctIndexes": [
+            1
+          ]
+        },
+        {
+          "id": "quiz3_q42",
+          "text": "In quali sistemi avvengono acquisizioni biometriche in cascata a seconda delrisultato dell'identificazione precedente?",
+          "choices": [
+            {
+              "text": "Nei sistemi multimodali con fusione a livello di feature"
+            },
+            {
+              "text": "Nei sistemi multimodali gerarchici"
+            }
+          ],
+          "correctIndexes": [
+            1
+          ]
+        },
+        {
+          "id": "quiz3_q43",
+          "text": "Le tecniche di fusione delle informazioni basate su classificatore sonoimplementate in moduli che nella catena biometrica stanno",
+          "choices": [
+            {
+              "text": "prima del modulo di matching"
+            },
+            {
+              "text": "dopo il modulo di matching"
+            }
+          ],
+          "correctIndexes": [
+            1
+          ]
+        },
+        {
+          "id": "quiz3_q44",
+          "text": "Qualedelle seguenti caratteristiche rappresenta uno svantaggio per i sistemibiometrici basati sulla voce?",
+          "choices": [
+            {
+              "text": "Dimensioni del template molto limitate rispetto agli altri sistemi biometrici"
+            },
+            {
+              "text": "Bassa accettabilità da parte degli utenti"
+            },
+            {
+              "text": "Insensibilità ai rumori di fondo"
+            },
+            {
+              "text": "Nessuna delle altre risposte"
+            }
+          ],
+          "correctIndexes": [
+            3
+          ]
+        },
+        {
+          "id": "quiz3_q45",
+          "text": "Le retine di due gemelli sono",
+          "choices": [
+            {
+              "text": "uguali"
+            },
+            {
+              "text": "simili nella struttura, ma con sufficienti particolari per riuscire adistinguerle"
+            }
+          ],
+          "correctIndexes": [
+            1
+          ]
+        },
+        {
+          "id": "quiz3_q46",
+          "text": "L'analisi lineare è un modo per",
+          "choices": [
+            {
+              "text": "estrarre feature locali sul volto"
+            },
+            {
+              "text": "effettuare face detection"
+            },
+            {
+              "text": "esaminare sottospazi dello spazio delle facce a dimensionalità minore"
+            },
+            {
+              "text": "Nessuna delle altre risposte"
+            }
+          ],
+          "correctIndexes": [
+            2
+          ]
+        },
+        {
+          "id": "quiz3_q47",
+          "text": "La tecnologia dei sistemi biometrici basati sulla mano è",
+          "choices": [
+            {
+              "text": "recente ma ben assestata"
+            },
+            {
+              "text": "sul mercato da oltre 20 anni e ben assestata"
+            },
+            {
+              "text": "recente e non ben assestata"
+            },
+            {
+              "text": "sul mercato da oltre 20 anni ma non ancora ben assestata, in quanto si riscontrano grandi avanzamenti nella loro accuratezza durante gli ultimi anni"
+            }
+          ],
+          "correctIndexes": [
+            1
+          ]
+        },
+        {
+          "id": "quiz3_q48",
+          "text": "Se in aeroporto si installa un sistema biometrico per l'accesso alle areeriservate con FAR = 0.2% e FRR = 0.3%, e in un giorno lo valicano 10000persone, quanti utenti abilitati in media non vengono fatti entrare al primotentativo?",
+          "choices": [
+            {
+              "text": "20"
+            },
+            {
+              "text": "30"
+            },
+            {
+              "text": "50"
+            }
+          ],
+          "correctIndexes": [
+            1
+          ]
+        },
+        {
+          "id": "quiz3_q49",
+          "text": "Due dei principali effetti negativi che influenzano i sistemi biometricibasati sul volto sono le differenze di",
+          "choices": [
+            {
+              "text": "posa ed espressione facciale"
+            },
+            {
+              "text": "illuminazione e posa"
+            },
+            {
+              "text": "illuminazione ed espressione facciale"
+            },
+            {
+              "text": "Nessuna delle altre risposte"
+            }
+          ],
+          "correctIndexes": [
+            2
+          ]
+        },
+        {
+          "id": "quiz3_q50",
+          "text": "Nei sistemi biometrici basati su scansione a coded light",
+          "choices": [
+            {
+              "text": "il sistema ricostruisce la tridimensionalità usando una sottile fascia di luce che passa lentamente sul soggetto"
+            },
+            {
+              "text": "il sistema ricostruisce la tridimensionalità usando la deformazione delle bande proiettate sul soggetto presenti nell'immagine"
+            },
+            {
+              "text": "si usa una sorgente luminosa a infrarossi per non dipendere dalla luce ambientale durante una scansione a singola immagine bidimensionale"
+            }
+          ],
+          "correctIndexes": [
+            1
+          ]
+        },
+        {
+          "id": "quiz3_q51",
+          "text": "Le occlusioni al volto sono un problema per i sistemi di riconoscimento dellostesso.",
+          "choices": [
+            {
+              "text": "Vero: le occlusioni aumentano la distanza interclasse"
+            },
+            {
+              "text": "Vero: la regione da cui estrarre informazioni è limitata dalle occlusioni"
+            },
+            {
+              "text": "Vero: le occlusioni rendono instabili le tecniche di estrazione delle feature"
+            }
+          ],
+          "correctIndexes": [
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "id": "quiz4",
+      "title": "Quiz 4",
+      "questions": [
+        {
+          "id": "quiz4_q1",
+          "text": "In generale, le regole prevedono che sia meglio creare un un test A di 200persone che provano due volte a entrare dopo l'enrollment, o un test B da 250persone che provano una volta a entrare dopo l'enrollment?",
+          "choices": [
+            {
+              "text": "Meglio il test A perché porta ad avere un totale di 400 tentativi, anche se solo 200 sono statisticamente indipendenti"
+            },
+            {
+              "text": "Meglio il test B: anche se porta a soli 250 tentativi, sono tutti statisticamente indipendenti"
+            }
+          ],
+          "correctIndexes": [
+            1
+          ]
+        },
+        {
+          "id": "quiz4_q2",
+          "text": "In quale caso si è quando 'the impostor submits their own biometric feature as if they were attempting successful verification against their own template'?",
+          "choices": [
+            {
+              "text": "Un errore di binning"
+            },
+            {
+              "text": "Un tentativo di tipo 'Zero-effort'"
+            },
+            {
+              "text": "Un individuo di tipo 'pecora', riferendoci alla rappresentazione dello zoo di Doddington"
+            }
+          ],
+          "correctIndexes": [
+            1
+          ]
+        },
+        {
+          "id": "quiz4_q3",
+          "text": "Creare una soglia personalizzata per ogni utente di un sistema biometrico inbase alla sua personale distribuzione delle distanze con gli altri utenti",
+          "choices": [
+            {
+              "text": "è metodologicamente corretto"
+            },
+            {
+              "text": "non è metodologicamente corretto, perché la soglia decisionale di una sistema biometrico dev'essere uguale per tutti gli utenti"
+            }
+          ],
+          "correctIndexes": [
+            0
+          ]
+        },
+        {
+          "id": "quiz4_q4",
+          "text": "Di seguito vi sono gruppi di proprietà: quale gruppo si avvicina maggiormente a quelle che sono considerate come necessarie per un tratto biometrico?",
+          "choices": [
+            {
+              "text": "Universalità, unicità, permanenza, performabilità, accettabilità"
+            },
+            {
+              "text": "Affidabilità, semplicità, temporalità, ripetibilità, estetica"
+            },
+            {
+              "text": "Universalità, disponibilità, modificabilità, velocità, consenso"
+            },
+            {
+              "text": "Unicità, universalità, adattabilità, temporaneità, precisione"
+            }
+          ],
+          "correctIndexes": [
+            0
+          ]
+        },
+        {
+          "id": "quiz4_q5",
+          "text": "Quale dei sistemi elencati implementa due delle più accurate e 'resistenti agli attacchi' tecnologie presenti sul mercato?",
+          "choices": [
+            {
+              "text": "Retina + impronta"
+            },
+            {
+              "text": "Iride + impronta"
+            },
+            {
+              "text": "Iride + retina"
+            },
+            {
+              "text": "Viso + iride"
+            },
+            {
+              "text": "Viso + movimento labbra"
+            }
+          ],
+          "correctIndexes": [
+            2
+          ]
+        },
+        {
+          "id": "quiz4_q6",
+          "text": "I sistemi biometrici distribuiti",
+          "choices": [
+            {
+              "text": "sono tipicamente impiegati per effettuare operazioni di identificazione"
+            },
+            {
+              "text": "Sono usati sia in Identificazione che in verifica"
+            },
+            {
+              "text": "Sono usati in verifica"
+            },
+            {
+              "text": "Nessuna delle precedenti"
+            }
+          ],
+          "correctIndexes": [
+            0
+          ]
+        },
+        {
+          "id": "quiz4_q7",
+          "text": "Quale tipo di valutazione è definita dalla frase 'The goal of the evaluation is to compare competing algorithms from a single technology. Testing of all algorithms is carried out on a standardised database collected by a universal sensor'?",
+          "choices": [
+            {
+              "text": "Operational evaluation"
+            },
+            {
+              "text": "Scenario evaluation"
+            },
+            {
+              "text": "Technology evaluation"
+            }
+          ],
+          "correctIndexes": [
+            2
+          ]
+        },
+        {
+          "id": "quiz4_q8",
+          "text": "Seguendo le direttive internazionali per i passaporti biometrici, qualedimensione approssimativa dovrebbe avere il campione di un volto?",
+          "choices": [
+            {
+              "text": "10 kB"
+            },
+            {
+              "text": "Circa 20 kB"
+            },
+            {
+              "text": "1MB"
+            }
+          ],
+          "correctIndexes": [
+            1
+          ]
+        },
+        {
+          "id": "quiz4_q9",
+          "text": "In un sistema multimodale, i sistemi per la fusione di tipo combinatorio",
+          "choices": [
+            {
+              "text": "agiscono sulle uscite binarie delle catene biometriche impiegate dal sistemamultimodale"
+            },
+            {
+              "text": "agiscono sul match score prodotto dai moduli di matching delle catenebiometriche che il sistema multimodale impiega"
+            }
+          ],
+          "correctIndexes": [
+            0
+          ]
+        },
+        {
+          "id": "quiz4_q10",
+          "text": "Lo standard ISO/IEC 19794 si occupa dell'interscambio di dati biometrici fraistituzioni e aziende",
+          "choices": [
+            {
+              "text": "riguardanti solo le impronte digitali"
+            },
+            {
+              "text": "riguardanti impronte digitali, immagini di volti, iridi, ecc."
+            },
+            {
+              "text": "Falso: è uno standard sui livelli di sicurezza ottenibili da un sistema biometrico"
+            }
+          ],
+          "correctIndexes": [
+            1
+          ]
+        },
+        {
+          "id": "quiz4_q11",
+          "text": "La normalizzazione dei match score in un sistema multimodale è un'operazione molto importante e necessaria perché",
+          "choices": [
+            {
+              "text": "permette al successivo classificatore (o combinatore) di comparare correttamente e in modo bilanciato tutti i match score"
+            },
+            {
+              "text": "adatta a ogni utente il valore della soglia di matching rendendo il sistema multimodale"
+            },
+            {
+              "text": "Nessuna delle altre risposte"
+            }
+          ],
+          "correctIndexes": [
+            0
+          ]
+        },
+        {
+          "id": "quiz4_q12",
+          "text": "In un sistema biometrico,il valore di matching ottenuto dalla comparazioneviene confrontato con una soglia fissata.",
+          "choices": [
+            {
+              "text": "Vero: la soglia è fissata dai progettisti in base alle condizioni operative"
+            },
+            {
+              "text": "Falso"
+            }
+          ],
+          "correctIndexes": [
+            0
+          ]
+        },
+        {
+          "id": "quiz4_q13",
+          "text": "Può il fatto che l'applicazione sia di autenticazione o di identificazione influire sulla scelta del tratto biometrico?",
+          "choices": [
+            {
+              "text": "Sì: non tutti i tratti biometrici possono essere impiegati in identificazione, per esempio nel caso di sistemi di grandi dimensioni"
+            },
+            {
+              "text": "No: il fatto che l'applicazione sia 1:1 o 1:N non modifica le considerazioni sul tratto biometrico, che rimangono valide per ogni operazione di enrollment"
+            }
+          ],
+          "correctIndexes": [
+            0
+          ]
+        },
+        {
+          "id": "quiz4_q14",
+          "text": "Quale parametro rappresenta 'la misura del grado di separazione presente frale distribuzioni degli impostori e dei genuini, calcolato considerando le loromedie e deviazioni standard'?",
+          "choices": [
+            {
+              "text": "Il parametro d'(d-prime)"
+            },
+            {
+              "text": "Il parametro 'convenience'"
+            },
+            {
+              "text": "Il parametro 'security'"
+            },
+            {
+              "text": "L'EER"
+            }
+          ],
+          "correctIndexes": [
+            0
+          ]
+        },
+        {
+          "id": "quiz4_q15",
+          "text": "I moderni sistemi biometrici di riconoscimento del volto basati su più immagini o su facce 2.5D",
+          "choices": [
+            {
+              "text": "sono sistemi multibiometrici e non unimodali"
+            },
+            {
+              "text": "sono sistemi unimodali e non multibiometrici"
+            }
+          ],
+          "correctIndexes": [
+            0
+          ]
+        },
+        {
+          "id": "quiz4_q16",
+          "text": "In generale, quando è possibile stabilire se il numero di campioni usato per il test è abbastanza grande?",
+          "choices": [
+            {
+              "text": "Solo dopo l'acquisizione dei dati"
+            },
+            {
+              "text": "Alla fine della progettazione dell'esperimento, ma prima della acquisizione dei dati"
+            }
+          ],
+          "correctIndexes": [
+            0
+          ]
+        },
+        {
+          "id": "quiz4_q17",
+          "text": "In caso di sistemi multimodali gerarchici, ponendo in cima alla catenai sistemi meno accurati",
+          "choices": [
+            {
+              "text": "si aumenta il tempo medio di verifica"
+            },
+            {
+              "text": "si diminuisce il tempo medio di verifica"
+            }
+          ],
+          "correctIndexes": [
+            0
+          ]
+        },
+        {
+          "id": "quiz4_q18",
+          "text": "Nel documento 'Best Practices' sulla valutazione delle performancebiometriche dei sistemi, con il termine 'presentation effects' si intendono glieffetti delle variabili inerenti la presentazione del tratto biometrico alsensore.",
+          "choices": [
+            {
+              "text": "Vero"
+            },
+            {
+              "text": "Falso"
+            }
+          ],
+          "correctIndexes": [
+            0
+          ]
+        },
+        {
+          "id": "quiz4_q19",
+          "text": "Per il rilevamento della mano si usano anche sensori IR.",
+          "choices": [
+            {
+              "text": "Vero: si usano per controllare se la mano è viva, ed eventualmente per acquisire il pattern delle vene"
+            },
+            {
+              "text": "Falso"
+            }
+          ],
+          "correctIndexes": [
+            0
+          ]
+        },
+        {
+          "id": "quiz4_q20",
+          "text": "Esistono sensori biometrici a costo zero.",
+          "choices": [
+            {
+              "text": "Vero"
+            },
+            {
+              "text": "Falso"
+            }
+          ],
+          "correctIndexes": [
+            0
+          ]
+        },
+        {
+          "id": "quiz4_q21",
+          "text": "Perché è importante che i campioni nella valutazione siano 'non-self', ovvero 'geneticamente differenti'?",
+          "choices": [
+            {
+              "text": "Perché se usassimo tratti biometrici indipendenti ma provenienti dalla stessa persona (come gli occhi destro e sinistro dello stesso individuo, o tratti biometrici presi da gemelli) per creare il database, avremmo una stima non corretta nel calcolo dei FMR"
+            },
+            {
+              "text": "Perché i tratti biometrici sarebbero uguali e quindi troveremmo valori di match score pari a zero"
+            },
+            {
+              "text": "Non è vero, questo problema non esiste"
+            }
+          ],
+          "correctIndexes": [
+            0
+          ]
+        },
+        {
+          "id": "quiz4_q22",
+          "text": "Fino a circa il 1960, in tutto il mondo il principale tratto biometricoutilizzato per le attività giudiziarie e investigative è stata solamente l'impronta digitale.",
+          "choices": [
+            {
+              "text": "Vero"
+            },
+            {
+              "text": "Falso"
+            }
+          ],
+          "correctIndexes": [
+            1
+          ]
+        },
+        {
+          "id": "quiz4_q23",
+          "text": "I sistemi multimodali quadrimodali sono più diffusi di quelli trimodali.",
+          "choices": [
+            {
+              "text": "Vero"
+            },
+            {
+              "text": "Falso"
+            }
+          ],
+          "correctIndexes": [
+            1
+          ]
+        },
+        {
+          "id": "quiz4_q24",
+          "text": "La progettazione e rappresentazione dei dati nel sistema biometrico siconsidera completa quando si è decisa",
+          "choices": [
+            {
+              "text": "La scelta dei sensori, la velocità di acquisizione, il metodo di archiviazione dei dati"
+            },
+            {
+              "text": "La qualità dell'immagine, il metodo di compressione, la potenza di calcolo necessaria"
+            },
+            {
+              "text": "la rappresentazione del campione, gli algoritmi per l'estrazione delle feature, la rappresentazione del template"
+            },
+            {
+              "text": "Il protocollo di rete, la sicurezza del sistema, la capacità di memoria"
+            }
+          ],
+          "correctIndexes": [
+            2
+          ]
+        },
+        {
+          "id": "quiz4_q25",
+          "text": "Quando vi sono alcuni ordini di grandezza di differenza fra gli intervalli divariabilià dei match score in un sistema multimodale, quale metodo di normalizzazione è meglio usare?",
+          "choices": [
+            {
+              "text": "La normalizzazione PCA"
+            },
+            {
+              "text": "La normalizzazione PCR"
+            },
+            {
+              "text": "La normalizzazione decimale"
+            }
+          ],
+          "correctIndexes": [
+            2
+          ]
+        },
+        {
+          "id": "quiz4_q26",
+          "text": "Il processo di acquisizione dei sistemi biometrici di solito si compone",
+          "choices": [
+            {
+              "text": "delle fasi di rilevamento, valutazione della qualità, segmentazione"
+            },
+            {
+              "text": "Delle fasi di archiviazione, compressione, crittografia"
+            },
+            {
+              "text": "Delle fasi di calibrazione del sensore, manutenzione del dispositivo, aggiornamento software"
+            }
+          ],
+          "correctIndexes": [
+            0
+          ]
+        },
+        {
+          "id": "quiz4_q27",
+          "text": "È possible che la soglia del sistema biometrico usata in un test operazionale influenzi il comportamento degli utenti (e quindi renda meno rappresentivi i campioni raccolti, visto che sarebbero influenzati dalla soglia usata)?",
+          "choices": [
+            {
+              "text": "Sì, nel caso di acquisizioni multiple. Per esempio, con una soglia bassa, l'utente può accorgersi di poter presentare il tratto al sensore anche con poca cura, visto che riesce a passare lo stesso"
+            },
+            {
+              "text": "No: nel test operazionale la soglia deve sempre esser fatta variare, quindi non può polarizzare il comportamento degli utenti"
+            }
+          ],
+          "correctIndexes": [
+            0
+          ]
+        },
+        {
+          "id": "quiz4_q28",
+          "text": "L'analisi della correlazione spaziale e/o temporale di due tratti biometricidipendenti può essere utile per",
+          "choices": [
+            {
+              "text": "diminuire il tempo di acquisizione media"
+            },
+            {
+              "text": "riconoscere un possibile attacco a un sensore del sistema biometrico"
+            },
+            {
+              "text": "permettere all'utente di scegliere il tratto biometrico da lui desiderato per l'acquisizione"
+            }
+          ],
+          "correctIndexes": [
+            1
+          ]
+        },
+        {
+          "id": "quiz4_q29",
+          "text": "Il modulo di decisione finale basato sul ranking di un sistema multimodale",
+          "choices": [
+            {
+              "text": "produce la sua uscita analizzando la confidenza dell'identificazione dei varimoduli di matching"
+            },
+            {
+              "text": "produce la sua uscita analizzando le graduatorie di valori di matchingtrovati nel database per ogni catena biometrica presente nel sistemamultimodale"
+            }
+          ],
+          "correctIndexes": [
+            1
+          ]
+        },
+        {
+          "id": "quiz4_q30",
+          "text": "Quali di queste tre valutazioni soffre maggiormente del problema dellanon-riproducibilità dei risultati?",
+          "choices": [
+            {
+              "text": "Operational evaluation"
+            },
+            {
+              "text": "Scenario evaluation"
+            },
+            {
+              "text": "Technology evaluation"
+            }
+          ],
+          "correctIndexes": [
+            0
+          ]
+        },
+        {
+          "id": "quiz4_q31",
+          "text": "Cosa dev'essere fatto se nella stima dell'intervallo di confidenza di un FARsi ottiene un estremo inferiore negativo?",
+          "choices": [
+            {
+              "text": "Nulla, si scrive il valore negativo dell'estremo inferiore nel rapporto"
+            },
+            {
+              "text": "Significa che il metodo di stima statistica del parametro FAR non è adatto: occorre passare a una tecnica diversa (per esempio un metodo di bootstrap)"
+            },
+            {
+              "text": "Non può accadere mai che la stima di un FAR sia negativa, in quanto è per definizione maggiore di zero"
+            }
+          ],
+          "correctIndexes": [
+            1
+          ]
+        },
+        {
+          "id": "quiz4_q32",
+          "text": "L'operazione di inserimento di dati sintetici nel database di campioni per itest di valutazione del sistema è una buona pratica?",
+          "choices": [
+            {
+              "text": "Sì, perché vengono rappresentate anche le variazioni estreme di funzionamento"
+            },
+            {
+              "text": "No, perché le stime della valutazione verrebbero polarizzate rispetto al modello usato per generare le immagini sintetiche"
+            }
+          ],
+          "correctIndexes": [
+            1
+          ]
+        },
+        {
+          "id": "quiz4_q33",
+          "text": "L'anello debole della catena di identificazione è tipicamente",
+          "choices": [
+            {
+              "text": "L'anello debole della catena di identificazione è il sistema di crittografia utilizzato per proteggere i dati."
+            },
+            {
+              "text": "la fonte, quando si associa il nome all'identità"
+            },
+            {
+              "text": "L'anello debole della catena di identificazione è l'algoritmo di riconoscimento biometrico scelto."
+            }
+          ],
+          "correctIndexes": [
+            1
+          ]
+        },
+        {
+          "id": "quiz4_q34",
+          "text": "Esistono due approcci fondamentali per il riconoscimento dei volti, ossia imetodi",
+          "choices": [
+            {
+              "text": "basati sulla trasformazione e quelli basati sull'estrazione di caratteristiche"
+            },
+            {
+              "text": "I metodi basati sulla comparazione diretta e quelli basati sulla stima del colore della pelle."
+            },
+            {
+              "text": "I metodi basati sul riconoscimento vocale e quelli basati sul rilevamento delle emozioni."
+            }
+          ],
+          "correctIndexes": [
+            0
+          ]
+        },
+        {
+          "id": "quiz4_q35",
+          "text": "Nelle valutazioni 'scenario' e 'operational', in particolare quando ilsistema non ritorna il match score ma solo 'yes'/'no', è possibile ottenere la curva ROC del sistema?",
+          "choices": [
+            {
+              "text": "Sì se il venditore permette almeno di acquisire utenti a livelli di sicurezza diversi, come per esempio 'alta', 'intermedia', 'bassa'"
+            },
+            {
+              "text": "No in ogni caso"
+            }
+          ],
+          "correctIndexes": [
+            1
+          ]
+        },
+        {
+          "id": "quiz4_q36",
+          "text": "Due acquisizioni dell'impronta del pollice destro dello stesso individuo, effettuate con due sensori diversi a distanza di un minuto,",
+          "choices": [
+            {
+              "text": "sono da considerarsi due campioni biometrici indipendenti"
+            },
+            {
+              "text": "non sono da considerarsi due campioni biometrici indipendenti"
+            }
+          ],
+          "correctIndexes": [
+            1
+          ]
+        },
+        {
+          "id": "quiz4_q37",
+          "text": "In generale, l'algoritmo di matching di un sistema biometrico confrontadirettamente fra loro",
+          "choices": [
+            {
+              "text": "due immagini in toni di grigio"
+            },
+            {
+              "text": "due minutiae"
+            },
+            {
+              "text": "due template"
+            }
+          ],
+          "correctIndexes": [
+            2
+          ]
+        },
+        {
+          "id": "quiz4_q38",
+          "text": "È importante controllare se gli utenti previsti per un sistema possano essere allenati alle operazioni di acquisizione del tratto?",
+          "choices": [
+            {
+              "text": "Sì: le evidenze sperimentali mostrano che le performance (accuratezza e assenza di ulteriori tentativi) migliorano notevolmente se gli utenti imparano come farsi acquisire, e sono collaborativi al rispetto delle procedure/consigli per l'acquisizione del tratto"
+            },
+            {
+              "text": "Sì, per evitare sostituzioni di identità a livello di enrollment"
+            },
+            {
+              "text": "Sì, per migliorare l'accettazione del sistema biometrico"
+            }
+          ],
+          "correctIndexes": [
+            0
+          ]
+        },
+        {
+          "id": "quiz4_q39",
+          "text": "Può il fatto che il sistema debba essere di tipo 'covert' influenzare la scelta del tratto biometrico?",
+          "choices": [
+            {
+              "text": "No: proprio perché il sistema è di tipo 'covert', ovvero coperto, l'acquisizione avviene senza che l'utente ne sia consapevole"
+            },
+            {
+              "text": "Sì: alcuni tratti biometrici non sono adatti ad applicazioni 'covert'"
+            }
+          ],
+          "correctIndexes": [
+            1
+          ]
+        },
+        {
+          "id": "quiz4_q40",
+          "text": "Cosa significa che l'intervallo di confidenza al 95% di un FAR è tra 0.02 e 0.01?",
+          "choices": [
+            {
+              "text": "Abbiamo il 95% di probabilità che il vero valore del FAR del sistema cada in quell'intervallo"
+            },
+            {
+              "text": "Abbiamo il 95% di probabilità che il vero valore del FAR del sistema sia al di sotto di questo intervallo"
+            },
+            {
+              "text": "Con maggiore probabilità si raggiunge il 95% del FAR fra 0.02 e 0.01"
+            }
+          ],
+          "correctIndexes": [
+            0
+          ]
+        },
+        {
+          "id": "quiz4_q41",
+          "text": "I metodi di identificazione tradizionali (non biometrici) possono realizzareuna 'identificazione negativa'.",
+          "choices": [
+            {
+              "text": "Vero"
+            },
+            {
+              "text": "Falso"
+            }
+          ],
+          "correctIndexes": [
+            1
+          ]
+        },
+        {
+          "id": "quiz4_q42",
+          "text": "I sistemi biometrici on-card",
+          "choices": [
+            {
+              "text": "funzionano solo quando si collegano un dispositivo lettore di smart cardospitante il sensore, la card ed eventualmente un sistema esterno che effettuail matching"
+            },
+            {
+              "text": "I sistemi biometrici on-card funzionano senza bisogno di un dispositivo lettore, poiché tutto il processo (acquisizione, elaborazione e matching) avviene esclusivamente sulla smart card."
+            }
+          ],
+          "correctIndexes": [
+            0
+          ]
+        },
+        {
+          "id": "quiz4_q43",
+          "text": "Il decalogo del Garante della privacy è",
+          "choices": [
+            {
+              "text": "un insieme di obblighi vincolanti"
+            },
+            {
+              "text": "Una figura obbligatoria in ogni azienda per mantenere sotto controllo l'uso delle informazionni acquisite"
+            },
+            {
+              "text": "Una figura governativa che emana leggi alla tutela dei cittadini"
+            }
+          ],
+          "correctIndexes": [
+            0
+          ]
+        },
+        {
+          "id": "quiz4_q44",
+          "text": "Durante la fase di acquisizione è buona prassi",
+          "choices": [
+            {
+              "text": "estrarre la maggior quantità possibile di informazioni per poter eseguire al meglio le fasi successive"
+            },
+            {
+              "text": "Dare una maggior qualità unicamente alle parti contenenti le feature che si vogliono estrarre"
+            }
+          ],
+          "correctIndexes": [
+            0
+          ]
+        },
+        {
+          "id": "quiz4_q45",
+          "text": "Al 2006, si può stimare che nel mondo vi siano registrati dati biometrici di almeno alcune centinaia di milioni di individui.",
+          "choices": [
+            {
+              "text": "Vero: questa cifra è probabilmente sottostimata"
+            },
+            {
+              "text": "Falso"
+            }
+          ],
+          "correctIndexes": [
+            0
+          ]
+        },
+        {
+          "id": "quiz4_q46",
+          "text": "I sistemi multimodali gerarchici in verification possono ridurre il tempo diacquisizione.",
+          "choices": [
+            {
+              "text": "Vero: una certa percentuale di utenti dovrà mostrare un solo tratto biometrico"
+            },
+            {
+              "text": "Vero: tutti i tratti sono mostrati contemporaneamente, quindi si ottiene un risparmio di tempo rispetto ai sistemi dove è necessario mostrare un tratto dopo l'altro"
+            }
+          ],
+          "correctIndexes": [
+            0
+          ]
+        },
+        {
+          "id": "quiz4_q47",
+          "text": "Acquistando sul mercato sistemi biometrici monomodali basati su trattibiometrici diversi, è più semplice e immediato creare un sistema biometrico multimodale usando una tecnica di fusione",
+          "choices": [
+            {
+              "text": "a livello di feature"
+            },
+            {
+              "text": "a livello di matching"
+            }
+          ],
+          "correctIndexes": [
+            1
+          ]
+        },
+        {
+          "id": "quiz4_q48",
+          "text": "Due sistemi biometrici con lo stesso EER sono del tutto equivalenti dal puntodi vista biometrico.",
+          "choices": [
+            {
+              "text": "Vero: l'EER è l'unica cifra di merito di un sistema biometrico, e riesce a riassumere correttamente la performance in termini di accuratezza, quindi i sistemi sono equivalenti"
+            },
+            {
+              "text": "Falso: pur avendo lo stesso EER, i sistemi possono avere curve ROC che si diversificano in varie regioni di funzionamento della soglia, quindi di fatto possono non essere equivalenti se non lavorano nella regione vicina all'EER"
+            }
+          ],
+          "correctIndexes": [
+            1
+          ]
+        },
+        {
+          "id": "quiz4_q49",
+          "text": "Se si integrano due sistemi biometrici che producono uscite binarie con uncombinatore di tipo AND",
+          "choices": [
+            {
+              "text": "si aumenta il parametro chiamato 'security' (si abbassa il FAR)"
+            },
+            {
+              "text": "si diminuisce il parametro chiamato 'security' (si alza il FAR)"
+            }
+          ],
+          "correctIndexes": [
+            0
+          ]
+        },
+        {
+          "id": "quiz4_q50",
+          "text": "Nelle valutazioni 'scenario' e 'operational', la soglia di decisione delsistema biometrico va fissata prima o dopo iniziare la campagna di acquisizionedei dati?",
+          "choices": [
+            {
+              "text": "Prima"
+            },
+            {
+              "text": "Dopo"
+            },
+            {
+              "text": "Non importa, i risultati non cambiano"
+            }
+          ],
+          "correctIndexes": [
+            0
+          ]
+        },
+        {
+          "id": "quiz4_q51",
+          "text": "Per definire la grandezza del campione di volontari che devono produrre idati, quali delle seguenti regole possono essere utili?",
+          "choices": [
+            {
+              "text": "La regola dei tre"
+            },
+            {
+              "text": "La regola dei30"
+            },
+            {
+              "text": "La regola deitree la regola del 30"
+            },
+            {
+              "text": "Nessuna delle dueregole, vengono utilizzate in altri contesti"
+            }
+          ],
+          "correctIndexes": [
+            2
+          ]
+        }
+      ]
+    },
+    {
+      "id": "quiz5",
+      "title": "Quiz 5",
+      "questions": [
+        {
+          "id": "quiz5_q1",
+          "text": "La lunghezza in byte di un template biometrico non può essere variabile.",
+          "choices": [
+            {
+              "text": "Vero"
+            },
+            {
+              "text": "Falso: esistono template a lunghezza variabile"
+            },
+            {
+              "text": "Nessuna delle altre risposte"
+            }
+          ],
+          "correctIndexes": [
+            1
+          ]
+        },
+        {
+          "id": "quiz5_q2",
+          "text": "Con le cellule alla base di un capello, è possibile effettuare un'identificazione biometrica basata su DNA?",
+          "choices": [
+            {
+              "text": "Sì, se il campione è in buono stato di conservazione"
+            },
+            {
+              "text": "No"
+            }
+          ],
+          "correctIndexes": [
+            0
+          ]
+        },
+        {
+          "id": "quiz5_q3",
+          "text": "Tutti gli algoritmi di matching sono basati sullo studio delle minutiae.",
+          "choices": [
+            {
+              "text": "Vero"
+            },
+            {
+              "text": "Falso: possono anche essere impiegate le feature di primo e terzo livello"
+            }
+          ],
+          "correctIndexes": [
+            1
+          ]
+        },
+        {
+          "id": "quiz5_q4",
+          "text": "Le percentuali di occorrenza delle combinazioni di tasti sono un tipo difeature che è estraibile correttamente",
+          "choices": [
+            {
+              "text": "solo da registrazioni di molti caratteri; infatti vengono usate per fare \"continuous user authentication\""
+            },
+            {
+              "text": "anche da registrazioni di pochi caratteri;tipicamenteviene impiegata per fare verifica sulla login"
+            }
+          ],
+          "correctIndexes": [
+            0
+          ]
+        },
+        {
+          "id": "quiz5_q5",
+          "text": "Per poter usufruire di un tasso di \"penetration rate\"minore del 100% occorreintrodurre",
+          "choices": [
+            {
+              "text": "un sistema di classificazione del campione, oltre a partizioni nel database"
+            },
+            {
+              "text": "avere minore sicurezza dei dati"
+            },
+            {
+              "text": "aumentare le macchine che lavorano in parallelo analizzando tutte diverse zone del database"
+            }
+          ],
+          "correctIndexes": [
+            0
+          ]
+        },
+        {
+          "id": "quiz5_q6",
+          "text": "Impiegando una tecnica di fusione delle informazioni a livello di matching inun sistema multimodale, può essere utile modificare i pesi dei vari matching score in base alla qualità del campione rilevato?",
+          "choices": [
+            {
+              "text": "Sì, perché il sistema prenderebbe una decisione pesando meno i dati non accurati corrispondenti al tratto di bassa qualità"
+            },
+            {
+              "text": "No"
+            }
+          ],
+          "correctIndexes": [
+            0
+          ]
+        },
+        {
+          "id": "quiz5_q7",
+          "text": "Siano i valori della funzione S di matching compresi tra 0 e 1. In un sistemabiometrico, è più alta la probabilità che il valore S = 0.99 nasca in un confronto fra genuini o fra impostori?",
+          "choices": [
+            {
+              "text": "In un confronto fra impostori"
+            },
+            {
+              "text": "In un confronto fra genuini"
+            }
+          ],
+          "correctIndexes": [
+            1
+          ]
+        },
+        {
+          "id": "quiz5_q8",
+          "text": "I pori delle impronte si rivelano a partire da immagini scansionate a",
+          "choices": [
+            {
+              "text": "250 DPI"
+            },
+            {
+              "text": "1000 DPI"
+            },
+            {
+              "text": "500 DPI"
+            }
+          ],
+          "correctIndexes": [
+            1
+          ]
+        },
+        {
+          "id": "quiz5_q9",
+          "text": "In un sistema multimodale, è possibile effettuare fusione dell'informazione a livello di feature attraverso i seguenti passi:",
+          "choices": [
+            {
+              "text": "normalizzando le feature, poi concatenando"
+            },
+            {
+              "text": "Non si può"
+            }
+          ],
+          "correctIndexes": [
+            0
+          ]
+        },
+        {
+          "id": "quiz5_q10",
+          "text": "È possibile ottenere un \"fake finger\" capace di essere acquisito da un sensore capacitivo partendo da un'impronta latente depositata su una superficie di vetro.",
+          "choices": [
+            {
+              "text": "Vero"
+            },
+            {
+              "text": "Falso"
+            }
+          ],
+          "correctIndexes": [
+            0
+          ]
+        },
+        {
+          "id": "quiz5_q11",
+          "text": "Un sistema biometrico multimodale riesce ad aumentare la copertura dellapopolazione degli utenti perché di fatto abbassa il tasso di Failure to Enroll.",
+          "choices": [
+            {
+              "text": "In linea generale è possibile"
+            },
+            {
+              "text": "Falso"
+            }
+          ],
+          "correctIndexes": [
+            0
+          ]
+        },
+        {
+          "id": "quiz5_q12",
+          "text": "Un filtro che modifica la sua maschera analizzando localmente la distanza frai ridge, l'orientamento dei ridge e il livello di rumore presente",
+          "choices": [
+            {
+              "text": "vuole eliminare distinguere tra foreground e background"
+            },
+            {
+              "text": "si comporta in modo adattativo per manipolare l'immagine"
+            }
+          ],
+          "correctIndexes": [
+            1
+          ]
+        },
+        {
+          "id": "quiz5_q13",
+          "text": "Il processo che produce una rappresentazione dell'iride in coordinate polarisi chiama",
+          "choices": [
+            {
+              "text": "linearizzazione"
+            },
+            {
+              "text": "normalizzazione"
+            },
+            {
+              "text": "standardizzazione"
+            }
+          ],
+          "correctIndexes": [
+            0
+          ]
+        },
+        {
+          "id": "quiz5_q14",
+          "text": "Nei sistemi biometrici basati sulla dinamica di battitura della tastiera è possibile fare soltanto operazioni di verifica dell'identità, ma non quelle di identificazione.",
+          "choices": [
+            {
+              "text": "Vero"
+            },
+            {
+              "text": "Falso"
+            }
+          ],
+          "correctIndexes": [
+            1
+          ]
+        },
+        {
+          "id": "quiz5_q15",
+          "text": "L'operatore integrodifferenziale usato nel calcolofinaledell'IrisCode può essere assimilato a un operatore che mette in evidenza i bordi circolari di oggetti con centro e raggio prefissati.",
+          "choices": [
+            {
+              "text": "Vero"
+            },
+            {
+              "text": "Falso"
+            }
+          ],
+          "correctIndexes": [
+            1
+          ]
+        },
+        {
+          "id": "quiz5_q16",
+          "text": "Il conteggio dei bit in disaccordo fra due stringhe diviso il numero totaledi bit",
+          "choices": [
+            {
+              "text": "è la distanza di Hamming fra le stringhe"
+            },
+            {
+              "text": "un modo per vedere errori dovuti alla trasmissione delle stringhe di bit"
+            }
+          ],
+          "correctIndexes": [
+            0
+          ]
+        },
+        {
+          "id": "quiz5_q17",
+          "text": "Nel caso dell'analisi PCA di un volto, il valore elevato di un autovettorerispetto agli altri indica",
+          "choices": [
+            {
+              "text": "l'importanza del corrispondente autovettore nella ricostruzione dellavariabilità del segnale"
+            },
+            {
+              "text": "la possibilità di scartare il corrispondente autovettore nella ricostruzione della variabilità del segnale, in quanto meno significativo degli altri"
+            }
+          ],
+          "correctIndexes": [
+            0
+          ]
+        },
+        {
+          "id": "quiz5_q18",
+          "text": "Nei sistemi biometrici basati su scansione 3D,",
+          "choices": [
+            {
+              "text": "il soggetto può non essere collaborativo"
+            },
+            {
+              "text": "il soggetto deve tipicamente essere collaborativo"
+            }
+          ],
+          "correctIndexes": [
+            1
+          ]
+        },
+        {
+          "id": "quiz5_q19",
+          "text": "Poiché dipende dal semplice contatto dell'impronta sulla superficie di vetro, un sensore ottico non presenta alta variabilità della qualità dell'immagine rispetto alle condizioni ambientali del dito.",
+          "choices": [
+            {
+              "text": "Vero"
+            },
+            {
+              "text": "Falso"
+            }
+          ],
+          "correctIndexes": [
+            1
+          ]
+        },
+        {
+          "id": "quiz5_q20",
+          "text": "Le immagini 2.5D sono",
+          "choices": [
+            {
+              "text": "superfici 3D del volto del soggetto, ottenute da immagini bidimensionali adiverse angolazioni"
+            },
+            {
+              "text": "non esiste una tecnologia del genere in commercio"
+            }
+          ],
+          "correctIndexes": [
+            0
+          ]
+        },
+        {
+          "id": "quiz5_q21",
+          "text": "Una contromisura efficace percontrastare un attacco di \"hill climbing\" è quella di quantizzare il match score.",
+          "choices": [
+            {
+              "text": "Vero"
+            },
+            {
+              "text": "Falso"
+            }
+          ],
+          "correctIndexes": [
+            1
+          ]
+        },
+        {
+          "id": "quiz5_q22",
+          "text": "I sistemi biometrici per il controllo dell'accesso ad aree di massimasicurezza devono essere fatti funzionare in una regione della curva ROC dove",
+          "choices": [
+            {
+              "text": "si ha un basso FNMR, mentre ilFMR è meno rilevante"
+            },
+            {
+              "text": "si ha un basso FMR, mentre loFNMR è meno rilevante"
+            }
+          ],
+          "correctIndexes": [
+            1
+          ]
+        },
+        {
+          "id": "quiz5_q23",
+          "text": "Se il prodotto commerciale non possiede sensori e/o algoritmi per test diliveness, si può arrivare a una percentuale di spoofing su un test standard di",
+          "choices": [
+            {
+              "text": "30%"
+            },
+            {
+              "text": "oltre il 67%"
+            },
+            {
+              "text": "87%"
+            }
+          ],
+          "correctIndexes": [
+            1
+          ]
+        },
+        {
+          "id": "quiz5_q24",
+          "text": "L'EER medio dei sistemi biometrici basati sulla mano presenti in letteraturasi aggira intorno a",
+          "choices": [
+            {
+              "text": "1%"
+            },
+            {
+              "text": "1.5%"
+            },
+            {
+              "text": "5%"
+            }
+          ],
+          "correctIndexes": [
+            2
+          ]
+        },
+        {
+          "id": "quiz5_q25",
+          "text": "Il tasso di Failure to Enroll è",
+          "choices": [
+            {
+              "text": "la frazione di persone che non riesce a effettuare correttamente la procedura di enrollment"
+            },
+            {
+              "text": "la percentuale di utenti che non possono effettuare l'iscrizione al sistema per motivi giuridici"
+            }
+          ],
+          "correctIndexes": [
+            0
+          ]
+        },
+        {
+          "id": "quiz5_q26",
+          "text": "La progettazione-rappresentazione dei dati nel sistema biometrico siconsidera completa quando si è decisa",
+          "choices": [
+            {
+              "text": "la rappresentazione del campione, gli algoritmi per l'estrazione delle feature, la rappresentazione del template"
+            }
+          ],
+          "correctIndexes": [
+            0
+          ]
+        },
+        {
+          "id": "quiz5_q27",
+          "text": "Con quale sistema è possibile identificare se l'iride proviene da un occhio vero o da una lente a contatto stampata?",
+          "choices": [
+            {
+              "text": "Controllando la forma dello spettro di potenza dell'immagine dell'iride"
+            },
+            {
+              "text": "illuminando con una luce forte l'occhio per vedere se vi sono effetti sull'iride presentato"
+            }
+          ],
+          "correctIndexes": [
+            0
+          ]
+        },
+        {
+          "id": "quiz5_q28",
+          "text": "Completare la seguente formulazione. Dato in ingresso un insieme dicaratteristiche X_Q, determinare l'identità I_k, con k appartenente all'insieme \\ 1, 2, 3, ..., M, M + 1 \\",
+          "choices": [
+            {
+              "text": "dove I_1, I_2, I_3, ..., I_M sono le M identità memorizzate nel sistema, e I_\\ M + 1 \\ rappresenta il caso di reiezione"
+            },
+            {
+              "text": "dove I_1, I_2,I_3, \\'85,I_M,I_\\ M+1\\sono le M+1 identità memorizzate nel sistema"
+            },
+            {
+              "text": "dove I1, 12, I3, \\'85, IM, IM + 1 sono le M + 1 identità memorizzate nel sistema, e k è il codice identificativo dichiarato dell'utente per la verifica"
+            }
+          ],
+          "correctIndexes": [
+            0
+          ]
+        },
+        {
+          "id": "quiz5_q29",
+          "text": "Lo stato dell'arte degli algoritmi per i sistemi biometrici basati sul volto",
+          "choices": [
+            {
+              "text": "è in forte accelerazione: ogni anno si possono trovare importanti miglioramenti nelle performance"
+            },
+            {
+              "text": "Da 10 anni non si riesce ad andare avanti con questa tecnologia"
+            },
+            {
+              "text": "Sta venendo portata avanti da tecniche di machine learning come la regressione lineare"
+            }
+          ],
+          "correctIndexes": [
+            0
+          ]
+        },
+        {
+          "id": "quiz5_q30",
+          "text": "La similitudine dei volti fra due gemelli è un caso di",
+          "choices": [
+            {
+              "text": "similitudine interclasse"
+            },
+            {
+              "text": "similitudine intraclasse"
+            },
+            {
+              "text": "Nessuna delle altre risposte"
+            }
+          ],
+          "correctIndexes": [
+            0
+          ]
+        },
+        {
+          "id": "quiz5_q31",
+          "text": "Nel caso della scomposizione in autofacce di un volto occorre",
+          "choices": [
+            {
+              "text": "allineare i pixel di ogni immagine in una colonna, e sottrarre alle immaginivettorizzate l'immagine media vettorizzata"
+            },
+            {
+              "text": "allineare i pixel di ogni immagine in una colonna"
+            },
+            {
+              "text": "sottrarre alle immagini l'immagine media"
+            },
+            {
+              "text": "moltiplicare fra loro le immagini dividendo la matrice per il numero delleimmagini, così da trovare l'immagine baricentro"
+            }
+          ],
+          "correctIndexes": [
+            0
+          ]
+        },
+        {
+          "id": "quiz5_q32",
+          "text": "Usare due impressioni dello stesso dito in un sistema per trarre la decisionefinale non rende il sistema né multimodale né multibiometrico.",
+          "choices": [
+            {
+              "text": "Vero"
+            },
+            {
+              "text": "Falso: possiamo estrarre feature diverse e ottenere poi matching diversi"
+            }
+          ],
+          "correctIndexes": [
+            0
+          ]
+        },
+        {
+          "id": "quiz5_q33",
+          "text": "Le classi di impronte digitali sono tali che",
+          "choices": [
+            {
+              "text": "una classe è nettamente più diffusa delle altre"
+            },
+            {
+              "text": "Si ha una distribuzione uniforme delle varie classi"
+            }
+          ],
+          "correctIndexes": [
+            0
+          ]
+        },
+        {
+          "id": "quiz5_q34",
+          "text": "Per massimizzare la probabilità che due impronte digitali siano il più possibile diverse nella feature di primo e secondo livello, occorre scegliere due impronte di",
+          "choices": [
+            {
+              "text": "individui da razze diverse"
+            },
+            {
+              "text": "Individue della stessa famiglia"
+            }
+          ],
+          "correctIndexes": [
+            0
+          ]
+        },
+        {
+          "id": "quiz5_q35",
+          "text": "Qual è la definizione più corretta di \"penetration rate\"?",
+          "choices": [
+            {
+              "text": "La frazione media di template che occorre controllare nel database per tutti i possibili input, continuando la ricerca nella partizione anche in caso di match"
+            },
+            {
+              "text": "Numero di attacchi dubiti dal sistema ed andati a buon fine"
+            }
+          ],
+          "correctIndexes": [
+            0
+          ]
+        },
+        {
+          "id": "quiz5_q36",
+          "text": "Esistono comparazioni indipendenti dei sistemi biometrici basati sulla manoper valutare il tasso di errore?",
+          "choices": [
+            {
+              "text": "Sì"
+            },
+            {
+              "text": "No"
+            }
+          ],
+          "correctIndexes": [
+            0
+          ]
+        },
+        {
+          "id": "quiz5_q37",
+          "text": "Esistono algoritmi di matching basati su filtri?",
+          "choices": [
+            {
+              "text": "Sì: confrontano le immagini di due impronte, oppure i coefficienti estratti dalle immagini che i filtri hanno elaborato"
+            },
+            {
+              "text": "Falso"
+            }
+          ],
+          "correctIndexes": [
+            0
+          ]
+        },
+        {
+          "id": "quiz5_q38",
+          "text": "Per poter escludere dal matching i bit corrispondenti a palpebre e cigliasovrapposte all'iride, si impiega",
+          "choices": [
+            {
+              "text": "una maschera binaria di esclusione"
+            },
+            {
+              "text": "Tecninche di reti neurali"
+            }
+          ],
+          "correctIndexes": [
+            0
+          ]
+        },
+        {
+          "id": "quiz5_q39",
+          "text": "\"Facial fingerprinting\"",
+          "choices": [
+            {
+              "text": "è una tecnica basata sull'acquisizione di immagini in infrarosso"
+            },
+            {
+              "text": "Tecnica che permette di usare i sensori delle impronte digitali anche per l'analisi del volto"
+            }
+          ],
+          "correctIndexes": [
+            0
+          ]
+        },
+        {
+          "id": "quiz5_q40",
+          "text": "L'IrisCode rappresenta",
+          "choices": [
+            {
+              "text": "le variazioni di fase del pattern dell'iride"
+            },
+            {
+              "text": "Il colore dell'iridie"
+            }
+          ],
+          "correctIndexes": [
+            0
+          ]
+        },
+        {
+          "id": "quiz5_q41",
+          "text": "AFIS è",
+          "choices": [
+            {
+              "text": "un sistema HW e SW, centralizzato o distribuito, per l'acquisizione, l'archiviazione, la ricerca di cartelle decadattilari"
+            },
+            {
+              "text": "Un sistema che gestisce dati biometrici e documenti degli utenti al suo interno"
+            }
+          ],
+          "correctIndexes": [
+            0
+          ]
+        },
+        {
+          "id": "quiz5_q42",
+          "text": "I sensori attualmente in commercio si equivalgono dal punto di vista delcontrasto, del rumore presente sull'immagine, della risoluzione.",
+          "choices": [
+            {
+              "text": "Vero"
+            },
+            {
+              "text": "Falso: le tecnologie sono diverse e vi sono grandi variazioni da un tipo disensore all'altro sotto molti punti di vista"
+            }
+          ],
+          "correctIndexes": [
+            1
+          ]
+        },
+        {
+          "id": "quiz5_q43",
+          "text": "Nel DNA vi sono circa 100000 geni; ogni gene può avere fino a 100 variazioni chiamate alleli.",
+          "choices": [
+            {
+              "text": "Vero: le variazioni degli alleli sono d'interesse per l'identificazione biometrica"
+            },
+            {
+              "text": "Vero: le variazioni del numero di geni sono d'interesse per l'identificazione biometrica"
+            },
+            {
+              "text": "Falso"
+            }
+          ],
+          "correctIndexes": [
+            0
+          ]
+        },
+        {
+          "id": "quiz5_q44",
+          "text": "Il pattern dell'iride viene evidenziato meglio se si acquisisce con",
+          "choices": [
+            {
+              "text": "radiazione infrarossa"
+            },
+            {
+              "text": "Termografi"
+            },
+            {
+              "text": "Il flash del proprio smartphone"
+            }
+          ],
+          "correctIndexes": [
+            0
+          ]
+        },
+        {
+          "id": "quiz5_q45",
+          "text": "Tutta la catena di analisi del campione di DNA per l'identificazionebiometrica è automatizzata.",
+          "choices": [
+            {
+              "text": "Vero"
+            },
+            {
+              "text": "Falso"
+            }
+          ],
+          "correctIndexes": [
+            1
+          ]
+        },
+        {
+          "id": "quiz5_q46",
+          "text": "L'operatore integrodifferenziale usato nel calcolo dell'IrisCode serve pertrovare",
+          "choices": [
+            {
+              "text": "l'IrisCode"
+            },
+            {
+              "text": "il bordo della pupilla e dell'iride"
+            }
+          ],
+          "correctIndexes": [
+            1
+          ]
+        },
+        {
+          "id": "quiz5_q47",
+          "text": "La differenza fra i metodi di fusione dell'informazione a livello di matchscore per i sistemi multimodali basati su classificatore e su combinatore è",
+          "choices": [
+            {
+              "text": "che i classificatori producono alla loro uscita la classificazione 'genuino'/'impostore', mentre i combinatori producono un valore di match score complessivo"
+            },
+            {
+              "text": "Il ripo d dati restituito, uno appartiene ad R, l'altro ad N+"
+            }
+          ],
+          "correctIndexes": [
+            0
+          ]
+        },
+        {
+          "id": "quiz5_q48",
+          "text": "La pupilla",
+          "choices": [
+            {
+              "text": "si dilata più velocemente di quanto si contrae"
+            },
+            {
+              "text": "si contrae più velocemente di quanto si dilata"
+            }
+          ],
+          "correctIndexes": [
+            1
+          ]
+        },
+        {
+          "id": "quiz5_q49",
+          "text": "Esaminando la quantità dell'immagine di un'impronta digitale, si possono trovare regioni",
+          "choices": [
+            {
+              "text": "\"arch\", \"loop\", \"whorl\""
+            },
+            {
+              "text": "\"Arch\", \"Fork\", \"Island\""
+            },
+            {
+              "text": "\"Loop\", \"Whorl\", \"Line\""
+            }
+          ],
+          "correctIndexes": [
+            0
+          ]
+        },
+        {
+          "id": "quiz5_q50",
+          "text": "La tecnica di somma pesata dei valori di matching in un sistema multimodalepermette di",
+          "choices": [
+            {
+              "text": "rendere l'accuratezza del sistema multimodale più bassa del migliore sottosistema biometrico nella maggior parte delle applicazioni"
+            },
+            {
+              "text": "rendere l'accuratezza del sistema multimodale più alta del migliore sottosistema biometrico nella maggior parte delle applicazioni"
+            }
+          ],
+          "correctIndexes": [
+            1
+          ]
+        },
+        {
+          "id": "quiz5_q51",
+          "text": "Il fatto che la distribuzione dei valori della distanza di Hamming fra irididi persone diverse sia approssimabile a una binomiale con249 gradi di libertà e p = 0.5 significa che",
+          "choices": [
+            {
+              "text": "mediamente gli IrisCode di persone diverse hanno distanze di Hamming pari a quella di numeri casuali binari di 249 bit"
+            },
+            {
+              "text": "Ci sono 249 possibili iriscode ognuno con una probabilità di comparire del 50%"
+            }
+          ],
+          "correctIndexes": [
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": "quiz6",
+      "title": "Quiz 6",
+      "questions": [
+        {
+          "id": "quiz6_q1",
+          "text": "Esistono moltissimi problemi sperimentali che possono provocare falsi picchidi alleli o farli scomparire: in questi casi l'identificazione tramite DNA può essere sbagliata.",
+          "choices": [
+            {
+              "text": "Vero: le tecniche basate su DNA soffrono di questi problemi"
+            },
+            {
+              "text": "Falso: le teniche basate su DNA non possono sbagliare l'identificazione per questi motivi"
+            }
+          ],
+          "correctIndexes": [
+            0
+          ]
+        },
+        {
+          "id": "quiz6_q2",
+          "text": "La soglia di errore cambia se, in un sistema multimodale, non viene acquisito un tratto.",
+          "choices": [
+            {
+              "text": "Vero"
+            },
+            {
+              "text": "Falso"
+            }
+          ],
+          "correctIndexes": [
+            0
+          ]
+        },
+        {
+          "id": "quiz6_q3",
+          "text": "Il parametro più importante per l'acquisizione dell'iride è che sia catturata con almeno",
+          "choices": [
+            {
+              "text": "70 pixel nitidi lungo il suo raggio"
+            },
+            {
+              "text": "50 pixel nitidi sul diametro"
+            },
+            {
+              "text": "70 pixel nitidi sul diametro"
+            }
+          ],
+          "correctIndexes": [
+            0
+          ]
+        },
+        {
+          "id": "quiz6_q4",
+          "text": "Se ho un sistema con un certo FMR in verifica, come posso approssimare lo FMRin identificazione nel caso di un database di N individui?",
+          "choices": [
+            {
+              "text": "FMR_i = FMR_v"
+            },
+            {
+              "text": "FMR_i = FMR_v * N"
+            },
+            {
+              "text": "FMR_i = (FMR_v)^N"
+            },
+            {
+              "text": "Nessuna delle altre risposte"
+            }
+          ],
+          "correctIndexes": [
+            2
+          ]
+        },
+        {
+          "id": "quiz6_q5",
+          "text": "Qual è il tasso di EER per la geometria della mano?",
+          "choices": [
+            {
+              "text": "1.5%"
+            },
+            {
+              "text": "3%"
+            }
+          ],
+          "correctIndexes": [
+            1
+          ]
+        },
+        {
+          "id": "quiz6_q6",
+          "text": "Nel 2014, in merito all'obbligo di comunicare l'esistenza di ogni sistemabiometrico installato (per il pubblico o in attività commerciali) all'ufficio del Garante per la protezione dei dati personali, è stato sancito per legge",
+          "choices": [
+            {
+              "text": "che vi è l'obbligo per ogni sistema biometrico nel caso di sottoscrizione di documenti informatici"
+            },
+            {
+              "text": "che non vi è più obbligo per nessun sistema biometrico nel caso di sottoscrizione di documenti informatici"
+            }
+          ],
+          "correctIndexes": [
+            1
+          ]
+        },
+        {
+          "id": "quiz6_q7",
+          "text": "Un'immagine che è stata usata per creare l'insieme delle autofacce può essere ricostruita da una somma pesata di autofacce.",
+          "choices": [
+            {
+              "text": "Vero: maggiore è il numero di autofacce, migliore è la ricostruzione"
+            },
+            {
+              "text": "Falso: non è possibile ottenere la ricostruzione del volto, poiché si è passati dallo spazio delle facce a quello della PCA, che ha una dimensionalità molto inferiore"
+            }
+          ],
+          "correctIndexes": [
+            0
+          ]
+        },
+        {
+          "id": "quiz6_q8",
+          "text": "Qual è il formato di compressione standardizzato per la memorizzazione e l'interscambio di immagini del volto?",
+          "choices": [
+            {
+              "text": "JPEG2000"
+            },
+            {
+              "text": "TIFF"
+            },
+            {
+              "text": "ZIP"
+            },
+            {
+              "text": "RAR"
+            }
+          ],
+          "correctIndexes": [
+            0
+          ]
+        },
+        {
+          "id": "quiz6_q9",
+          "text": "È possibile estrarre un template binario simile a un IrisCode dall'immagine di una retina.",
+          "choices": [
+            {
+              "text": "Vero: è ottenuto selezionando il centro del nervo ottico, e marcando le variazioni di grigio lungo circonferenze concentriche"
+            },
+            {
+              "text": "Falso"
+            }
+          ],
+          "correctIndexes": [
+            1
+          ]
+        },
+        {
+          "id": "quiz6_q10",
+          "text": "Il famoso database genetico CODIS dell'FBI usa come template",
+          "choices": [
+            {
+              "text": "il numero dei loci dei cromosomi identificati dalla maggior presenza di ShortTandem Repeat"
+            },
+            {
+              "text": "il numero di Short Tandem Repeat presenti in alcuni loci dei cromosomi bendefiniti"
+            },
+            {
+              "text": "Nessuna delle altre risposte: vengono memorizzate le basi componenti il DNAdi alcune porzioni prefissate"
+            }
+          ],
+          "correctIndexes": [
+            1
+          ]
+        },
+        {
+          "id": "quiz6_q11",
+          "text": "La variabilità del tratto può essere impiegata come un meccanismo a tutela della privacy.",
+          "choices": [
+            {
+              "text": "Vero, ma il vantaggio è evidente solo con alcuni tratti biometrici"
+            },
+            {
+              "text": "Falso"
+            }
+          ],
+          "correctIndexes": [
+            0
+          ]
+        },
+        {
+          "id": "quiz6_q12",
+          "text": "Considerando la figura riportata, quale affermazione è corretta?<br><br><img src='media/img_000C_0000_00_1.jpg' alt='Figura del quiz' style='max-width: 100%; height: auto; margin: 10px 0;'>",
+          "choices": [
+            {
+              "text": "L'EER del sistema A è MINORE dell'EER del sistema B"
+            },
+            {
+              "text": "L'EER del sistema B è MINORE dell'EER del sistema A"
+            },
+            {
+              "text": "Nessuna delle altre risposte"
+            }
+          ],
+          "correctIndexes": [
+            0
+          ]
+        },
+        {
+          "id": "quiz6_q13",
+          "text": "Il volto 3D ha bisogno di utenti collaborativi.",
+          "choices": [
+            {
+              "text": "Vero"
+            },
+            {
+              "text": "Falso"
+            }
+          ],
+          "correctIndexes": [
+            0
+          ]
+        },
+        {
+          "id": "quiz6_q14",
+          "text": "Due gemelli omozigoti hanno il DNA uguale.",
+          "choices": [
+            {
+              "text": "Vero: i due embrioni possedevano lo stesso DNA all'inizio, e le mutazioni successive non sono facilmente rilevabili"
+            },
+            {
+              "text": "Falso: non sarebbe possibile distinguerli con la prova del DNA, che invece è sempre affidabile nelle identificazioni"
+            }
+          ],
+          "correctIndexes": [
+            1
+          ]
+        },
+        {
+          "id": "quiz6_q15",
+          "text": "Rispetto al contesto visto a lezione, se si dispongono di metodi diidentificazione in ordine CRESCENTE di ACCURATEZZA dell'identificazione, qualedisposizione è in generale più corretta?",
+          "choices": [
+            {
+              "text": "Qualcosa che hai < qualcosa che sai < qualcosa che sei"
+            },
+            {
+              "text": "Qualcosa che sai < qualcosa che hai < qualcosa che sei"
+            },
+            {
+              "text": "Qualcosa che sei < qualcosa che sai < qualcosa che hai"
+            }
+          ],
+          "correctIndexes": [
+            0
+          ]
+        },
+        {
+          "id": "quiz6_q16",
+          "text": "I sistemi basati sul volto sono in continua evoluzione.",
+          "choices": [
+            {
+              "text": "Vero"
+            },
+            {
+              "text": "Falso"
+            }
+          ],
+          "correctIndexes": [
+            0
+          ]
+        },
+        {
+          "id": "quiz6_q17",
+          "text": "Per quale tratto biometrico si usano tecniche di analisi lineare?",
+          "choices": [
+            {
+              "text": "Impronte"
+            },
+            {
+              "text": "Mano"
+            },
+            {
+              "text": "Volto"
+            }
+          ],
+          "correctIndexes": [
+            2
+          ]
+        },
+        {
+          "id": "quiz6_q18",
+          "text": "La curva ROC deve necessariamente risiedere nel dominio chiuso del pianocartesiano con ascisse in [0, 1] e ordinate in [0, 1].",
+          "choices": [
+            {
+              "text": "Vero"
+            },
+            {
+              "text": "Falso"
+            }
+          ],
+          "correctIndexes": [
+            0
+          ]
+        },
+        {
+          "id": "quiz6_q19",
+          "text": "Il tratto della voce ha bisogno di utenti collaborativi.",
+          "choices": [
+            {
+              "text": "Vero"
+            },
+            {
+              "text": "Falso"
+            }
+          ],
+          "correctIndexes": [
+            0
+          ]
+        },
+        {
+          "id": "quiz6_q20",
+          "text": "Durante la fase di enroll",
+          "choices": [
+            {
+              "text": "si rilevasolo il tratto"
+            },
+            {
+              "text": "si rilevail tratto e si effettua \"segmentation\""
+            },
+            {
+              "text": "si rilevail tratto e si controlla lasuaqualità"
+            }
+          ],
+          "correctIndexes": [
+            2
+          ]
+        },
+        {
+          "id": "quiz6_q21",
+          "text": "Il pattern dell'iride viene evidenziato meglio se si acquisisce con",
+          "choices": [
+            {
+              "text": "luce infrarossa"
+            },
+            {
+              "text": "termografi"
+            }
+          ],
+          "correctIndexes": [
+            0
+          ]
+        },
+        {
+          "id": "quiz6_q22",
+          "text": "Quale elemento è da tenere maggiormente in considerazione nella progettazione di un sistema biometrico?",
+          "choices": [
+            {
+              "text": "Lo studio del possibile impostore"
+            },
+            {
+              "text": "La gestione di un protocollo per il backup"
+            },
+            {
+              "text": "I costi di allenamento degli utenti"
+            }
+          ],
+          "correctIndexes": [
+            0
+          ]
+        },
+        {
+          "id": "quiz6_q23",
+          "text": "L'accessibilità è una delle sette caratteristiche che il tratto biometrico deve possedere.",
+          "choices": [
+            {
+              "text": "Vero"
+            },
+            {
+              "text": "Falso"
+            }
+          ],
+          "correctIndexes": [
+            0
+          ]
+        },
+        {
+          "id": "quiz6_q24",
+          "text": "Gli algoritmi di \"signal/image enhancement\" possono introdurre artefattinella rappresentazione del campione, e questi possono essere dannosi per leperformance del sistema biometrico.",
+          "choices": [
+            {
+              "text": "Vero"
+            },
+            {
+              "text": "Falso"
+            }
+          ],
+          "correctIndexes": [
+            0
+          ]
+        },
+        {
+          "id": "quiz6_q25",
+          "text": "L'accuratezza del sistema aumenta acquisendo più tratti.",
+          "choices": [
+            {
+              "text": "Vero"
+            },
+            {
+              "text": "Falso"
+            }
+          ],
+          "correctIndexes": [
+            0
+          ]
+        },
+        {
+          "id": "quiz6_q26",
+          "text": "Le distribuzioni binomiali usate per valutare i tassi di errore di un sistemache impiega IrisCode potrebbero produrre risultati non corretti, in quanto nontengono conto delle situazioni non ideali di acquisizione.",
+          "choices": [
+            {
+              "text": "Vero"
+            },
+            {
+              "text": "Falso"
+            }
+          ],
+          "correctIndexes": [
+            0
+          ]
+        },
+        {
+          "id": "quiz6_q27",
+          "text": "Esaminando il perimetro di un intorno tre per tredi un punto su un ridge inun'immagine scheletrizzata vedo due intersezioni: il punto è classificabile come",
+          "choices": [
+            {
+              "text": "un ridge passante"
+            },
+            {
+              "text": "una minuzia"
+            }
+          ],
+          "correctIndexes": [
+            1
+          ]
+        },
+        {
+          "id": "quiz6_q28",
+          "text": "Il vigilante sui dati è una figura obbligatoria imposta dal garante.",
+          "choices": [
+            {
+              "text": "Vero"
+            },
+            {
+              "text": "Falso"
+            }
+          ],
+          "correctIndexes": [
+            0
+          ]
+        },
+        {
+          "id": "quiz6_q29",
+          "text": "Studio su 15 database da 200 persone: si ottiene per tutti FMR = 0. Cosaposso dire sul sistema?",
+          "choices": [
+            {
+              "text": "Il sistema non fallisce mai"
+            },
+            {
+              "text": "Con la regola dei3 posso stimare l'intervallo di confidenza"
+            },
+            {
+              "text": "Con la regola dei30 posso stimare l'intervallo di confidenza"
+            },
+            {
+              "text": "Non si può calcolare l'intervallo di confidenza"
+            }
+          ],
+          "correctIndexes": [
+            1
+          ]
+        }
+      ]
+    }
+  ]
+}
