@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Practice Quiz – Tutti e Ripasso Errori</title>
+  <title>Practice Quiz</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <style>
     body { background: #f8f9fa; color: #212529; }
@@ -560,7 +560,7 @@
           
           // Se è stata anche controllata, verifica se è corretta
           if (state.graded[questionId] !== undefined) {
-            if (!state.graded[questionId]) {
+            if (!state.graded[questionId].correct) {
               button.classList.add("wrong");
             }
           }
@@ -579,7 +579,20 @@
       const choicesDiv = el("choices");
       choicesDiv.innerHTML = "";
       
-      q.choices.forEach((ch, idx) => {
+      // Crea array di scelte con i loro indici originali
+      const choicesWithIndex = q.choices.map((choice, idx) => ({
+        text: choice.text,
+        originalIndex: idx
+      }));
+      
+      // Mescola le scelte usando Fisher-Yates shuffle
+      for (let i = choicesWithIndex.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [choicesWithIndex[i], choicesWithIndex[j]] = [choicesWithIndex[j], choicesWithIndex[i]];
+      }
+      
+      choicesWithIndex.forEach((ch, displayIdx) => {
+        const originalIdx = ch.originalIndex;
         const wrap = document.createElement("div");
         wrap.className = "card choice";
         const body = document.createElement("div");
@@ -589,16 +602,16 @@
         input.type = multiple ? "checkbox" : "radio";
         input.className = "form-check-input";
         input.name = multiple ? `checkbox_${q.id}` : `radio_${q.id}`;
-        input.id = `ch_${idx}`;
-        input.value = idx;
+        input.id = `ch_${displayIdx}`;
+        input.value = originalIdx; // Usa l'indice originale come valore
         
-        // Controlla se questa risposta è già selezionata
-        const isSelected = state.answers[q.id] && state.answers[q.id].has(idx);
+        // Controlla se questa risposta è già selezionata (usando l'indice originale)
+        const isSelected = state.answers[q.id] && state.answers[q.id].has(originalIdx);
         input.checked = isSelected;
         
         const label = document.createElement("label");
         label.className = "form-check-label";
-        label.setAttribute("for", `ch_${idx}`);
+        label.setAttribute("for", `ch_${displayIdx}`);
         label.textContent = ch.text;
         
         // Event listener semplificato
@@ -609,15 +622,24 @@
           }
           
           if (multiple) {
-            // Checkbox: aggiungi o rimuovi
+            // Checkbox: aggiungi o rimuovi (usando l'indice originale)
             if (input.checked) {
-              state.answers[q.id].add(idx);
+              state.answers[q.id].add(originalIdx);
             } else {
-              state.answers[q.id].delete(idx);
+              state.answers[q.id].delete(originalIdx);
             }
           } else {
-            // Radio: sostituisci completamente la selezione
-            state.answers[q.id] = new Set([idx]);
+            // Radio: sostituisci completamente la selezione (usando l'indice originale)
+            state.answers[q.id] = new Set([originalIdx]);
+          }
+          
+          // Reset del grading se l'utente cambia selezione dopo aver controllato
+          if (state.graded[q.id] !== undefined) {
+            delete state.graded[q.id];
+            // Rimuovi anche le classi di evidenziazione dalle scelte
+            document.querySelectorAll(".choice").forEach(card => {
+              card.classList.remove("correct", "wrong");
+            });
           }
           
           updateNavigationBar();
@@ -655,11 +677,14 @@
     }
     
     function showGradeOnUI(q, g) {
-      // Mark wrong/correct choices
-      q.choices.forEach((_, idx) => {
-        const card = document.querySelectorAll(".choice")[idx];
-        if (g.wrongIndexes.includes(idx)) card.classList.add("wrong");
-        if (g.missingIndexes.includes(idx) || q.correctIndexes.includes(idx)) {
+      // Mark wrong/correct choices based on their original indexes
+      const cards = document.querySelectorAll(".choice");
+      cards.forEach((card, displayIdx) => {
+        const input = card.querySelector("input");
+        const originalIdx = parseInt(input.value); // L'indice originale è salvato nel value
+        
+        if (g.wrongIndexes.includes(originalIdx)) card.classList.add("wrong");
+        if (g.missingIndexes.includes(originalIdx) || q.correctIndexes.includes(originalIdx)) {
           // highlight corrects so user sees the solution
           card.classList.add("correct");
         }
