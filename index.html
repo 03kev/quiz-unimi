@@ -64,11 +64,21 @@
       color: white;
     }
     .question-number.answered {
+      background: #e9ecef;
+      border-color: #6c757d;
+      color: #495057;
+    }
+    .question-number.answered.current {
+      background: #6c757d;
+      border-color: #6c757d;
+      color: white;
+    }
+    .question-number.correct {
       background: #e6f4ea;
       border-color: #198754;
       color: #198754;
     }
-    .question-number.answered.current {
+    .question-number.correct.current {
       background: #198754;
       border-color: #198754;
       color: white;
@@ -117,12 +127,20 @@
         
         <div class="row g-3 align-items-center mt-2">
           <div class="col-12 col-md-6">
-            <!-- Opzione shuffle -->
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" id="shuffleCheckbox">
-              <label class="form-check-label" for="shuffleCheckbox">
-                🔀 Ordine casuale
-              </label>
+            <!-- Opzioni quiz -->
+            <div class="d-flex gap-4">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="shuffleCheckbox">
+                <label class="form-check-label" for="shuffleCheckbox">
+                  🔀 Ordine casuale
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="showErrorsCheckbox">
+                <label class="form-check-label" for="showErrorsCheckbox">
+                  🔍 Mostra errori nella navbar
+                </label>
+              </div>
             </div>
           </div>
           <div class="col-12 col-md-6 text-md-end">
@@ -542,12 +560,13 @@
     
     function updateNavigationBar() {
       const buttons = el("questionNumbers").querySelectorAll(".question-number");
+      const showErrors = el("showErrorsCheckbox").checked;
       
       buttons.forEach((button, index) => {
         const questionId = state.order[index];
         
         // Reset classi
-        button.classList.remove("current", "answered", "wrong");
+        button.classList.remove("current", "answered", "correct", "wrong");
         
         // Aggiungi classe current per la domanda attuale
         if (index === state.idx) {
@@ -558,9 +577,13 @@
         if (state.answers[questionId] && state.answers[questionId].size > 0) {
           button.classList.add("answered");
           
-          // Se è stata anche controllata, verifica se è corretta
-          if (state.graded[questionId] !== undefined) {
-            if (!state.graded[questionId].correct) {
+          // Se è stata anche controllata e l'opzione "mostra errori" è attiva
+          if (state.graded[questionId] !== undefined && showErrors) {
+            // Rimuovi "answered" e aggiungi "correct" o "wrong"
+            button.classList.remove("answered");
+            if (state.graded[questionId].correct) {
+              button.classList.add("correct");
+            } else {
               button.classList.add("wrong");
             }
           }
@@ -744,7 +767,7 @@
       // Usa l'ordine dello shuffle se presente, altrimenti l'ordine originale
       const reviewOrder = state.order || state.flatPool.map(q => q.id);
       
-      reviewOrder.forEach(questionId => {
+      reviewOrder.forEach((questionId, index) => {
         const q = state.flatPool.find(question => question.id === questionId);
         if (!q) return; // Sicurezza
         
@@ -757,7 +780,7 @@
         b.className = "card-body";
         
         const title = document.createElement("div");
-        title.innerHTML = `<span class="badge me-2 ${g.correct ? "bg-success" : "bg-danger"}">${g.correct ? "OK" : "ERR"}</span> <span class="muted">${q.quizTitle}</span>`;
+        title.innerHTML = `<span class="badge me-2 ${g.correct ? "bg-success" : "bg-danger"}">${g.correct ? "OK" : "ERR"}</span> <span class="muted">${q.quizTitle} - Domanda ${index + 1}</span>`;
         
         const text = document.createElement("div");
         text.className = "question-text my-2";
@@ -871,6 +894,11 @@
     el("datasetSelect").addEventListener("change", (e) => {
       const selectedDataset = e.target.value;
       loadQuizzes(selectedDataset);
+    });
+    
+    // Event listener per il checkbox "Mostra errori"
+    el("showErrorsCheckbox").addEventListener("change", () => {
+      updateNavigationBar();
     });
     
     // Inizializzazione
