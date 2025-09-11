@@ -213,6 +213,7 @@
       answers: {},              // qId -> Set of selected indexes
       graded: {},               // qId -> { correct: bool, wrongIndexes: [], missingIndexes: [] }
       order: [],                // sequence of qIds
+      choicesOrder: {},         // qId -> array of shuffled choice indexes
       idx: 0,                   // current index within order
       mode: "idle",             // idle|running|finished
       lastRunWrongIds: [],
@@ -484,6 +485,7 @@
     function startRun(fromWrong = false) {
       state.answers = {};
       state.graded = {};
+      state.choicesOrder = {}; // Reset dell'ordine delle scelte
       state.idx = 0;
       state.mode = "running";
       
@@ -521,6 +523,17 @@
           }
         }
       }
+      
+      // Pre-genera l'ordine shufflato delle scelte per ogni domanda
+      state.flatPool.forEach(q => {
+        const choicesIndexes = Array.from({length: q.choices.length}, (_, i) => i);
+        // Shuffle Fisher-Yates per le scelte
+        for (let i = choicesIndexes.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [choicesIndexes[i], choicesIndexes[j]] = [choicesIndexes[j], choicesIndexes[i]];
+        }
+        state.choicesOrder[q.id] = choicesIndexes;
+      });
       
       setHidden(el("quizArea"), false);
       setHidden(el("resultArea"), true);
@@ -602,20 +615,11 @@
       const choicesDiv = el("choices");
       choicesDiv.innerHTML = "";
       
-      // Crea array di scelte con i loro indici originali
-      const choicesWithIndex = q.choices.map((choice, idx) => ({
-        text: choice.text,
-        originalIndex: idx
-      }));
+      // Usa l'ordine pre-generato delle scelte per questa domanda
+      const shuffledIndexes = state.choicesOrder[q.id] || Array.from({length: q.choices.length}, (_, i) => i);
       
-      // Mescola le scelte usando Fisher-Yates shuffle
-      for (let i = choicesWithIndex.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [choicesWithIndex[i], choicesWithIndex[j]] = [choicesWithIndex[j], choicesWithIndex[i]];
-      }
-      
-      choicesWithIndex.forEach((ch, displayIdx) => {
-        const originalIdx = ch.originalIndex;
+      shuffledIndexes.forEach((originalIdx, displayIdx) => {
+        const ch = q.choices[originalIdx];
         const wrap = document.createElement("div");
         wrap.className = "card choice";
         const body = document.createElement("div");
