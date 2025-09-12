@@ -234,8 +234,8 @@
                         </div>
                     </div>
                     <div class="col-12 col-md-6 text-md-end">
-                        <button id="btnClearWrong" class="btn btn-outline-danger me-2">🗑️ Pulisci Quiz
-                            Sbagliati</button>
+                        <button id="btnClearSaved" class="btn btn-outline-warning me-2">🗑️ Pulisci Quiz Salvati</button>
+                        <button id="btnClearWrong" class="btn btn-outline-danger me-2">🗑️ Pulisci Quiz Sbagliati</button>
                         <button id="btnStart" class="btn btn-primary">Inizia</button>
                     </div>
                 </div>
@@ -272,6 +272,7 @@
             <div class="sticky-footer d-flex justify-content-between">
                 <button id="btnPrev" class="btn btn-secondary" disabled>Indietro</button>
                 <div>
+                    <button id="btnSave" class="btn btn-outline-primary me-2">💾 Salva Quiz</button>
                     <button id="btnCheck" class="btn btn-secondary me-2">Controlla</button>
                     <button id="btnNext" class="btn btn-primary">Avanti</button>
                 </div>
@@ -301,6 +302,7 @@
         const state = {
             allQuizzes: [],           // loaded from selected dataset
             wrongQuizzes: [],         // loaded from wrong_quizzes.json
+            savedQuizzes: [],         // quiz salvati in corso
             flatPool: [],             // questions for current run
             answers: {},              // qId -> Set of selected indexes
             graded: {},               // qId -> { correct: bool, wrongIndexes: [], missingIndexes: [] }
@@ -376,6 +378,9 @@
 
                 // Carica anche le domande sbagliate se esistono
                 await loadWrongQuizzes();
+                
+                // Carica anche i quiz salvati
+                await loadSavedQuizzes();
 
                 // Populate dropdown
                 populateDropdown();
@@ -425,6 +430,20 @@
             }
         }
 
+        async function loadSavedQuizzes() {
+            try {
+                const localData = localStorage.getItem('savedQuizzes');
+                if (localData) {
+                    const data = JSON.parse(localData);
+                    state.savedQuizzes = data.quizzes || [];
+                    console.log(`Caricati ${state.savedQuizzes.length} quiz salvati dal localStorage`);
+                }
+            } catch (error) {
+                state.savedQuizzes = [];
+                console.log('Nessun quiz salvato trovato');
+            }
+        }
+
         function populateDropdown() {
             const sel = el("setSelect");
             // Pulisci le opzioni esistenti tranne "Tutti i quiz"
@@ -452,6 +471,21 @@
                 opt.value = 'unified_errors';
                 opt.textContent = `❌ Domande Sbagliate (${errorsQuiz.questions.length})`;
                 sel.appendChild(opt);
+            }
+
+            // Aggiungi i quiz salvati se esistono
+            if (state.savedQuizzes.length > 0) {
+                const separator = document.createElement("option");
+                separator.disabled = true;
+                separator.textContent = "— Quiz Salvati —";
+                sel.appendChild(separator);
+
+                state.savedQuizzes.forEach(savedQuiz => {
+                    const opt = document.createElement("option");
+                    opt.value = `saved_${savedQuiz.id}`;
+                    opt.textContent = `💾 ${savedQuiz.name} (${savedQuiz.progress}/${savedQuiz.total})`;
+                    sel.appendChild(opt);
+                });
             }
         }
 
@@ -548,6 +582,109 @@
             return removedCount;
         }
 
+        function saveCurrentQuiz() {
+            if (state.mode !== "running") return;
+
+            const currentSet = el("setSelect").value;
+            const quizName = `${state.currentSetLabel} - ${new Date().toLocaleDateString()}`;
+            
+            const savedQuiz = {
+                id: `quiz_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
+                name: quizName,
+                dataset: state.currentDataset,
+                setSelection: currentSet,
+                flatPool: state.flatPool,
+                answers: Object.fromEntries(
+                    Object.entries(state.answers).map(([k, v]) => [k, Array.from(v)])
+                ),
+                graded: state.graded,
+                order: state.order,
+                choicesOrder: state.choicesOrder,
+                idx: state.idx,
+                progress: state.idx + 1,
+                total: state.order.length,
+                savedAt: new Date().toISOString()
+            };
+
+            state.savedQuizzes.push(savedQuiz);
+
+            localStorage.setItem('savedQuizzes', JSON.stringify({
+                lastUpdated: new Date().toISOString(),
+                quizzes: state.savedQuizzes
+            }));
+
+            populateDropdown();
+            
+            return savedQuiz.name;
+        }
+
+        function loadSavedQuiz(savedQuizId) {
+            const savedQuiz = state.savedQuizzes.find(q => q.id === savedQuizId);
+            if (!savedQuiz) return false;
+
+            // Ripristina lo stato del quiz
+            state.flatPool = savedQuiz.flatPool;
+            state.answers = Object.fromEntries(
+                Object.entries(savedQuiz.answers).map(([k, v]) => [k, new Set(v)])
+            );
+            state.graded = savedQuiz.graded;
+            state.order = savedQuiz.order;
+            state.choicesOrder = savedQuiz.choicesOrder;
+            state.idx = savedQuiz.idx;
+            state.mode = "running";
+            state.currentSetLabel = savedQuiz.name;
+
+            // Aggiorna l'UI
+            setHidden(el("quizArea"), false);
+            setHidden(el("resultArea"), true);
+            el("btnPrev").disabled = (state.idx === 0);
+            createNavigationBar();
+            renderCurrent();
+
+            return true;
+        }
+
+        function removeSavedQuiz(savedQuizId) {
+            state.savedQuizzes = state.savedQuizzes.filter(q => q.id !== savedQuizId);
+            
+            localStorage.setItem('savedQuizzes', JSON.stringify({
+                lastUpdated: new Date().toISOString(),
+                quizzes: state.savedQuizzes
+            }));
+
+            populateDropdown();
+        }
+
+        function clearSavedQuizzes() {
+            const totalSaved = state.savedQuizzes.length;
+
+            if (totalSaved === 0) {
+                alert('Non ci sono quiz salvati da cancellare.');
+                return;
+            }
+
+            if (confirm(`Sei sicuro di voler cancellare tutti i ${totalSaved} quiz salvati?`)) {
+                state.savedQuizzes = [];
+                localStorage.removeItem('savedQuizzes');
+                populateDropdown();
+                updateSetInfo();
+
+                const alert = document.createElement("div");
+                alert.className = "alert alert-success alert-dismissible fade show mt-2";
+                alert.innerHTML = `
+          🗑️ Tutti i ${totalSaved} quiz salvati sono stati cancellati.
+          <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        `;
+                el("setInfo").parentElement.appendChild(alert);
+
+                setTimeout(() => {
+                    if (alert.parentElement) {
+                        alert.parentElement.removeChild(alert);
+                    }
+                }, 3000);
+            }
+        }
+
         function clearWrongQuizzes() {
             const errorsQuiz = state.wrongQuizzes.find(q => q.id === 'unified_errors');
             const totalErrors = errorsQuiz?.questions.length || 0;
@@ -592,6 +729,15 @@
                 total = errorsQuiz?.questions.length || 0;
                 el("setInfo").textContent = `Domande sbagliate da tutti i quiz • ${total} domande`;
                 state.currentSetLabel = "Domande Sbagliate";
+            } else if (selVal.startsWith("saved_")) {
+                // Quiz salvato
+                const savedQuizId = selVal.replace("saved_", "");
+                const savedQuiz = state.savedQuizzes.find(q => q.id === savedQuizId);
+                if (savedQuiz) {
+                    el("setInfo").textContent = `Quiz salvato • Progresso: ${savedQuiz.progress}/${savedQuiz.total} domande`;
+                    state.currentSetLabel = savedQuiz.name;
+                    total = savedQuiz.total;
+                }
             } else {
                 // Quiz normale
                 const qz = state.allQuizzes.find(q => q.id === selVal);
@@ -617,6 +763,9 @@
                         quizTitle: q.originalQuiz || "Errori" // Usa il quiz originale se disponibile
                     }));
                 }
+            } else if (selVal.startsWith("saved_")) {
+                // Quiz salvato - non usare buildPool, sarà gestito diversamente
+                return [];
             } else {
                 // Quiz normale
                 const qz = state.allQuizzes.find(q => q.id === selVal);
@@ -881,6 +1030,14 @@
 
         async function finishRun() {
             state.mode = "finished";
+            
+            // Se questo era un quiz salvato, rimuovilo dai quiz salvati
+            const currentSelection = el("setSelect").value;
+            if (currentSelection.startsWith("saved_")) {
+                const savedQuizId = currentSelection.replace("saved_", "");
+                removeSavedQuiz(savedQuizId);
+            }
+            
             // compute totals
             const total = state.order.length;
             let correctCount = 0;
@@ -1127,9 +1284,37 @@
                 alert("Seleziona prima un dataset di quiz!");
                 return;
             }
-            startRun(false);
+            
+            const selVal = el("setSelect").value;
+            if (selVal.startsWith("saved_")) {
+                // Carica quiz salvato
+                const savedQuizId = selVal.replace("saved_", "");
+                if (loadSavedQuiz(savedQuizId)) {
+                    console.log("Quiz salvato caricato con successo");
+                } else {
+                    alert("Errore nel caricamento del quiz salvato");
+                }
+            } else {
+                // Inizia nuovo quiz
+                startRun(false);
+            }
         });
+        el("btnClearSaved").addEventListener("click", clearSavedQuizzes);
         el("btnClearWrong").addEventListener("click", clearWrongQuizzes);
+        el("btnSave").addEventListener("click", () => {
+            if (state.mode !== "running") {
+                alert("Non c'è un quiz in corso da salvare!");
+                return;
+            }
+            
+            const savedName = saveCurrentQuiz();
+            alert(`Quiz salvato come: ${savedName}`);
+            
+            // Torna alla schermata principale
+            state.mode = "idle";
+            setHidden(el("quizArea"), true);
+            setHidden(el("resultArea"), true);
+        });
         el("btnPrev").addEventListener("click", () => {
             if (state.idx > 0) { state.idx -= 1; renderCurrent(); }
         });
@@ -1167,6 +1352,15 @@
         // Event listener per il checkbox "Mostra errori"
         el("showErrorsCheckbox").addEventListener("change", () => {
             updateNavigationBar();
+        });
+
+        // Event listener per il tasto Invio
+        document.addEventListener("keydown", (e) => {
+            if (e.key === "Enter" && state.mode === "running") {
+                e.preventDefault();
+                // Simula il click del bottone "Avanti/Consegna"
+                el("btnNext").click();
+            }
         });
 
         // Inizializzazione
