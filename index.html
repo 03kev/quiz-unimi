@@ -1089,6 +1089,52 @@
                     });
                 }
             }, 100);
+
+            // Posizionamento intelligente su mobile
+            smartMobilePosition();
+        }
+
+        function smartMobilePosition() {
+            // Controlla se siamo su mobile (schermo piccolo)
+            if (window.innerWidth > 768) return; // Solo su mobile
+
+            setTimeout(() => {
+                const quizArea = el("quizArea");
+                const navigationBar = el("navigationBar");
+                const questionCard = el("questionCard");
+                const stickyFooter = document.querySelector(".sticky-footer");
+                
+                if (!quizArea || !questionCard || !stickyFooter) return;
+
+                // Calcola l'altezza della footer sticky
+                const footerHeight = stickyFooter.offsetHeight;
+                
+                // Calcola l'altezza totale necessaria
+                const navBarHeight = navigationBar ? navigationBar.offsetHeight : 0;
+                const questionCardHeight = questionCard.offsetHeight;
+                const totalContentHeight = navBarHeight + questionCardHeight + 60; // +60 per margini
+
+                // Altezza viewport disponibile (sottraendo la footer sticky)
+                const availableHeight = window.innerHeight - footerHeight;
+
+                if (totalContentHeight <= availableHeight) {
+                    // Contenuto corto: posiziona la domanda in modo che non sia coperta dalla footer
+                    // Calcola la posizione che lascia spazio per la footer
+                    const targetPosition = window.innerHeight - questionCardHeight - footerHeight - 20; // -20 per margine
+                    
+                    window.scrollTo({
+                        top: Math.max(0, questionCard.offsetTop - targetPosition),
+                        behavior: 'smooth'
+                    });
+                } else {
+                    // Contenuto lungo: posiziona la domanda in alto
+                    questionCard.scrollIntoView({ 
+                        behavior: 'smooth', 
+                        block: 'start',
+                        inline: 'nearest'
+                    });
+                }
+            }, 150); // Timeout per permettere il rendering del contenuto
         }
 
         function gradeQuestion(q) {
