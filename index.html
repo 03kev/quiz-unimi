@@ -105,21 +105,39 @@
             color: #495057;
         }
 
-        /* Stili per la barra di navigazione numerica */
-        .question-number {
-            width: 32px;
-            height: 32px;
-            border: 1px solid #dee2e6;
-            background: #f8f9fa;
-            color: #6c757d;
-            border-radius: 6px;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            font-size: 0.85rem;
-            font-weight: 500;
-        }
+            /* Stili per la barra di navigazione numerica */
+            .navigation-container {
+                max-height: 120px; /* Limita l'altezza massima */
+                overflow-y: auto; /* Scroll verticale se necessario */
+                border: 1px solid #dee2e6;
+                border-radius: 8px;
+                padding: 6px; /* Ridotto da 8px per centratura più precisa */
+                background: #f8f9fa;
+                scroll-behavior: smooth; /* Assicura scroll smooth anche per scrollTop */
+            }
 
-        .question-number:hover {
+            .question-numbers-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fill, minmax(32px, 1fr));
+                gap: 4px;
+                max-width: 100%;
+            }
+
+            .question-number {
+                width: 32px;
+                height: 32px;
+                border: 1px solid #dee2e6;
+                background: #f8f9fa;
+                color: #6c757d;
+                border-radius: 6px;
+                cursor: pointer;
+                transition: all 0.2s ease;
+                font-size: 0.75rem;
+                font-weight: 500;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }        .question-number:hover {
             border-color: #0d6efd;
             background: #e7f3ff;
             color: #0d6efd;
@@ -262,8 +280,10 @@
 
             <!-- Barra di navigazione numerica -->
             <div id="navigationBar" class="mb-3">
-                <div class="d-flex justify-content-center flex-wrap gap-1" id="questionNumbers">
-                    <!-- I numeri delle domande verranno inseriti qui dinamicamente -->
+                <div class="navigation-container">
+                    <div class="question-numbers-grid" id="questionNumbers">
+                        <!-- I numeri delle domande verranno inseriti qui dinamicamente -->
+                    </div>
                 </div>
             </div>
 
@@ -852,7 +872,7 @@
             // Crea i numeri per ogni domanda
             state.order.forEach((questionId, index) => {
                 const button = document.createElement("button");
-                button.className = "btn question-number d-flex align-items-center justify-content-center";
+                button.className = "btn question-number";
                 button.textContent = index + 1;
                 button.title = `Vai alla domanda ${index + 1}`;
 
@@ -868,6 +888,45 @@
                     state.idx = index;
                     renderCurrent();
                     updateNavigationBar();
+                    
+                    // Scroll per rendere visibile il bottone corrente
+                    setTimeout(() => {
+                        const container = document.querySelector('.navigation-container');
+                        const grid = el("questionNumbers");
+                        if (button && container && grid) {
+                            // Calcola quante colonne ci sono nella griglia
+                            const gridStyles = window.getComputedStyle(grid);
+                            const gridTemplateColumns = gridStyles.gridTemplateColumns.split(' ').length;
+                            
+                            // Trova l'indice del bottone cliccato
+                            const buttonIndex = Array.from(grid.children).indexOf(button);
+                            
+                            // Calcola la riga del bottone (base 0)
+                            const buttonRow = Math.floor(buttonIndex / gridTemplateColumns);
+                            
+                            // Altezza di una riga (altezza bottone + gap)
+                            const buttonHeight = button.offsetHeight;
+                            const gap = parseInt(gridStyles.gap) || 4;
+                            const rowHeight = buttonHeight + gap;
+                            
+                            // Posizione Y del centro della riga (relativa alla griglia)
+                            const rowCenterY = (buttonRow * rowHeight) + (buttonHeight / 2);
+                            
+                            // Considera il padding del container
+                            const containerStyles = window.getComputedStyle(container);
+                            const paddingTop = parseInt(containerStyles.paddingTop) || 0;
+                            
+                            // Centra quella riga nel container
+                            const containerHeight = container.clientHeight;
+                            const scrollPosition = rowCenterY + paddingTop - (containerHeight / 2);
+                            
+                            // Usa scrollTo con behavior smooth
+                            container.scrollTo({
+                                top: Math.max(0, scrollPosition),
+                                behavior: 'smooth'
+                            });
+                        }
+                    }, 100);
                 });
 
                 container.appendChild(button);
@@ -993,6 +1052,43 @@
             el("btnNext").textContent = (state.idx === state.order.length - 1) ? "Consegna" : "Avanti";
 
             updateNavigationBar();
+            
+            // Auto-scroll per centrare il numero corrente nella navbar
+            setTimeout(() => {
+                const currentButton = el("questionNumbers").children[state.idx];
+                const container = document.querySelector('.navigation-container');
+                const grid = el("questionNumbers");
+                if (currentButton && container && grid) {
+                    // Calcola quante colonne ci sono nella griglia
+                    const gridStyles = window.getComputedStyle(grid);
+                    const gridTemplateColumns = gridStyles.gridTemplateColumns.split(' ').length;
+                    
+                    // Calcola la riga del bottone corrente (base 0)
+                    const buttonRow = Math.floor(state.idx / gridTemplateColumns);
+                    
+                    // Altezza di una riga (altezza bottone + gap)
+                    const buttonHeight = currentButton.offsetHeight;
+                    const gap = parseInt(gridStyles.gap) || 4;
+                    const rowHeight = buttonHeight + gap;
+                    
+                    // Posizione Y del centro della riga (relativa alla griglia)
+                    const rowCenterY = (buttonRow * rowHeight) + (buttonHeight / 2);
+                    
+                    // Considera il padding del container
+                    const containerStyles = window.getComputedStyle(container);
+                    const paddingTop = parseInt(containerStyles.paddingTop) || 0;
+                    
+                    // Centra quella riga nel container
+                    const containerHeight = container.clientHeight;
+                    const scrollPosition = rowCenterY + paddingTop - (containerHeight / 2);
+                    
+                    // Usa scrollTo con behavior smooth
+                    container.scrollTo({
+                        top: Math.max(0, scrollPosition),
+                        behavior: 'smooth'
+                    });
+                }
+            }, 100);
         }
 
         function gradeQuestion(q) {
