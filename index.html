@@ -471,16 +471,26 @@
                 state.wrongQuizzes.push(errorsQuiz);
             }
 
-            // Aggiungi le nuove domande sbagliate al quiz unificato
+            let addedCount = 0;
+
+            // Aggiungi solo le domande che non sono già presenti
             wrongQuestions.forEach((q, index) => {
-                const newQuestion = {
-                    id: `error_${Date.now()}_${index}_${Math.random().toString(36).substr(2, 9)}`,
-                    text: q.text,
-                    choices: q.choices,
-                    correctIndexes: q.correctIndexes,
-                    originalQuiz: q.quizTitle // Mantieni traccia del quiz originale
-                };
-                errorsQuiz.questions.push(newQuestion);
+                // Controlla se esiste già una domanda con lo stesso testo e quiz originale
+                const isDuplicate = errorsQuiz.questions.some(existingQ => 
+                    existingQ.text === q.text && existingQ.originalQuiz === q.quizTitle
+                );
+
+                if (!isDuplicate) {
+                    const newQuestion = {
+                        id: `error_${Date.now()}_${index}_${Math.random().toString(36).substr(2, 9)}`,
+                        text: q.text,
+                        choices: q.choices,
+                        correctIndexes: q.correctIndexes,
+                        originalQuiz: q.quizTitle // Mantieni traccia del quiz originale
+                    };
+                    errorsQuiz.questions.push(newQuestion);
+                    addedCount++;
+                }
             });
 
             // Aggiorna il localStorage per persistenza
@@ -492,7 +502,50 @@
             // Aggiorna la dropdown
             populateDropdown();
 
-            console.log(`${wrongQuestions.length} domande sbagliate aggiunte al quiz unificato (totale: ${errorsQuiz.questions.length})`);
+            if (addedCount > 0) {
+                console.log(`${addedCount} nuove domande sbagliate aggiunte al quiz unificato (totale: ${errorsQuiz.questions.length})`);
+                if (addedCount < wrongQuestions.length) {
+                    console.log(`${wrongQuestions.length - addedCount} domande erano già presenti e sono state saltate per evitare duplicati`);
+                }
+            } else {
+                console.log(`Tutte le ${wrongQuestions.length} domande erano già presenti nei quiz sbagliati`);
+            }
+
+            return addedCount; // Ritorna il numero di domande effettivamente aggiunte
+        }
+
+        function removeCorrectAnswersFromWrongQuizzes(correctQuestions) {
+            if (correctQuestions.length === 0) return 0;
+
+            const errorsQuiz = state.wrongQuizzes.find(q => q.id === 'unified_errors');
+            if (!errorsQuiz) return 0;
+
+            let removedCount = 0;
+            const initialLength = errorsQuiz.questions.length;
+
+            // Rimuovi le domande che sono state risposte correttamente
+            errorsQuiz.questions = errorsQuiz.questions.filter(errorQ => {
+                const shouldRemove = correctQuestions.some(correctQ => 
+                    correctQ.text === errorQ.text && correctQ.quizTitle === errorQ.originalQuiz
+                );
+                if (shouldRemove) removedCount++;
+                return !shouldRemove;
+            });
+
+            // Aggiorna il localStorage se ci sono state rimozioni
+            if (removedCount > 0) {
+                localStorage.setItem('wrongQuizzes', JSON.stringify({
+                    lastUpdated: new Date().toISOString(),
+                    quizzes: state.wrongQuizzes
+                }));
+
+                // Aggiorna la dropdown
+                populateDropdown();
+                
+                console.log(`${removedCount} domande rimosse dal quiz degli errori (erano state risposte correttamente)`);
+            }
+
+            return removedCount;
         }
 
         function clearWrongQuizzes() {
@@ -826,18 +879,20 @@
             }
         }
 
-        function finishRun() {
+        async function finishRun() {
             state.mode = "finished";
             // compute totals
             const total = state.order.length;
             let correctCount = 0;
             const wrongIds = [];
             const wrongQuestions = [];
+            const correctQuestions = [];
 
             state.flatPool.forEach(q => {
                 const g = state.graded[q.id] || gradeQuestion(q);
                 if (g.correct) {
                     correctCount += 1;
+                    correctQuestions.push(q);
                 } else {
                     // Aggiungi tra le sbagliate SOLO se l'utente ha risposto (cioè ha selezionato almeno una risposta)
                     const answered = state.answers[q.id] && state.answers[q.id].size > 0;
@@ -850,9 +905,17 @@
 
             state.lastRunWrongIds = wrongIds;
 
-            // Salva le domande sbagliate se ce ne sono
-            if (wrongQuestions.length > 0) {
-                saveWrongQuestions(wrongQuestions);
+            // Se stiamo facendo il ripasso delle domande sbagliate, rimuovi quelle corrette
+            let removedCorrectCount = 0;
+            const isReviewingErrors = el("setSelect").value === 'unified_errors';
+            if (isReviewingErrors && correctQuestions.length > 0) {
+                removedCorrectCount = removeCorrectAnswersFromWrongQuizzes(correctQuestions);
+            }
+
+            // Salva le domande sbagliate se ce ne sono (solo se non stiamo ripassando errori)
+            let addedWrongCount = 0;
+            if (wrongQuestions.length > 0 && !isReviewingErrors) {
+                addedWrongCount = await saveWrongQuestions(wrongQuestions);
             }
 
             // UI update
@@ -860,12 +923,30 @@
             setHidden(el("resultArea"), false);
             el("resultSummary").innerHTML = `<strong>Punteggio:</strong> ${correctCount}/${total} corrette`;
 
-            // Aggiungi messaggio per le domande sbagliate salvate
-            if (wrongQuestions.length > 0) {
-                const saveMsg = document.createElement("div");
-                saveMsg.className = "alert alert-success mt-2";
-                saveMsg.innerHTML = `💾 ${wrongQuestions.length} domande sbagliate aggiunte ai "Quiz Sbagliati" (disponibili nella tendina)`;
-                el("resultSummary").appendChild(saveMsg);
+            // Messaggi per il ripasso delle domande sbagliate
+            if (isReviewingErrors && removedCorrectCount > 0) {
+                const removeMsg = document.createElement("div");
+                removeMsg.className = "alert alert-success mt-2";
+                removeMsg.innerHTML = `🎉 ${removedCorrectCount} ${removedCorrectCount === 1 ? 'domanda rimossa' : 'domande rimosse'} dai "Quiz Sbagliati" (risposte corrette!)`;
+                el("resultSummary").appendChild(removeMsg);
+            }
+
+            // Aggiungi messaggio per le domande sbagliate salvate (solo per quiz normali)
+            if (!isReviewingErrors) {
+                if (addedWrongCount > 0) {
+                    const saveMsg = document.createElement("div");
+                    saveMsg.className = "alert alert-success mt-2";
+                    saveMsg.innerHTML = `💾 ${addedWrongCount} ${addedWrongCount === 1 ? 'nuova domanda sbagliata aggiunta' : 'nuove domande sbagliate aggiunte'} ai "Quiz Sbagliati"`;
+                    if (addedWrongCount < wrongQuestions.length) {
+                        saveMsg.innerHTML += ` (${wrongQuestions.length - addedWrongCount} erano già presenti)`;
+                    }
+                    el("resultSummary").appendChild(saveMsg);
+                } else if (wrongQuestions.length > 0) {
+                    const saveMsg = document.createElement("div");
+                    saveMsg.className = "alert alert-info mt-2";
+                    saveMsg.innerHTML = `ℹ️ Tutte le ${wrongQuestions.length} domande sbagliate erano già presenti nei "Quiz Sbagliati"`;
+                    el("resultSummary").appendChild(saveMsg);
+                }
             }
 
             const review = el("reviewList");
