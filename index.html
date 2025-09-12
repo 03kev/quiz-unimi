@@ -1,913 +1,1097 @@
 <!doctype html>
 <html lang="it">
+
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Practice Quiz</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <style>
-    body { background: #f8f9fa; color: #212529; }
-    .card { background: #ffffff; border: 1px solid #dee2e6; }
-    .form-check-label { cursor: pointer; }
-    .choice { cursor: pointer; transition: all 0.2s ease; }
-    .choice:hover { background: #f8f9fa; border-color: #6c757d; }
-    .choice.correct { border-color: #198754; background: #e6f4ea; }
-    .choice.wrong { border-color: #dc3545; background: #fbeaea; }
-    
-    /* Fix per allineamento radio/checkbox con testo multiriga */
-    .choice .card-body {
-      display: flex;
-      align-items: flex-start;
-      gap: 0.5rem;
-    }
-    .choice .form-check-input {
-      margin: 0;
-      flex-shrink: 0;
-      margin-top: 0.125rem; /* Piccolo offset per allineare meglio con il testo */
-    }
-    .choice .form-check-label {
-      flex: 1;
-      margin: 0;
-      line-height: 1.5;
-    }
-    
-    .sticky-footer { position: sticky; bottom: 0; background: #ffffff; border-top: 1px solid #dee2e6; padding: .75rem; }
-    .badge-quiz { background: #e9ecef; color:#212529; }
-    a, a:hover { color: #0d6efd; }
-    .muted { color: #6c757d; }
-    .hidden { display: none !important; }
-    .progress { height: 10px; }
-    .question-text { white-space: pre-wrap; }
-    .pill { background:#e9ecef; border:1px solid #ced4da; padding: .2rem .45rem; border-radius:999px; font-size:.8rem; color:#495057; }
-    
-    /* Stili per la barra di navigazione numerica */
-    .question-number {
-      width: 32px;
-      height: 32px;
-      border: 1px solid #dee2e6;
-      background: #f8f9fa;
-      color: #6c757d;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      font-size: 0.85rem;
-      font-weight: 500;
-    }
-    .question-number:hover {
-      border-color: #0d6efd;
-      background: #e7f3ff;
-      color: #0d6efd;
-    }
-    .question-number.current {
-      background: #0d6efd;
-      border-color: #0d6efd;
-      color: white;
-    }
-    .question-number.answered {
-      background: #e9ecef;
-      border-color: #6c757d;
-      color: #495057;
-    }
-    .question-number.answered.current {
-      background: #6c757d;
-      border-color: #6c757d;
-      color: white;
-    }
-    .question-number.correct {
-      background: #e6f4ea;
-      border-color: #198754;
-      color: #198754;
-    }
-    .question-number.correct.current {
-      background: #198754;
-      border-color: #198754;
-      color: white;
-    }
-    .question-number.wrong {
-      background: #fbeaea;
-      border-color: #dc3545;
-      color: #dc3545;
-    }
-    .question-number.wrong.current {
-      background: #dc3545;
-      border-color: #dc3545;
-      color: white;
-    }
-  </style>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Practice Quiz</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: #f8f9fa;
+            color: #212529;
+        }
+
+        .card {
+            background: #ffffff;
+            border: 1px solid #dee2e6;
+        }
+
+        .form-check-label {
+            cursor: pointer;
+        }
+
+        .choice {
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .choice:hover {
+            background: #f8f9fa;
+            border-color: #6c757d;
+        }
+
+        .choice.correct {
+            border-color: #198754;
+            background: #e6f4ea;
+        }
+
+        .choice.wrong {
+            border-color: #dc3545;
+            background: #fbeaea;
+        }
+
+        /* Fix per allineamento radio/checkbox con testo multiriga */
+        .choice .card-body {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+        }
+
+        .choice .form-check-input {
+            margin: 0;
+            flex-shrink: 0;
+            margin-top: 0.125rem;
+            /* Piccolo offset per allineare meglio con il testo */
+        }
+
+        .choice .form-check-label {
+            flex: 1;
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        .sticky-footer {
+            position: sticky;
+            bottom: 0;
+            background: #ffffff;
+            border-top: 1px solid #dee2e6;
+            padding: .75rem;
+        }
+
+        .badge-quiz {
+            background: #e9ecef;
+            color: #212529;
+        }
+
+        a,
+        a:hover {
+            color: #0d6efd;
+        }
+
+        .muted {
+            color: #6c757d;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        .progress {
+            height: 10px;
+        }
+
+        .question-text {
+            white-space: pre-wrap;
+        }
+
+        .pill {
+            background: #e9ecef;
+            border: 1px solid #ced4da;
+            padding: .2rem .45rem;
+            border-radius: 999px;
+            font-size: .8rem;
+            color: #495057;
+        }
+
+        /* Stili per la barra di navigazione numerica */
+        .question-number {
+            width: 32px;
+            height: 32px;
+            border: 1px solid #dee2e6;
+            background: #f8f9fa;
+            color: #6c757d;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .question-number:hover {
+            border-color: #0d6efd;
+            background: #e7f3ff;
+            color: #0d6efd;
+        }
+
+        .question-number.current {
+            background: #0d6efd;
+            border-color: #0d6efd;
+            color: white;
+        }
+
+        .question-number.answered {
+            background: #e9ecef;
+            border-color: #6c757d;
+            color: #495057;
+        }
+
+        .question-number.answered.current {
+            background: #6c757d;
+            border-color: #6c757d;
+            color: white;
+        }
+
+        .question-number.correct {
+            background: #e6f4ea;
+            border-color: #198754;
+            color: #198754;
+        }
+
+        .question-number.correct.current {
+            background: #198754;
+            border-color: #198754;
+            color: white;
+        }
+
+        .question-number.wrong {
+            background: #fbeaea;
+            border-color: #dc3545;
+            color: #dc3545;
+        }
+
+        .question-number.wrong.current {
+            background: #dc3545;
+            border-color: #dc3545;
+            color: white;
+        }
+
+        /* Stili per le carte collassabili */
+        .card-header[data-bs-toggle="collapse"] {
+            transition: background-color 0.15s ease-in-out;
+        }
+
+        .card-header[data-bs-toggle="collapse"]:hover {
+            background-color: #f8f9fa;
+        }
+
+        .card-header[data-bs-toggle="collapse"] .collapse-icon {
+            transition: transform 0.15s ease-in-out;
+        }
+
+        .card-header[data-bs-toggle="collapse"][aria-expanded="true"] .collapse-icon {
+            transform: rotate(180deg);
+        }
+    </style>
 </head>
+
 <body>
-  <div class="container py-4">
-    <div class="d-flex align-items-center justify-content-between mb-3">
-      <div>
-        <h1 class="h3 mb-1">Practice Quiz</h1>
-        <div class="muted">Tutti i quiz, poi ripassi solo le domande sbagliate. Daje Roma 💪</div>
-      </div>
-      <div>
-        <span id="totalCounter" class="pill">0 domande</span>
-      </div>
-    </div>
-    
-    <div class="card mb-3">
-      <div class="card-body">
-        <div class="row g-3">
-          <div class="col-12 col-md-6">
-            <label class="form-label">Seleziona dataset</label>
-            <select id="datasetSelect" class="form-select">
-            </select>
-            <div id="datasetInfo" class="small muted mt-2"></div>
-          </div>
-          <div class="col-12 col-md-6">
-            <label class="form-label">Seleziona set</label>
-            <select id="setSelect" class="form-select">
-              <option value="all">Tutti i quiz</option>
-            </select>
-            <div id="setInfo" class="small muted mt-2"></div>
-          </div>
-        </div>
-        
-        <div class="row g-3 align-items-center mt-2">
-          <div class="col-12 col-md-6">
-            <!-- Opzioni quiz -->
-            <div class="d-flex gap-4">
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="shuffleCheckbox">
-                <label class="form-check-label" for="shuffleCheckbox">
-                  🔀 Ordine casuale
-                </label>
-              </div>
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="showErrorsCheckbox">
-                <label class="form-check-label" for="showErrorsCheckbox">
-                  🔍 Mostra errori nella navbar
-                </label>
-              </div>
+    <div class="container py-4">
+        <div class="d-flex align-items-center justify-content-between mb-3">
+            <div>
+                <h1 class="h3 mb-1">Practice Quiz</h1>
+                <div class="muted">Tutti i quiz, poi ripassi solo le domande sbagliate. Daje Roma 💪</div>
             </div>
-          </div>
-          <div class="col-12 col-md-6 text-md-end">
-            <button id="btnClearWrong" class="btn btn-outline-danger me-2">🗑️ Pulisci Quiz Sbagliati</button>
-            <button id="btnStart" class="btn btn-primary">Inizia</button>
-          </div>
+            <div>
+                <span id="totalCounter" class="pill">0 domande</span>
+            </div>
         </div>
-      </div>
+
+        <div class="card mb-3">
+            <div class="card-body">
+                <div class="row g-3">
+                    <div class="col-12 col-md-6">
+                        <label class="form-label">Seleziona dataset</label>
+                        <select id="datasetSelect" class="form-select">
+                        </select>
+                        <div id="datasetInfo" class="small muted mt-2"></div>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <label class="form-label">Seleziona set</label>
+                        <select id="setSelect" class="form-select">
+                            <option value="all">Tutti i quiz</option>
+                        </select>
+                        <div id="setInfo" class="small muted mt-2"></div>
+                    </div>
+                </div>
+
+                <div class="row g-3 align-items-center mt-2">
+                    <div class="col-12 col-md-6">
+                        <!-- Opzioni quiz -->
+                        <div class="d-flex gap-4">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="shuffleCheckbox">
+                                <label class="form-check-label" for="shuffleCheckbox">
+                                    🔀 Ordine casuale
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="showErrorsCheckbox">
+                                <label class="form-check-label" for="showErrorsCheckbox">
+                                    🔍 Mostra errori nella navbar
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 text-md-end">
+                        <button id="btnClearWrong" class="btn btn-outline-danger me-2">🗑️ Pulisci Quiz
+                            Sbagliati</button>
+                        <button id="btnStart" class="btn btn-primary">Inizia</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="quizArea" class="hidden">
+            <div class="d-flex align-items-center justify-content-between mb-2">
+                <div class="small">
+                    <span id="quizBadge" class="badge rounded-pill badge-quiz me-2"></span>
+                    <span id="progressLabel" class="muted"></span>
+                </div>
+                <div class="w-50">
+                    <div class="progress">
+                        <div id="progressBar" class="progress-bar" role="progressbar" style="width: 0%"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Barra di navigazione numerica -->
+            <div id="navigationBar" class="mb-3">
+                <div class="d-flex justify-content-center flex-wrap gap-1" id="questionNumbers">
+                    <!-- I numeri delle domande verranno inseriti qui dinamicamente -->
+                </div>
+            </div>
+
+            <div id="questionCard" class="card mb-3">
+                <div class="card-body">
+                    <div id="qText" class="question-text mb-3"></div>
+                    <div id="choices" class="vstack gap-2"></div>
+                </div>
+            </div>
+
+            <div class="sticky-footer d-flex justify-content-between">
+                <button id="btnPrev" class="btn btn-secondary" disabled>Indietro</button>
+                <div>
+                    <button id="btnCheck" class="btn btn-secondary me-2">Controlla</button>
+                    <button id="btnNext" class="btn btn-primary">Avanti</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="resultArea" class="hidden">
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h2 class="h5 mb-3">Risultati</h2>
+                    <div id="resultSummary" class="mb-2"></div>
+                    <div class="alert alert-info mb-0">
+                        <strong>💡 Suggerimento:</strong> Le domande sbagliate sono ora disponibili nel menu "Seleziona
+                        set" come "❌ Domande Sbagliate" per un ripasso mirato.
+                    </div>
+                </div>
+            </div>
+            <div id="reviewList" class="vstack gap-2"></div>
+        </div>
+
+        <footer class="mt-4 small muted">
+            Generato con ❤️ – Bootstrap + JS puro. I tuoi progressi vivono solo in questa pagina (localmente).
+        </footer>
     </div>
-    
-    <div id="quizArea" class="hidden">
-      <div class="d-flex align-items-center justify-content-between mb-2">
-        <div class="small">
-          <span id="quizBadge" class="badge rounded-pill badge-quiz me-2"></span>
-          <span id="progressLabel" class="muted"></span>
-        </div>
-        <div class="w-50">
-          <div class="progress">
-            <div id="progressBar" class="progress-bar" role="progressbar" style="width: 0%"></div>
-          </div>
-        </div>
-      </div>
-      
-      <!-- Barra di navigazione numerica -->
-      <div id="navigationBar" class="mb-3">
-        <div class="d-flex justify-content-center flex-wrap gap-1" id="questionNumbers">
-          <!-- I numeri delle domande verranno inseriti qui dinamicamente -->
-        </div>
-      </div>
-      
-      <div id="questionCard" class="card mb-3">
-        <div class="card-body">
-          <div id="qText" class="question-text mb-3"></div>
-          <div id="choices" class="vstack gap-2"></div>
-        </div>
-      </div>
-      
-      <div class="sticky-footer d-flex justify-content-between">
-        <button id="btnPrev" class="btn btn-secondary" disabled>Indietro</button>
-        <div>
-          <button id="btnCheck" class="btn btn-secondary me-2">Controlla</button>
-          <button id="btnNext" class="btn btn-primary">Avanti</button>
-        </div>
-      </div>
-    </div>
-    
-    <div id="resultArea" class="hidden">
-      <div class="card mb-3">
-        <div class="card-body">
-          <h2 class="h5 mb-3">Risultati</h2>
-          <div id="resultSummary" class="mb-2"></div>
-          <div class="alert alert-info mb-0">
-            <strong>💡 Suggerimento:</strong> Le domande sbagliate sono ora disponibili nel menu "Seleziona set" come "❌ Domande Sbagliate" per un ripasso mirato.
-          </div>
-        </div>
-      </div>
-      <div id="reviewList" class="vstack gap-2"></div>
-    </div>
-    
-    <footer class="mt-4 small muted">
-      Generato con ❤️ – Bootstrap + JS puro. I tuoi progressi vivono solo in questa pagina (localmente).
-    </footer>
-  </div>
-  
-  <script>
-    const state = {
-      allQuizzes: [],           // loaded from selected dataset
-      wrongQuizzes: [],         // loaded from wrong_quizzes.json
-      flatPool: [],             // questions for current run
-      answers: {},              // qId -> Set of selected indexes
-      graded: {},               // qId -> { correct: bool, wrongIndexes: [], missingIndexes: [] }
-      order: [],                // sequence of qIds
-      choicesOrder: {},         // qId -> array of shuffled choice indexes
-      idx: 0,                   // current index within order
-      mode: "idle",             // idle|running|finished
-      lastRunWrongIds: [],
-      currentSetLabel: "",
-      availableDatasets: [],    // available quiz files
-      currentDataset: "",       // currently loaded dataset
-    };
-    
-    const el = (id) => document.getElementById(id);
-    const setHidden = (node, hidden) => node.classList.toggle("hidden", hidden);
-    
-    async function loadAvailableDatasets() {
-      // Lista hardcoded dei dataset disponibili (potrebbe essere dinamica in futuro)
-      state.availableDatasets = [
-        { 
-          name: "quizzes_aspetti.json", 
-          title: "Quiz Aspetti Etici e Sociali", 
-          description: "Domande su aspetti etici e sociali " 
-        },
-        { 
-          name: "quizzes_sisbio.json", 
-          title: "Quiz Sistemi biometrici", 
-          description: "Domande biometriche e sicurezza" 
-        }
-      ];
-      
-      // Populate dataset dropdown
-      populateDatasetDropdown();
-      
-      // Seleziona automaticamente il primo dataset
-      if (state.availableDatasets.length > 0) {
-        const firstDataset = state.availableDatasets[0].name;
-        el("datasetSelect").value = firstDataset;
-        await loadQuizzes(firstDataset);
-      }
-    }
-    
-    function populateDatasetDropdown() {
-      const sel = el("datasetSelect");
-      // Pulisci tutte le opzioni esistenti
-      sel.innerHTML = "";
-      
-      state.availableDatasets.forEach(dataset => {
-        const opt = document.createElement("option");
-        opt.value = dataset.name;
-        opt.textContent = dataset.title;
-        sel.appendChild(opt);
-      });
-    }
-    
-    async function loadQuizzes(datasetFile) {
-      if (!datasetFile) {
-        state.allQuizzes = [];
-        state.currentDataset = "";
-        populateDropdown();
-        updateSetInfo();
-        return;
-      }
-      
-      try {
-        const res = await fetch(`quizzes/${datasetFile}`);
-        if (!res.ok) {
-          throw new Error(`HTTP error! status: ${res.status}`);
-        }
-        const data = await res.json();
-        state.allQuizzes = data.quizzes;
-        state.currentDataset = datasetFile;
-        
-        // Carica anche le domande sbagliate se esistono
-        await loadWrongQuizzes();
-        
-        // Populate dropdown
-        populateDropdown();
-        updateSetInfo();
-        updateDatasetInfo();
-      } catch (error) {
-        console.error('Errore nel caricamento del dataset:', error);
-        alert(`Errore nel caricamento del dataset: ${error.message}`);
-        state.allQuizzes = [];
-        state.currentDataset = "";
-        populateDropdown();
-        updateSetInfo();
-      }
-    }
-    
-    function updateDatasetInfo() {
-      const dataset = state.availableDatasets.find(d => d.name === state.currentDataset);
-      if (dataset) {
-        el("datasetInfo").textContent = dataset.description;
-      } else {
-        el("datasetInfo").textContent = "";
-      }
-    }
-    
-    async function loadWrongQuizzes() {
-      try {
-        // Prima prova a caricare dal localStorage
-        const localData = localStorage.getItem('wrongQuizzes');
-        if (localData) {
-          const data = JSON.parse(localData);
-          state.wrongQuizzes = data.quizzes || [];
-          console.log(`Caricati ${state.wrongQuizzes.length} quiz di errori dal localStorage`);
-          return;
-        }
-        
-        // Se non c'è nulla nel localStorage, prova a caricare dal file
-        const res = await fetch("wrong_quizzes.json");
-        if (res.ok) {
-          const data = await res.json();
-          state.wrongQuizzes = data.quizzes || [];
-          console.log(`Caricati ${state.wrongQuizzes.length} quiz di errori dal file`);
-        }
-      } catch (error) {
-        // File non esistente o errore di lettura - ignora
-        state.wrongQuizzes = [];
-        console.log('Nessun file di quiz sbagliati trovato, inizializzazione vuota');
-      }
-    }
-    
-    function populateDropdown() {
-      const sel = el("setSelect");
-      // Pulisci le opzioni esistenti tranne "Tutti i quiz"
-      while (sel.children.length > 1) {
-        sel.removeChild(sel.lastChild);
-      }
-      
-      // Aggiungi quiz principali
-      state.allQuizzes.forEach(qz => {
-        const opt = document.createElement("option");
-        opt.value = qz.id;
-        opt.textContent = qz.title;
-        sel.appendChild(opt);
-      });
-      
-      // Aggiungi il quiz errori unificato se esiste e ha domande
-      const errorsQuiz = state.wrongQuizzes.find(q => q.id === 'unified_errors');
-      if (errorsQuiz && errorsQuiz.questions.length > 0) {
-        const separator = document.createElement("option");
-        separator.disabled = true;
-        separator.textContent = "— Domande Sbagliate —";
-        sel.appendChild(separator);
-        
-        const opt = document.createElement("option");
-        opt.value = 'unified_errors';
-        opt.textContent = `❌ Domande Sbagliate (${errorsQuiz.questions.length})`;
-        sel.appendChild(opt);
-      }
-    }
-    
-    async function saveWrongQuestions(wrongQuestions) {
-      if (wrongQuestions.length === 0) return;
-      
-      // Trova o crea il quiz "Errori" unificato
-      let errorsQuiz = state.wrongQuizzes.find(q => q.id === 'unified_errors');
-      
-      if (!errorsQuiz) {
-        // Crea il quiz errori unificato se non esiste
-        errorsQuiz = {
-          id: 'unified_errors',
-          title: 'Domande Sbagliate',
-          questions: []
+
+    <script>
+        const state = {
+            allQuizzes: [],           // loaded from selected dataset
+            wrongQuizzes: [],         // loaded from wrong_quizzes.json
+            flatPool: [],             // questions for current run
+            answers: {},              // qId -> Set of selected indexes
+            graded: {},               // qId -> { correct: bool, wrongIndexes: [], missingIndexes: [] }
+            order: [],                // sequence of qIds
+            choicesOrder: {},         // qId -> array of shuffled choice indexes
+            idx: 0,                   // current index within order
+            mode: "idle",             // idle|running|finished
+            lastRunWrongIds: [],
+            currentSetLabel: "",
+            availableDatasets: [],    // available quiz files
+            currentDataset: "",       // currently loaded dataset
         };
-        state.wrongQuizzes.push(errorsQuiz);
-      }
-      
-      // Aggiungi le nuove domande sbagliate al quiz unificato
-      wrongQuestions.forEach((q, index) => {
-        const newQuestion = {
-          id: `error_${Date.now()}_${index}_${Math.random().toString(36).substr(2, 9)}`,
-          text: q.text,
-          choices: q.choices,
-          correctIndexes: q.correctIndexes,
-          originalQuiz: q.quizTitle // Mantieni traccia del quiz originale
-        };
-        errorsQuiz.questions.push(newQuestion);
-      });
-      
-      // Aggiorna il localStorage per persistenza
-      localStorage.setItem('wrongQuizzes', JSON.stringify({
-        lastUpdated: new Date().toISOString(),
-        quizzes: state.wrongQuizzes
-      }));
-      
-      // Aggiorna la dropdown
-      populateDropdown();
-      
-      console.log(`${wrongQuestions.length} domande sbagliate aggiunte al quiz unificato (totale: ${errorsQuiz.questions.length})`);
-    }
-    
-    function clearWrongQuizzes() {
-      const errorsQuiz = state.wrongQuizzes.find(q => q.id === 'unified_errors');
-      const totalErrors = errorsQuiz?.questions.length || 0;
-      
-      if (totalErrors === 0) {
-        alert('Non ci sono domande sbagliate da cancellare.');
-        return;
-      }
-      
-      if (confirm(`Sei sicuro di voler cancellare tutte le ${totalErrors} domande sbagliate?`)) {
-        state.wrongQuizzes = [];
-        localStorage.removeItem('wrongQuizzes');
-        populateDropdown();
-        updateSetInfo();
-        
-        const alert = document.createElement("div");
-        alert.className = "alert alert-success alert-dismissible fade show mt-2";
-        alert.innerHTML = `
+
+        const el = (id) => document.getElementById(id);
+        const setHidden = (node, hidden) => node.classList.toggle("hidden", hidden);
+
+        async function loadAvailableDatasets() {
+            // Lista hardcoded dei dataset disponibili (potrebbe essere dinamica in futuro)
+            state.availableDatasets = [
+                {
+                    name: "quizzes_aspetti.json",
+                    title: "Quiz Aspetti Etici e Sociali",
+                    description: "Domande su aspetti etici e sociali "
+                },
+                {
+                    name: "quizzes_sisbio.json",
+                    title: "Quiz Sistemi biometrici",
+                    description: "Domande biometriche e sicurezza"
+                }
+            ];
+
+            // Populate dataset dropdown
+            populateDatasetDropdown();
+
+            // Seleziona automaticamente il primo dataset
+            if (state.availableDatasets.length > 0) {
+                const firstDataset = state.availableDatasets[0].name;
+                el("datasetSelect").value = firstDataset;
+                await loadQuizzes(firstDataset);
+            }
+        }
+
+        function populateDatasetDropdown() {
+            const sel = el("datasetSelect");
+            // Pulisci tutte le opzioni esistenti
+            sel.innerHTML = "";
+
+            state.availableDatasets.forEach(dataset => {
+                const opt = document.createElement("option");
+                opt.value = dataset.name;
+                opt.textContent = dataset.title;
+                sel.appendChild(opt);
+            });
+        }
+
+        async function loadQuizzes(datasetFile) {
+            if (!datasetFile) {
+                state.allQuizzes = [];
+                state.currentDataset = "";
+                populateDropdown();
+                updateSetInfo();
+                return;
+            }
+
+            try {
+                const res = await fetch(`quizzes/${datasetFile}`);
+                if (!res.ok) {
+                    throw new Error(`HTTP error! status: ${res.status}`);
+                }
+                const data = await res.json();
+                state.allQuizzes = data.quizzes;
+                state.currentDataset = datasetFile;
+
+                // Carica anche le domande sbagliate se esistono
+                await loadWrongQuizzes();
+
+                // Populate dropdown
+                populateDropdown();
+                updateSetInfo();
+                updateDatasetInfo();
+            } catch (error) {
+                console.error('Errore nel caricamento del dataset:', error);
+                alert(`Errore nel caricamento del dataset: ${error.message}`);
+                state.allQuizzes = [];
+                state.currentDataset = "";
+                populateDropdown();
+                updateSetInfo();
+            }
+        }
+
+        function updateDatasetInfo() {
+            const dataset = state.availableDatasets.find(d => d.name === state.currentDataset);
+            if (dataset) {
+                el("datasetInfo").textContent = dataset.description;
+            } else {
+                el("datasetInfo").textContent = "";
+            }
+        }
+
+        async function loadWrongQuizzes() {
+            try {
+                // Prima prova a caricare dal localStorage
+                const localData = localStorage.getItem('wrongQuizzes');
+                if (localData) {
+                    const data = JSON.parse(localData);
+                    state.wrongQuizzes = data.quizzes || [];
+                    console.log(`Caricati ${state.wrongQuizzes.length} quiz di errori dal localStorage`);
+                    return;
+                }
+
+                // Se non c'è nulla nel localStorage, prova a caricare dal file
+                const res = await fetch("wrong_quizzes.json");
+                if (res.ok) {
+                    const data = await res.json();
+                    state.wrongQuizzes = data.quizzes || [];
+                    console.log(`Caricati ${state.wrongQuizzes.length} quiz di errori dal file`);
+                }
+            } catch (error) {
+                // File non esistente o errore di lettura - ignora
+                state.wrongQuizzes = [];
+                console.log('Nessun file di quiz sbagliati trovato, inizializzazione vuota');
+            }
+        }
+
+        function populateDropdown() {
+            const sel = el("setSelect");
+            // Pulisci le opzioni esistenti tranne "Tutti i quiz"
+            while (sel.children.length > 1) {
+                sel.removeChild(sel.lastChild);
+            }
+
+            // Aggiungi quiz principali
+            state.allQuizzes.forEach(qz => {
+                const opt = document.createElement("option");
+                opt.value = qz.id;
+                opt.textContent = qz.title;
+                sel.appendChild(opt);
+            });
+
+            // Aggiungi il quiz errori unificato se esiste e ha domande
+            const errorsQuiz = state.wrongQuizzes.find(q => q.id === 'unified_errors');
+            if (errorsQuiz && errorsQuiz.questions.length > 0) {
+                const separator = document.createElement("option");
+                separator.disabled = true;
+                separator.textContent = "— Domande Sbagliate —";
+                sel.appendChild(separator);
+
+                const opt = document.createElement("option");
+                opt.value = 'unified_errors';
+                opt.textContent = `❌ Domande Sbagliate (${errorsQuiz.questions.length})`;
+                sel.appendChild(opt);
+            }
+        }
+
+        async function saveWrongQuestions(wrongQuestions) {
+            if (wrongQuestions.length === 0) return;
+
+            // Trova o crea il quiz "Errori" unificato
+            let errorsQuiz = state.wrongQuizzes.find(q => q.id === 'unified_errors');
+
+            if (!errorsQuiz) {
+                // Crea il quiz errori unificato se non esiste
+                errorsQuiz = {
+                    id: 'unified_errors',
+                    title: 'Domande Sbagliate',
+                    questions: []
+                };
+                state.wrongQuizzes.push(errorsQuiz);
+            }
+
+            // Aggiungi le nuove domande sbagliate al quiz unificato
+            wrongQuestions.forEach((q, index) => {
+                const newQuestion = {
+                    id: `error_${Date.now()}_${index}_${Math.random().toString(36).substr(2, 9)}`,
+                    text: q.text,
+                    choices: q.choices,
+                    correctIndexes: q.correctIndexes,
+                    originalQuiz: q.quizTitle // Mantieni traccia del quiz originale
+                };
+                errorsQuiz.questions.push(newQuestion);
+            });
+
+            // Aggiorna il localStorage per persistenza
+            localStorage.setItem('wrongQuizzes', JSON.stringify({
+                lastUpdated: new Date().toISOString(),
+                quizzes: state.wrongQuizzes
+            }));
+
+            // Aggiorna la dropdown
+            populateDropdown();
+
+            console.log(`${wrongQuestions.length} domande sbagliate aggiunte al quiz unificato (totale: ${errorsQuiz.questions.length})`);
+        }
+
+        function clearWrongQuizzes() {
+            const errorsQuiz = state.wrongQuizzes.find(q => q.id === 'unified_errors');
+            const totalErrors = errorsQuiz?.questions.length || 0;
+
+            if (totalErrors === 0) {
+                alert('Non ci sono domande sbagliate da cancellare.');
+                return;
+            }
+
+            if (confirm(`Sei sicuro di voler cancellare tutte le ${totalErrors} domande sbagliate?`)) {
+                state.wrongQuizzes = [];
+                localStorage.removeItem('wrongQuizzes');
+                populateDropdown();
+                updateSetInfo();
+
+                const alert = document.createElement("div");
+                alert.className = "alert alert-success alert-dismissible fade show mt-2";
+                alert.innerHTML = `
           🗑️ Tutte le ${totalErrors} domande sbagliate sono state cancellate.
           <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
         `;
-        el("setInfo").parentElement.appendChild(alert);
-        
-        setTimeout(() => {
-          if (alert.parentElement) {
-            alert.parentElement.removeChild(alert);
-          }
-        }, 3000);
-      }
-    }
-    
-    function updateSetInfo() {
-      const selVal = el("setSelect").value;
-      let total = 0;
-      if (selVal === "all") {
-        state.allQuizzes.forEach(qz => total += qz.questions.length);
-        el("setInfo").textContent = `Tutti i quiz uniti • ${total} domande`;
-        state.currentSetLabel = "Tutti i quiz";
-      } else if (selVal === "unified_errors") {
-        // Quiz errori unificato
-        const errorsQuiz = state.wrongQuizzes.find(q => q.id === 'unified_errors');
-        total = errorsQuiz?.questions.length || 0;
-        el("setInfo").textContent = `Domande sbagliate da tutti i quiz • ${total} domande`;
-        state.currentSetLabel = "Domande Sbagliate";
-      } else {
-        // Quiz normale
-        const qz = state.allQuizzes.find(q => q.id === selVal);
-        total = qz?.questions.length || 0;
-        el("setInfo").textContent = `${qz?.title || ""} • ${total} domande`;
-        state.currentSetLabel = qz?.title || "";
-      }
-      el("totalCounter").textContent = `${total} domande`;
-    }
-    
-    function buildPool(selVal) {
-      const pool = [];
-      if (selVal === "all") {
-        state.allQuizzes.forEach(qz => {
-          qz.questions.forEach(q => pool.push({...q, quizTitle: qz.title}));
-        });
-      } else if (selVal === "unified_errors") {
-        // Quiz errori unificato
-        const errorsQuiz = state.wrongQuizzes.find(q => q.id === 'unified_errors');
-        if (errorsQuiz) {
-          errorsQuiz.questions.forEach(q => pool.push({
-            ...q, 
-            quizTitle: q.originalQuiz || "Errori" // Usa il quiz originale se disponibile
-          }));
-        }
-      } else {
-        // Quiz normale
-        const qz = state.allQuizzes.find(q => q.id === selVal);
-        if (qz) {
-          qz.questions.forEach(q => pool.push({...q, quizTitle: qz.title}));
-        }
-      }
-      return pool;
-    }
-    
-    function startRun(fromWrong = false) {
-      state.answers = {};
-      state.graded = {};
-      state.choicesOrder = {}; // Reset dell'ordine delle scelte
-      state.idx = 0;
-      state.mode = "running";
-      
-      if (fromWrong) {
-        // build pool from last wrong ids
-        const idset = new Set(state.lastRunWrongIds);
-        const pool = [];
-        state.allQuizzes.forEach(qz => {
-          qz.questions.forEach(q => { if (idset.has(q.id)) pool.push({...q, quizTitle: qz.title}); });
-        });
-        state.flatPool = pool;
-        state.order = pool.map(q => q.id);
-        
-        // Applica shuffle anche per ripasso errori se l'opzione è selezionata
-        if (el("shuffleCheckbox").checked) {
-          // Shuffle Fisher-Yates
-          for (let i = state.order.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            [state.order[i], state.order[j]] = [state.order[j], state.order[i]];
-          }
-        }
-        
-        state.currentSetLabel = "Ripasso errori";
-      } else {
-        const selVal = el("setSelect").value;
-        state.flatPool = buildPool(selVal);
-        state.order = state.flatPool.map(q => q.id);
-        
-        // Applica shuffle se l'opzione è selezionata
-        if (el("shuffleCheckbox").checked) {
-          // Shuffle Fisher-Yates
-          for (let i = state.order.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            [state.order[i], state.order[j]] = [state.order[j], state.order[i]];
-          }
-        }
-      }
-      
-      // Pre-genera l'ordine shufflato delle scelte per ogni domanda
-      state.flatPool.forEach(q => {
-        const choicesIndexes = Array.from({length: q.choices.length}, (_, i) => i);
-        // Shuffle Fisher-Yates per le scelte
-        for (let i = choicesIndexes.length - 1; i > 0; i--) {
-          const j = Math.floor(Math.random() * (i + 1));
-          [choicesIndexes[i], choicesIndexes[j]] = [choicesIndexes[j], choicesIndexes[i]];
-        }
-        state.choicesOrder[q.id] = choicesIndexes;
-      });
-      
-      setHidden(el("quizArea"), false);
-      setHidden(el("resultArea"), true);
-      el("btnPrev").disabled = true;
-      createNavigationBar();
-      renderCurrent();
-    }
-    
-    function getCurrent() {
-      const id = state.order[state.idx];
-      return state.flatPool.find(q => q.id === id);
-    }
-    
-    function createNavigationBar() {
-      const container = el("questionNumbers");
-      container.innerHTML = "";
-      
-      // Crea i numeri per ogni domanda
-      state.order.forEach((questionId, index) => {
-        const button = document.createElement("button");
-        button.className = "btn question-number d-flex align-items-center justify-content-center";
-        button.textContent = index + 1;
-        button.title = `Vai alla domanda ${index + 1}`;
-        
-        // Gestisci il click per navigare
-        button.addEventListener("click", () => {
-          state.idx = index;
-          renderCurrent();
-          updateNavigationBar();
-        });
-        
-        container.appendChild(button);
-      });
-      
-      updateNavigationBar();
-    }
-    
-    function updateNavigationBar() {
-      const buttons = el("questionNumbers").querySelectorAll(".question-number");
-      const showErrors = el("showErrorsCheckbox").checked;
-      
-      buttons.forEach((button, index) => {
-        const questionId = state.order[index];
-        
-        // Reset classi
-        button.classList.remove("current", "answered", "correct", "wrong");
-        
-        // Aggiungi classe current per la domanda attuale
-        if (index === state.idx) {
-          button.classList.add("current");
-        }
-        
-        // Controlla se la domanda è stata risposta
-        if (state.answers[questionId] && state.answers[questionId].size > 0) {
-          button.classList.add("answered");
-          
-          // Se è stata anche controllata e l'opzione "mostra errori" è attiva
-          if (state.graded[questionId] !== undefined && showErrors) {
-            // Rimuovi "answered" e aggiungi "correct" o "wrong"
-            button.classList.remove("answered");
-            if (state.graded[questionId].correct) {
-              button.classList.add("correct");
-            } else {
-              button.classList.add("wrong");
+                el("setInfo").parentElement.appendChild(alert);
+
+                setTimeout(() => {
+                    if (alert.parentElement) {
+                        alert.parentElement.removeChild(alert);
+                    }
+                }, 3000);
             }
-          }
         }
-      });
-    }
-    
-    function renderCurrent() {
-      const q = getCurrent();
-      el("qText").innerHTML = q.text;
-      el("quizBadge").textContent = q.quizTitle;
-      el("progressLabel").textContent = `Domanda ${state.idx + 1} / ${state.order.length}`;
-      el("progressBar").style.width = `${((state.idx+1)/state.order.length)*100}%`;
-      
-      const multiple = (q.correctIndexes.length > 1);
-      const choicesDiv = el("choices");
-      choicesDiv.innerHTML = "";
-      
-      // Usa l'ordine pre-generato delle scelte per questa domanda
-      const shuffledIndexes = state.choicesOrder[q.id] || Array.from({length: q.choices.length}, (_, i) => i);
-      
-      shuffledIndexes.forEach((originalIdx, displayIdx) => {
-        const ch = q.choices[originalIdx];
-        const wrap = document.createElement("div");
-        wrap.className = "card choice";
-        const body = document.createElement("div");
-        body.className = "card-body py-2";
-        
-        const input = document.createElement("input");
-        input.type = multiple ? "checkbox" : "radio";
-        input.className = "form-check-input";
-        input.name = multiple ? `checkbox_${q.id}` : `radio_${q.id}`;
-        input.id = `ch_${displayIdx}`;
-        input.value = originalIdx; // Usa l'indice originale come valore
-        
-        // Controlla se questa risposta è già selezionata (usando l'indice originale)
-        const isSelected = state.answers[q.id] && state.answers[q.id].has(originalIdx);
-        input.checked = isSelected;
-        
-        const label = document.createElement("label");
-        label.className = "form-check-label";
-        label.setAttribute("for", `ch_${displayIdx}`);
-        label.textContent = ch.text;
-        
-        // Event listener semplificato
-        input.addEventListener("change", () => {
-          // Assicurati che esista l'oggetto answers per questa domanda
-          if (!state.answers[q.id]) {
-            state.answers[q.id] = new Set();
-          }
-          
-          if (multiple) {
-            // Checkbox: aggiungi o rimuovi (usando l'indice originale)
-            if (input.checked) {
-              state.answers[q.id].add(originalIdx);
+
+        function updateSetInfo() {
+            const selVal = el("setSelect").value;
+            let total = 0;
+            if (selVal === "all") {
+                state.allQuizzes.forEach(qz => total += qz.questions.length);
+                el("setInfo").textContent = `Tutti i quiz uniti • ${total} domande`;
+                state.currentSetLabel = "Tutti i quiz";
+            } else if (selVal === "unified_errors") {
+                // Quiz errori unificato
+                const errorsQuiz = state.wrongQuizzes.find(q => q.id === 'unified_errors');
+                total = errorsQuiz?.questions.length || 0;
+                el("setInfo").textContent = `Domande sbagliate da tutti i quiz • ${total} domande`;
+                state.currentSetLabel = "Domande Sbagliate";
             } else {
-              state.answers[q.id].delete(originalIdx);
+                // Quiz normale
+                const qz = state.allQuizzes.find(q => q.id === selVal);
+                total = qz?.questions.length || 0;
+                el("setInfo").textContent = `${qz?.title || ""} • ${total} domande`;
+                state.currentSetLabel = qz?.title || "";
             }
-          } else {
-            // Radio: sostituisci completamente la selezione (usando l'indice originale)
-            state.answers[q.id] = new Set([originalIdx]);
-          }
-          
-          // Reset del grading se l'utente cambia selezione dopo aver controllato
-          if (state.graded[q.id] !== undefined) {
-            delete state.graded[q.id];
-            // Rimuovi anche le classi di evidenziazione dalle scelte
-            document.querySelectorAll(".choice").forEach(card => {
-              card.classList.remove("correct", "wrong");
+            el("totalCounter").textContent = `${total} domande`;
+        }
+
+        function buildPool(selVal) {
+            const pool = [];
+            if (selVal === "all") {
+                state.allQuizzes.forEach(qz => {
+                    qz.questions.forEach(q => pool.push({ ...q, quizTitle: qz.title }));
+                });
+            } else if (selVal === "unified_errors") {
+                // Quiz errori unificato
+                const errorsQuiz = state.wrongQuizzes.find(q => q.id === 'unified_errors');
+                if (errorsQuiz) {
+                    errorsQuiz.questions.forEach(q => pool.push({
+                        ...q,
+                        quizTitle: q.originalQuiz || "Errori" // Usa il quiz originale se disponibile
+                    }));
+                }
+            } else {
+                // Quiz normale
+                const qz = state.allQuizzes.find(q => q.id === selVal);
+                if (qz) {
+                    qz.questions.forEach(q => pool.push({ ...q, quizTitle: qz.title }));
+                }
+            }
+            return pool;
+        }
+
+        function startRun(fromWrong = false) {
+            state.answers = {};
+            state.graded = {};
+            state.choicesOrder = {}; // Reset dell'ordine delle scelte
+            state.idx = 0;
+            state.mode = "running";
+
+            if (fromWrong) {
+                // build pool from last wrong ids
+                const idset = new Set(state.lastRunWrongIds);
+                const pool = [];
+                state.allQuizzes.forEach(qz => {
+                    qz.questions.forEach(q => { if (idset.has(q.id)) pool.push({ ...q, quizTitle: qz.title }); });
+                });
+                state.flatPool = pool;
+                state.order = pool.map(q => q.id);
+
+                // Applica shuffle anche per ripasso errori se l'opzione è selezionata
+                if (el("shuffleCheckbox").checked) {
+                    // Shuffle Fisher-Yates
+                    for (let i = state.order.length - 1; i > 0; i--) {
+                        const j = Math.floor(Math.random() * (i + 1));
+                        [state.order[i], state.order[j]] = [state.order[j], state.order[i]];
+                    }
+                }
+
+                state.currentSetLabel = "Ripasso errori";
+            } else {
+                const selVal = el("setSelect").value;
+                state.flatPool = buildPool(selVal);
+                state.order = state.flatPool.map(q => q.id);
+
+                // Applica shuffle se l'opzione è selezionata
+                if (el("shuffleCheckbox").checked) {
+                    // Shuffle Fisher-Yates
+                    for (let i = state.order.length - 1; i > 0; i--) {
+                        const j = Math.floor(Math.random() * (i + 1));
+                        [state.order[i], state.order[j]] = [state.order[j], state.order[i]];
+                    }
+                }
+            }
+
+            // Pre-genera l'ordine shufflato delle scelte per ogni domanda
+            state.flatPool.forEach(q => {
+                const choicesIndexes = Array.from({ length: q.choices.length }, (_, i) => i);
+                // Shuffle Fisher-Yates per le scelte
+                for (let i = choicesIndexes.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [choicesIndexes[i], choicesIndexes[j]] = [choicesIndexes[j], choicesIndexes[i]];
+                }
+                state.choicesOrder[q.id] = choicesIndexes;
             });
-          }
-          
-          updateNavigationBar();
+
+            setHidden(el("quizArea"), false);
+            setHidden(el("resultArea"), true);
+            el("btnPrev").disabled = true;
+            createNavigationBar();
+            renderCurrent();
+        }
+
+        function getCurrent() {
+            const id = state.order[state.idx];
+            return state.flatPool.find(q => q.id === id);
+        }
+
+        function createNavigationBar() {
+            const container = el("questionNumbers");
+            container.innerHTML = "";
+
+            // Crea i numeri per ogni domanda
+            state.order.forEach((questionId, index) => {
+                const button = document.createElement("button");
+                button.className = "btn question-number d-flex align-items-center justify-content-center";
+                button.textContent = index + 1;
+                button.title = `Vai alla domanda ${index + 1}`;
+
+                // Gestisci il click per navigare
+                button.addEventListener("click", () => {
+                    // Prima di spostarsi, valuta la domanda corrente se ha una risposta
+                    const currentQ = getCurrent();
+                    if (currentQ && state.answers[currentQ.id] && state.answers[currentQ.id].size > 0) {
+                        const g = gradeQuestion(currentQ);
+                        showGradeOnUI(currentQ, g);
+                    }
+                    
+                    state.idx = index;
+                    renderCurrent();
+                    updateNavigationBar();
+                });
+
+                container.appendChild(button);
+            });
+
+            updateNavigationBar();
+        }
+
+        function updateNavigationBar() {
+            const buttons = el("questionNumbers").querySelectorAll(".question-number");
+            const showErrors = el("showErrorsCheckbox").checked;
+
+            buttons.forEach((button, index) => {
+                const questionId = state.order[index];
+
+                // Reset classi
+                button.classList.remove("current", "answered", "correct", "wrong");
+
+                // Aggiungi classe current per la domanda attuale
+                if (index === state.idx) {
+                    button.classList.add("current");
+                }
+
+                // Controlla se la domanda è stata risposta
+                if (state.answers[questionId] && state.answers[questionId].size > 0) {
+                    button.classList.add("answered");
+
+                    // Se è stata anche controllata e l'opzione "mostra errori" è attiva
+                    if (state.graded[questionId] !== undefined && showErrors) {
+                        // Rimuovi "answered" e aggiungi "correct" o "wrong"
+                        button.classList.remove("answered");
+                        if (state.graded[questionId].correct) {
+                            button.classList.add("correct");
+                        } else {
+                            button.classList.add("wrong");
+                        }
+                    }
+                }
+            });
+        }
+
+        function renderCurrent() {
+            const q = getCurrent();
+            el("qText").innerHTML = q.text;
+            el("quizBadge").textContent = q.quizTitle;
+            el("progressLabel").textContent = `Domanda ${state.idx + 1} / ${state.order.length}`;
+            el("progressBar").style.width = `${((state.idx + 1) / state.order.length) * 100}%`;
+
+            const multiple = (q.correctIndexes.length > 1);
+            const choicesDiv = el("choices");
+            choicesDiv.innerHTML = "";
+
+            // Usa l'ordine pre-generato delle scelte per questa domanda
+            const shuffledIndexes = state.choicesOrder[q.id] || Array.from({ length: q.choices.length }, (_, i) => i);
+
+            shuffledIndexes.forEach((originalIdx, displayIdx) => {
+                const ch = q.choices[originalIdx];
+                const wrap = document.createElement("div");
+                wrap.className = "card choice";
+                const body = document.createElement("div");
+                body.className = "card-body py-2";
+
+                const input = document.createElement("input");
+                input.type = multiple ? "checkbox" : "radio";
+                input.className = "form-check-input";
+                input.name = multiple ? `checkbox_${q.id}` : `radio_${q.id}`;
+                input.id = `ch_${displayIdx}`;
+                input.value = originalIdx; // Usa l'indice originale come valore
+
+                // Controlla se questa risposta è già selezionata (usando l'indice originale)
+                const isSelected = state.answers[q.id] && state.answers[q.id].has(originalIdx);
+                input.checked = isSelected;
+
+                const label = document.createElement("label");
+                label.className = "form-check-label";
+                label.setAttribute("for", `ch_${displayIdx}`);
+                label.textContent = ch.text;
+
+                // Event listener semplificato
+                input.addEventListener("change", () => {
+                    // Assicurati che esista l'oggetto answers per questa domanda
+                    if (!state.answers[q.id]) {
+                        state.answers[q.id] = new Set();
+                    }
+
+                    if (multiple) {
+                        // Checkbox: aggiungi o rimuovi (usando l'indice originale)
+                        if (input.checked) {
+                            state.answers[q.id].add(originalIdx);
+                        } else {
+                            state.answers[q.id].delete(originalIdx);
+                        }
+                    } else {
+                        // Radio: sostituisci completamente la selezione (usando l'indice originale)
+                        state.answers[q.id] = new Set([originalIdx]);
+                    }
+
+                    // Reset del grading se l'utente cambia selezione dopo aver controllato
+                    if (state.graded[q.id] !== undefined) {
+                        delete state.graded[q.id];
+                        // Rimuovi anche le classi di evidenziazione dalle scelte
+                        document.querySelectorAll(".choice").forEach(card => {
+                            card.classList.remove("correct", "wrong");
+                        });
+                    }
+
+                    updateNavigationBar();
+                });
+
+                body.appendChild(input);
+                body.appendChild(label);
+                wrap.appendChild(body);
+                choicesDiv.appendChild(wrap);
+            });
+
+            // Reset grading visuals
+            Array.from(document.querySelectorAll(".choice")).forEach(c => {
+                c.classList.remove("correct", "wrong");
+            });
+
+            // Buttons
+            el("btnPrev").disabled = (state.idx === 0);
+            el("btnNext").textContent = (state.idx === state.order.length - 1) ? "Consegna" : "Avanti";
+
+            updateNavigationBar();
+        }
+
+        function gradeQuestion(q) {
+            const selected = Array.from(state.answers[q.id] || new Set()).sort((a, b) => a - b);
+            const correct = q.correctIndexes.slice().sort((a, b) => a - b);
+            const selSet = new Set(selected);
+            const corrSet = new Set(correct);
+            const wrongIndexes = selected.filter(i => !corrSet.has(i));
+            const missingIndexes = correct.filter(i => !selSet.has(i));
+            const isCorrect = wrongIndexes.length === 0 && missingIndexes.length === 0;
+
+            state.graded[q.id] = { correct: isCorrect, wrongIndexes, missingIndexes };
+            return state.graded[q.id];
+        }
+
+        function showGradeOnUI(q, g) {
+            // Mark wrong/correct choices based on their original indexes
+            const cards = document.querySelectorAll(".choice");
+            cards.forEach((card, displayIdx) => {
+                const input = card.querySelector("input");
+                const originalIdx = parseInt(input.value); // L'indice originale è salvato nel value
+
+                if (g.wrongIndexes.includes(originalIdx)) card.classList.add("wrong");
+                if (g.missingIndexes.includes(originalIdx) || q.correctIndexes.includes(originalIdx)) {
+                    // highlight corrects so user sees the solution
+                    card.classList.add("correct");
+                }
+            });
+        }
+
+        function nextOrFinish() {
+            if (state.idx < state.order.length - 1) {
+                state.idx += 1;
+                renderCurrent();
+            } else {
+                finishRun();
+            }
+        }
+
+        function finishRun() {
+            state.mode = "finished";
+            // compute totals
+            const total = state.order.length;
+            let correctCount = 0;
+            const wrongIds = [];
+            const wrongQuestions = [];
+
+            state.flatPool.forEach(q => {
+                const g = state.graded[q.id] || gradeQuestion(q);
+                if (g.correct) {
+                    correctCount += 1;
+                } else {
+                    // Aggiungi tra le sbagliate SOLO se l'utente ha risposto (cioè ha selezionato almeno una risposta)
+                    const answered = state.answers[q.id] && state.answers[q.id].size > 0;
+                    if (answered) {
+                        wrongIds.push(q.id);
+                        wrongQuestions.push(q);
+                    }
+                }
+            });
+
+            state.lastRunWrongIds = wrongIds;
+
+            // Salva le domande sbagliate se ce ne sono
+            if (wrongQuestions.length > 0) {
+                saveWrongQuestions(wrongQuestions);
+            }
+
+            // UI update
+            setHidden(el("quizArea"), true);
+            setHidden(el("resultArea"), false);
+            el("resultSummary").innerHTML = `<strong>Punteggio:</strong> ${correctCount}/${total} corrette`;
+
+            // Aggiungi messaggio per le domande sbagliate salvate
+            if (wrongQuestions.length > 0) {
+                const saveMsg = document.createElement("div");
+                saveMsg.className = "alert alert-success mt-2";
+                saveMsg.innerHTML = `💾 ${wrongQuestions.length} domande sbagliate aggiunte ai "Quiz Sbagliati" (disponibili nella tendina)`;
+                el("resultSummary").appendChild(saveMsg);
+            }
+
+            const review = el("reviewList");
+            review.innerHTML = "";
+
+            // Usa l'ordine dello shuffle se presente, altrimenti l'ordine originale
+            const reviewOrder = state.order || state.flatPool.map(q => q.id);
+
+            reviewOrder.forEach((questionId, index) => {
+                const q = state.flatPool.find(question => question.id === questionId);
+                if (!q) return; // Sicurezza
+
+                const g = state.graded[q.id];
+                const selectedAnswers = state.answers[q.id] || new Set();
+                const hasAnswered = selectedAnswers.size > 0;
+
+                const item = document.createElement("div");
+                item.className = "card";
+                
+                // Se non ha risposto, rendi la card collassabile
+                if (!hasAnswered) {
+                    const cardHeader = document.createElement("div");
+                    cardHeader.className = "card-header";
+                    cardHeader.style.cursor = "pointer";
+                    cardHeader.setAttribute("data-bs-toggle", "collapse");
+                    cardHeader.setAttribute("data-bs-target", `#collapse-${index}`);
+                    cardHeader.setAttribute("aria-expanded", "false");
+                    cardHeader.setAttribute("aria-controls", `collapse-${index}`);
+                    
+                    cardHeader.innerHTML = `
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span>
+                                <span class="badge me-2 bg-warning text-dark">NON RISPOSTA</span> 
+                                <span class="muted">${q.quizTitle} - Domanda ${index + 1}</span>
+                            </span>
+                            <span class="collapse-icon">▼</span>
+                        </div>
+                    `;
+                    
+                    item.appendChild(cardHeader);
+                    
+                    const collapseDiv = document.createElement("div");
+                    collapseDiv.className = "collapse";
+                    collapseDiv.id = `collapse-${index}`;
+                    
+                    const b = document.createElement("div");
+                    b.className = "card-body";
+                    
+                    const text = document.createElement("div");
+                    text.className = "question-text my-2";
+                    text.innerHTML = q.text;
+                    
+                    b.appendChild(text);
+                    collapseDiv.appendChild(b);
+                    item.appendChild(collapseDiv);
+                } else {
+                    // Domanda con risposta (corretta o sbagliata) - mantieni il layout normale
+                    const b = document.createElement("div");
+                    b.className = "card-body";
+
+                    const title = document.createElement("div");
+                    title.innerHTML = `<span class="badge me-2 ${g.correct ? "bg-success" : "bg-danger"}">${g.correct ? "OK" : "ERR"}</span> <span class="muted">${q.quizTitle} - Domanda ${index + 1}</span>`;
+
+                    const text = document.createElement("div");
+                    text.className = "question-text my-2";
+                    text.innerHTML = q.text; // Usa innerHTML per supportare immagini
+
+                    b.appendChild(title);
+                    b.appendChild(text);
+                    item.appendChild(b);
+                }
+
+                // Continua il contenuto solo per le domande con risposta
+                if (hasAnswered) {
+                    const b = item.querySelector('.card-body'); // Prendi il card-body già creato sopra
+                    
+                    if (g.correct) {
+                        // Se la risposta è corretta, mostra solo la soluzione
+                        const sol = document.createElement("div");
+                        sol.className = "small text-success";
+                        const correctTexts = q.correctIndexes.map(i => q.choices[i].text);
+                        sol.innerHTML = `<em>✅ Risposta corretta:</em> ${correctTexts.join(" • ")}`;
+                        b.appendChild(sol);
+                    } else {
+                        // Se la risposta è sbagliata, mostra tutte le opzioni con evidenziazione
+                        const allChoicesDiv = document.createElement("div");
+                        allChoicesDiv.className = "mt-3";
+
+                        const choicesTitle = document.createElement("div");
+                        choicesTitle.className = "small fw-bold mb-2";
+                        choicesTitle.textContent = "Tutte le risposte:";
+                        allChoicesDiv.appendChild(choicesTitle);
+
+                        q.choices.forEach((choice, index) => {
+                            const choiceDiv = document.createElement("div");
+                            choiceDiv.className = "d-flex align-items-center mb-1 p-2 rounded";
+
+                            const isCorrect = q.correctIndexes.includes(index);
+                            const isSelected = selectedAnswers.has(index);
+
+                            // Styling basato su stato
+                            if (isCorrect && isSelected) {
+                                choiceDiv.style.backgroundColor = "#d1e7dd"; // Verde chiaro - corretta e selezionata
+                                choiceDiv.style.border = "1px solid #198754";
+                            } else if (isCorrect) {
+                                choiceDiv.style.backgroundColor = "#e6f4ea"; // Verde molto chiaro - corretta ma non selezionata
+                                choiceDiv.style.border = "1px solid #198754";
+                            } else if (isSelected) {
+                                choiceDiv.style.backgroundColor = "#f8d7da"; // Rosso chiaro - sbagliata e selezionata
+                                choiceDiv.style.border = "1px solid #dc3545";
+                            } else {
+                                choiceDiv.style.backgroundColor = "#f8f9fa"; // Grigio - né corretta né selezionata
+                                choiceDiv.style.border = "1px solid #dee2e6";
+                            }
+
+                            // Icone
+                            let icon = "";
+                            if (isCorrect && isSelected) {
+                                icon = "✅ "; // Corretta e selezionata
+                            } else if (isCorrect) {
+                                icon = "✅ "; // Corretta
+                            } else if (isSelected) {
+                                icon = "❌ "; // Sbagliata e selezionata
+                            } else {
+                                icon = "⭕ "; // Non selezionata
+                            }
+
+                            choiceDiv.innerHTML = `<span class="me-2">${icon}</span><span>${choice.text}</span>`;
+                            allChoicesDiv.appendChild(choiceDiv);
+                        });
+
+                        b.appendChild(allChoicesDiv);
+                    }
+                } else {
+                    // Per le domande senza risposta, aggiungi il contenuto nel div collassabile
+                    const collapseContent = item.querySelector('.card-body');
+                    
+                    // Mostra tutte le opzioni con la risposta corretta evidenziata
+                    const allChoicesDiv = document.createElement("div");
+                    allChoicesDiv.className = "mt-3";
+
+                    const choicesTitle = document.createElement("div");
+                    choicesTitle.className = "small fw-bold mb-2";
+                    choicesTitle.textContent = "Tutte le risposte:";
+                    allChoicesDiv.appendChild(choicesTitle);
+
+                    q.choices.forEach((choice, index) => {
+                        const choiceDiv = document.createElement("div");
+                        choiceDiv.className = "d-flex align-items-center mb-1 p-2 rounded";
+
+                        const isCorrect = q.correctIndexes.includes(index);
+
+                        // Styling per domande non risposte
+                        if (isCorrect) {
+                            choiceDiv.style.backgroundColor = "#e6f4ea"; // Verde chiaro - risposta corretta
+                            choiceDiv.style.border = "1px solid #198754";
+                        } else {
+                            choiceDiv.style.backgroundColor = "#f8f9fa"; // Grigio neutro
+                            choiceDiv.style.border = "1px solid #dee2e6";
+                        }
+
+                        const icon = isCorrect ? "✅ " : "⭕ ";
+                        choiceDiv.innerHTML = `<span class="me-2">${icon}</span><span>${choice.text}</span>`;
+                        allChoicesDiv.appendChild(choiceDiv);
+                    });
+
+                    collapseContent.appendChild(allChoicesDiv);
+                }
+
+                review.appendChild(item);
+            });
+        }
+
+        // Event listeners
+        el("setSelect").addEventListener("change", updateSetInfo);
+        el("btnStart").addEventListener("click", () => {
+            if (!state.currentDataset) {
+                alert("Seleziona prima un dataset di quiz!");
+                return;
+            }
+            startRun(false);
         });
-        
-        body.appendChild(input);
-        body.appendChild(label);
-        wrap.appendChild(body);
-        choicesDiv.appendChild(wrap);
-      });
-      
-      // Reset grading visuals
-      Array.from(document.querySelectorAll(".choice")).forEach(c => {
-        c.classList.remove("correct","wrong");
-      });
-      
-      // Buttons
-      el("btnPrev").disabled = (state.idx === 0);
-      el("btnNext").textContent = (state.idx === state.order.length - 1) ? "Consegna" : "Avanti";
-      
-      updateNavigationBar();
-    }
-    
-    function gradeQuestion(q) {
-      const selected = Array.from(state.answers[q.id] || new Set()).sort((a,b)=>a-b);
-      const correct = q.correctIndexes.slice().sort((a,b)=>a-b);
-      const selSet = new Set(selected);
-      const corrSet = new Set(correct);
-      const wrongIndexes = selected.filter(i => !corrSet.has(i));
-      const missingIndexes = correct.filter(i => !selSet.has(i));
-      const isCorrect = wrongIndexes.length === 0 && missingIndexes.length === 0;
-      
-      state.graded[q.id] = { correct: isCorrect, wrongIndexes, missingIndexes };
-      return state.graded[q.id];
-    }
-    
-    function showGradeOnUI(q, g) {
-      // Mark wrong/correct choices based on their original indexes
-      const cards = document.querySelectorAll(".choice");
-      cards.forEach((card, displayIdx) => {
-        const input = card.querySelector("input");
-        const originalIdx = parseInt(input.value); // L'indice originale è salvato nel value
-        
-        if (g.wrongIndexes.includes(originalIdx)) card.classList.add("wrong");
-        if (g.missingIndexes.includes(originalIdx) || q.correctIndexes.includes(originalIdx)) {
-          // highlight corrects so user sees the solution
-          card.classList.add("correct");
-        }
-      });
-    }
-    
-    function nextOrFinish() {
-      if (state.idx < state.order.length - 1) {
-        state.idx += 1;
-        renderCurrent();
-      } else {
-        finishRun();
-      }
-    }
-    
-    function finishRun() {
-      state.mode = "finished";
-      // compute totals
-      const total = state.order.length;
-      let correctCount = 0;
-      const wrongIds = [];
-      const wrongQuestions = [];
-      
-      state.flatPool.forEach(q => {
-        const g = state.graded[q.id] || gradeQuestion(q);
-        if (g.correct) {
-          correctCount += 1;
-        } else {
-          wrongIds.push(q.id);
-          wrongQuestions.push(q);
-        }
-      });
-      
-      state.lastRunWrongIds = wrongIds;
-      
-      // Salva le domande sbagliate se ce ne sono
-      if (wrongQuestions.length > 0) {
-        saveWrongQuestions(wrongQuestions);
-      }
-      
-      // UI update
-      setHidden(el("quizArea"), true);
-      setHidden(el("resultArea"), false);
-      el("resultSummary").innerHTML = `<strong>Punteggio:</strong> ${correctCount}/${total} corrette`;
-      
-      // Aggiungi messaggio per le domande sbagliate salvate
-      if (wrongQuestions.length > 0) {
-        const saveMsg = document.createElement("div");
-        saveMsg.className = "alert alert-success mt-2";
-        saveMsg.innerHTML = `💾 ${wrongQuestions.length} domande sbagliate aggiunte ai "Quiz Sbagliati" (disponibili nella tendina)`;
-        el("resultSummary").appendChild(saveMsg);
-      }
-      
-      const review = el("reviewList");
-      review.innerHTML = "";
-      
-      // Usa l'ordine dello shuffle se presente, altrimenti l'ordine originale
-      const reviewOrder = state.order || state.flatPool.map(q => q.id);
-      
-      reviewOrder.forEach((questionId, index) => {
-        const q = state.flatPool.find(question => question.id === questionId);
-        if (!q) return; // Sicurezza
-        
-        const g = state.graded[q.id];
-        const selectedAnswers = state.answers[q.id] || new Set();
-        
-        const item = document.createElement("div");
-        item.className = "card";
-        const b = document.createElement("div");
-        b.className = "card-body";
-        
-        const title = document.createElement("div");
-        title.innerHTML = `<span class="badge me-2 ${g.correct ? "bg-success" : "bg-danger"}">${g.correct ? "OK" : "ERR"}</span> <span class="muted">${q.quizTitle} - Domanda ${index + 1}</span>`;
-        
-        const text = document.createElement("div");
-        text.className = "question-text my-2";
-        text.innerHTML = q.text; // Usa innerHTML per supportare immagini
-        
-        b.appendChild(title);
-        b.appendChild(text);
-        
-        if (g.correct) {
-          // Se la risposta è corretta, mostra solo la soluzione
-          const sol = document.createElement("div");
-          sol.className = "small text-success";
-          const correctTexts = q.correctIndexes.map(i => q.choices[i].text);
-          sol.innerHTML = `<em>✅ Risposta corretta:</em> ${correctTexts.join(" • ")}`;
-          b.appendChild(sol);
-        } else {
-          // Se la risposta è sbagliata, mostra tutte le opzioni con evidenziazione
-          const allChoicesDiv = document.createElement("div");
-          allChoicesDiv.className = "mt-3";
-          
-          const choicesTitle = document.createElement("div");
-          choicesTitle.className = "small fw-bold mb-2";
-          choicesTitle.textContent = "Tutte le risposte:";
-          allChoicesDiv.appendChild(choicesTitle);
-          
-          q.choices.forEach((choice, index) => {
-            const choiceDiv = document.createElement("div");
-            choiceDiv.className = "d-flex align-items-center mb-1 p-2 rounded";
-            
-            const isCorrect = q.correctIndexes.includes(index);
-            const isSelected = selectedAnswers.has(index);
-            
-            // Styling basato su stato
-            if (isCorrect && isSelected) {
-              choiceDiv.style.backgroundColor = "#d1e7dd"; // Verde chiaro - corretta e selezionata
-              choiceDiv.style.border = "1px solid #198754";
-            } else if (isCorrect) {
-              choiceDiv.style.backgroundColor = "#e6f4ea"; // Verde molto chiaro - corretta ma non selezionata
-              choiceDiv.style.border = "1px solid #198754";
-            } else if (isSelected) {
-              choiceDiv.style.backgroundColor = "#f8d7da"; // Rosso chiaro - sbagliata e selezionata
-              choiceDiv.style.border = "1px solid #dc3545";
+        el("btnClearWrong").addEventListener("click", clearWrongQuizzes);
+        el("btnPrev").addEventListener("click", () => {
+            if (state.idx > 0) { state.idx -= 1; renderCurrent(); }
+        });
+        el("btnNext").addEventListener("click", () => {
+            if (state.idx === state.order.length - 1) {
+                // final click is "Consegna" – grade current then finish
+                const q = getCurrent();
+                const g = gradeQuestion(q);
+                showGradeOnUI(q, g);
+                setTimeout(finishRun, 0); // Aumentato a 1 secondo
             } else {
-              choiceDiv.style.backgroundColor = "#f8f9fa"; // Grigio - né corretta né selezionata
-              choiceDiv.style.border = "1px solid #dee2e6";
+                const q = getCurrent();
+                const g = gradeQuestion(q);
+                showGradeOnUI(q, g);
+                setTimeout(nextOrFinish, 0); // Aumentato a 1 secondo
             }
-            
-            // Icone
-            let icon = "";
-            if (isCorrect && isSelected) {
-              icon = "✅ "; // Corretta e selezionata
-            } else if (isCorrect) {
-              icon = "✅ "; // Corretta
-            } else if (isSelected) {
-              icon = "❌ "; // Sbagliata e selezionata
-            } else {
-              icon = "⭕ "; // Non selezionata
-            }
-            
-            choiceDiv.innerHTML = `<span class="me-2">${icon}</span><span>${choice.text}</span>`;
-            allChoicesDiv.appendChild(choiceDiv);
-          });
-          
-          b.appendChild(allChoicesDiv);
-        }
-        
-        item.appendChild(b);
-        review.appendChild(item);
-      });
-    }
-    
-    // Event listeners
-    el("setSelect").addEventListener("change", updateSetInfo);
-    el("btnStart").addEventListener("click", () => {
-      if (!state.currentDataset) {
-        alert("Seleziona prima un dataset di quiz!");
-        return;
-      }
-      startRun(false);
-    });
-    el("btnClearWrong").addEventListener("click", clearWrongQuizzes);
-    el("btnPrev").addEventListener("click", () => {
-      if (state.idx > 0) { state.idx -= 1; renderCurrent(); }
-    });
-    el("btnNext").addEventListener("click", () => {
-      if (state.idx === state.order.length - 1) {
-        // final click is "Consegna" – grade current then finish
-        const q = getCurrent();
-        const g = gradeQuestion(q);
-        showGradeOnUI(q, g);
-        setTimeout(finishRun, 0); // Aumentato a 1 secondo
-      } else {
-        const q = getCurrent();
-        const g = gradeQuestion(q);
-        showGradeOnUI(q, g);
-        setTimeout(nextOrFinish, 0); // Aumentato a 1 secondo
-      }
-    });
-    el("btnCheck").addEventListener("click", () => {
-      const q = getCurrent();
-      const g = gradeQuestion(q);
-      showGradeOnUI(q, g);
-      updateNavigationBar(); // Aggiorna la barra per mostrare se la risposta è corretta/sbagliata
-      // Mantieni la visualizzazione per 1 secondo prima di permettere altre azioni
-      setTimeout(() => {
-        // Potresti aggiungere qui logica aggiuntiva se necessaria
-      }, 1000);
-    });
-    
-    // Event listener per la selezione del dataset
-    el("datasetSelect").addEventListener("change", (e) => {
-      const selectedDataset = e.target.value;
-      loadQuizzes(selectedDataset);
-    });
-    
-    // Event listener per il checkbox "Mostra errori"
-    el("showErrorsCheckbox").addEventListener("change", () => {
-      updateNavigationBar();
-    });
-    
-    // Inizializzazione
-    loadAvailableDatasets();
-  </script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+        });
+        el("btnCheck").addEventListener("click", () => {
+            const q = getCurrent();
+            const g = gradeQuestion(q);
+            showGradeOnUI(q, g);
+            updateNavigationBar(); // Aggiorna la barra per mostrare se la risposta è corretta/sbagliata
+            // Mantieni la visualizzazione per 1 secondo prima di permettere altre azioni
+            setTimeout(() => {
+                // Potresti aggiungere qui logica aggiuntiva se necessaria
+            }, 1000);
+        });
+
+        // Event listener per la selezione del dataset
+        el("datasetSelect").addEventListener("change", (e) => {
+            const selectedDataset = e.target.value;
+            loadQuizzes(selectedDataset);
+        });
+
+        // Event listener per il checkbox "Mostra errori"
+        el("showErrorsCheckbox").addEventListener("change", () => {
+            updateNavigationBar();
+        });
+
+        // Inizializzazione
+        loadAvailableDatasets();
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>
