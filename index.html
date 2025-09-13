@@ -201,6 +201,32 @@
         .card-header[data-bs-toggle="collapse"][aria-expanded="true"] .collapse-icon {
             transform: rotate(180deg);
         }
+
+        /* Nascondi footer su mobile */
+        @media (max-width: 768px) {
+            footer {
+                display: none;
+            }
+            
+            .sticky-footer {
+                position: fixed; /* Fixed invece di sticky per evitare movimenti */
+                bottom: 0;
+                left: 0;
+                right: 0;
+                margin-bottom: 0;
+                padding-bottom: 0.75rem;
+                z-index: 1000; /* Assicura che rimanga sopra altri elementi */
+            }
+            
+            /* Aggiungi spazio in basso per la footer fixed */
+            body {
+                padding-bottom: 40px; /* Ridotto per meno spazio inutile */
+            }
+            
+            #questionCard {
+                margin-bottom: 0; /* Reset margin, usiamo il padding del body */
+            }
+        }
     </style>
 </head>
 
@@ -295,11 +321,11 @@
             </div>
 
             <div class="sticky-footer d-flex justify-content-between">
-                <button id="btnPrev" class="btn btn-secondary" disabled>Indietro</button>
+                <button id="btnPrev" class="btn btn-secondary" disabled>Back</button>
                 <div>
                     <button id="btnSave" class="btn btn-outline-primary me-2"><i class="fas fa-save"></i></button>
-                    <button id="btnCheck" class="btn btn-secondary me-2">Controlla</button>
-                    <button id="btnNext" class="btn btn-primary">Avanti</button>
+                    <button id="btnCheck" class="btn btn-secondary me-2">Check</button>
+                    <button id="btnNext" class="btn btn-primary">Next</button>
                 </div>
             </div>
         </div>
@@ -1049,7 +1075,7 @@
 
             // Buttons
             el("btnPrev").disabled = (state.idx === 0);
-            el("btnNext").textContent = (state.idx === state.order.length - 1) ? "Consegna" : "Avanti";
+            el("btnNext").textContent = (state.idx === state.order.length - 1) ? "Consegna" : "Next";
 
             updateNavigationBar();
             
