@@ -276,6 +276,12 @@
                                     <i class="fas fa-search"></i> Navbar colorata
                                 </label>
                             </div>
+                               <div class="form-check">
+                                   <input class="form-check-input" type="checkbox" id="highlightAnswerCheckbox">
+                                   <label class="form-check-label" for="highlightAnswerCheckbox">
+                                       <i class="fas fa-highlighter"></i> Evidenzia risposta
+                                   </label>
+                               </div>
                         </div>
                     </div>
                     <div class="col-12 col-md-6 text-md-end">
@@ -1073,6 +1079,25 @@
                 c.classList.remove("correct", "wrong");
             });
 
+                // Evidenzia direttamente la risposta se la checkbox è attiva
+                if (el("highlightAnswerCheckbox") && el("highlightAnswerCheckbox").checked) {
+                    // Evidenzia tutte le scelte corrette
+                    const q = getCurrent();
+                    const choicesDiv = el("choices");
+                    Array.from(choicesDiv.children).forEach((wrap, idx) => {
+                        // wrap = .card.choice
+                        // Trova l'indice originale della scelta
+                        const input = wrap.querySelector("input");
+                        if (input && q.correctIndexes.includes(parseInt(input.value))) {
+                            wrap.classList.add("correct");
+                        }
+                    });
+                }
+
+                // Aggiorna la visualizzazione quando la checkbox cambia
+                if (el("highlightAnswerCheckbox")) {
+                    el("highlightAnswerCheckbox").onchange = () => renderCurrent();
+                }
             // Buttons
             el("btnPrev").disabled = (state.idx === 0);
             el("btnNext").textContent = (state.idx === state.order.length - 1) ? "Consegna" : "Next";
