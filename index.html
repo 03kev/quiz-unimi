@@ -282,6 +282,83 @@
                 font-size: 0.8rem !important;
             }
         }
+
+        /* Layout armonioso delle 3 checkbox opzioni quiz su mobile e desktop */
+        #quizOptionsRow {
+            row-gap: 0.5rem;
+        }
+        
+        /* Mobile extra small (fino a 350px) - Tutto in colonna */
+        @media (max-width: 350px) {
+            #quizOptionsRow {
+                flex-direction: column;
+                align-items: center;
+                gap: 0.6rem;
+            }
+            #quizOptionsRow .form-check {
+                width: 100%;
+                max-width: 200px;
+                text-align: center;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 0.4rem;
+            }
+            #quizOptionsRow .form-check-label {
+                font-size: 0.8rem;
+            }
+        }
+        
+        /* Mobile small (351px a 576px) - 2 sopra, 1 sotto centrata */
+        @media (min-width: 351px) and (max-width: 576px) {
+            #quizOptionsRow {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 0.75rem;
+                align-content: flex-start;
+            }
+            #quizOptionsRow .form-check {
+                flex: 0 0 45%;
+                max-width: 45%;
+                text-align: center;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 0.4rem;
+            }
+            #quizOptionsRow .form-check:nth-child(3) {
+                flex: 0 0 60%;
+                max-width: 60%;
+                margin: 0 auto;
+            }
+            #quizOptionsRow .form-check-label {
+                font-size: 0.85rem;
+                white-space: nowrap;
+            }
+        }
+        
+        /* Mobile medium (577px a 768px) */
+        @media (min-width: 577px) and (max-width: 768px) {
+            #quizOptionsRow {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 0.6rem 1.5rem;
+            }
+            #quizOptionsRow .form-check {
+                min-width: 130px;
+                flex: 1 1 130px;
+                text-align: center;
+                margin-bottom: 0;
+            }
+        }
+        
+        /* Tablet e desktop */
+        @media (min-width: 769px) {
+            #quizOptionsRow {
+                justify-content: flex-start;
+                gap: 2rem;
+            }
+        }
     </style>
 </head>
 
@@ -321,7 +398,7 @@
                 <div class="row g-3 align-items-center mt-2">
                     <div class="col-12 col-md-6">
                         <!-- Opzioni quiz -->
-                        <div class="d-flex gap-4">
+                        <div class="d-flex flex-wrap justify-content-center gap-3" id="quizOptionsRow">
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" id="shuffleCheckbox">
                                 <label class="form-check-label" for="shuffleCheckbox">
@@ -334,12 +411,12 @@
                                     <i class="fas fa-search"></i> Navbar colorata
                                 </label>
                             </div>
-                               <div class="form-check">
-                                   <input class="form-check-input" type="checkbox" id="highlightAnswerCheckbox">
-                                   <label class="form-check-label" for="highlightAnswerCheckbox">
-                                       <i class="fas fa-highlighter"></i> Evidenzia risposta
-                                   </label>
-                               </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="highlightAnswerCheckbox">
+                                <label class="form-check-label" for="highlightAnswerCheckbox">
+                                    <i class="fas fa-highlighter"></i> Evidenzia risposta
+                                </label>
+                            </div>
                         </div>
                     </div>
                     <div class="col-12 col-md-6 text-md-end">
@@ -1097,33 +1174,33 @@
 
                 // Event listener semplificato
                 input.addEventListener("change", () => {
-                    // Assicurati che esista l'oggetto answers per questa domanda
                     if (!state.answers[q.id]) {
                         state.answers[q.id] = new Set();
                     }
-
                     if (multiple) {
-                        // Checkbox: aggiungi o rimuovi (usando l'indice originale)
                         if (input.checked) {
                             state.answers[q.id].add(originalIdx);
                         } else {
                             state.answers[q.id].delete(originalIdx);
                         }
                     } else {
-                        // Radio: sostituisci completamente la selezione (usando l'indice originale)
                         state.answers[q.id] = new Set([originalIdx]);
                     }
-
-                    // Reset del grading se l'utente cambia selezione dopo aver controllato
                     if (state.graded[q.id] !== undefined) {
                         delete state.graded[q.id];
-                        // Rimuovi anche le classi di evidenziazione dalle scelte
                         document.querySelectorAll(".choice").forEach(card => {
                             card.classList.remove("correct", "wrong");
                         });
                     }
-
                     updateNavigationBar();
+                });
+
+                // Rende cliccabile tutta la card (anche sui bordi)
+                wrap.addEventListener("click", (e) => {
+                    // Evita doppio trigger se si clicca direttamente sull'input
+                    if (e.target === input) return;
+                    input.checked = multiple ? !input.checked : true;
+                    input.dispatchEvent(new Event("change", { bubbles: true }));
                 });
 
                 body.appendChild(input);
@@ -1611,10 +1688,49 @@
 
         // Event listener per il tasto Invio
         document.addEventListener("keydown", (e) => {
-            if (e.key === "Enter" && state.mode === "running") {
+            // Verifica che non ci siano modificatori premuti (ctrl, alt, shift, meta)
+            if (e.ctrlKey || e.altKey || e.shiftKey || e.metaKey) {
+                return; // Non fare nulla se ci sono modificatori
+            }
+
+            if (e.key === "n" && state.mode === "running") {
                 e.preventDefault();
                 // Simula il click del bottone "Avanti/Consegna"
                 el("btnNext").click();
+            };
+            if (e.key === "c" && state.mode === "running") {
+                e.preventDefault();
+                // Simula il click del bottone "Controlla"
+                el("btnCheck").click();
+            };
+            if (e.key === "p" && state.mode === "running") {
+                e.preventDefault();
+                // Simula il click del bottone "Indietro"
+                el("btnPrev").click();
+            }
+            if (e.key === "1" && state.mode === "running") {
+                e.preventDefault();
+                // Seleziona la prima scelta
+                const firstChoice = document.querySelector(".choice input");
+                if (firstChoice) firstChoice.click();
+            }
+            if (e.key === "2" && state.mode === "running") {
+                e.preventDefault();
+                // Seleziona la seconda scelta
+                const secondChoice = document.querySelectorAll(".choice input")[1];
+                if (secondChoice) secondChoice.click();
+            }
+            if (e.key === "3" && state.mode === "running") {
+                e.preventDefault();
+                // Seleziona la terza scelta
+                const thirdChoice = document.querySelectorAll(".choice input")[2];
+                if (thirdChoice) thirdChoice.click();
+            }
+            if (e.key === "4" && state.mode === "running") {
+                e.preventDefault();
+                // Seleziona la quarta scelta
+                const fourthChoice = document.querySelectorAll(".choice input")[3];
+                if (fourthChoice) fourthChoice.click();
             }
         });
 
