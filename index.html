@@ -359,6 +359,36 @@
                 gap: 2rem;
             }
         }
+
+        /* Stili per il modal delle scorciatoie */
+        .modal-content {
+            border-radius: 12px;
+            border: none;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+        
+        .modal-header {
+            border-bottom: 1px solid #e9ecef;
+            background: #f8f9fa;
+            border-radius: 12px 12px 0 0;
+        }
+        
+        kbd {
+            background-color: #495057 !important;
+            color: white !important;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        /* Nascondi il pulsante help su mobile */
+        @media (max-width: 768px) {
+            #btnHelp {
+                display: none !important;
+            }
+        }
     </style>
 </head>
 
@@ -462,11 +492,73 @@
             </div>
 
             <div class="sticky-footer d-flex justify-content-between">
-                <button id="btnPrev" class="btn btn-secondary" disabled>Back</button>
+                <div class="d-flex align-items-center gap-2">
+                    <button id="btnPrev" class="btn btn-secondary" disabled>Back</button>
+                    <button id="btnHelp" class="btn btn-outline-info btn-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Scorciatoie da tastiera">
+                        <i class="fas fa-keyboard"></i>
+                    </button>
+                </div>
                 <div>
                     <button id="btnSave" class="btn btn-outline-primary me-2"><i class="fas fa-save"></i></button>
                     <button id="btnCheck" class="btn btn-secondary me-2">Check</button>
                     <button id="btnNext" class="btn btn-primary">Next</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal per le scorciatoie da tastiera -->
+        <div class="modal fade" id="helpModal" tabindex="-1" aria-labelledby="helpModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="helpModalLabel">
+                            <i class="fas fa-keyboard me-2"></i>Scorciatoie da Tastiera
+                        </h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row g-3">
+                            <div class="col-12">
+                                <h6 class="text-primary mb-2"><i class="fas fa-mouse-pointer me-1"></i> Navigazione</h6>
+                                <div class="d-flex justify-content-between align-items-center mb-1">
+                                    <span>Domanda precedente</span>
+                                    <kbd class="bg-secondary">P</kbd>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center mb-1">
+                                    <span>Domanda successiva</span>
+                                    <kbd class="bg-secondary">N</kbd>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                    <span>Controlla risposta</span>
+                                    <kbd class="bg-secondary">C</kbd>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <h6 class="text-success mb-2"><i class="fas fa-check-circle me-1"></i> Selezione Risposte</h6>
+                                <div class="d-flex justify-content-between align-items-center mb-1">
+                                    <span>Seleziona prima risposta</span>
+                                    <kbd class="bg-secondary">1</kbd>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center mb-1">
+                                    <span>Seleziona seconda risposta</span>
+                                    <kbd class="bg-secondary">2</kbd>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center mb-1">
+                                    <span>Seleziona terza risposta</span>
+                                    <kbd class="bg-secondary">3</kbd>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span>Seleziona quarta risposta</span>
+                                    <kbd class="bg-secondary">4</kbd>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="alert alert-info mt-3 mb-0">
+                            <small><i class="fas fa-info-circle me-1"></i>
+                            Le scorciatoie funzionano solo quando premute singolarmente, senza modificatori (Ctrl, Alt, Shift).
+                            </small>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1633,6 +1725,10 @@
         });
         el("btnClearSaved").addEventListener("click", clearSavedQuizzes);
         el("btnClearWrong").addEventListener("click", clearWrongQuizzes);
+        el("btnHelp").addEventListener("click", () => {
+            const helpModal = new bootstrap.Modal(document.getElementById('helpModal'));
+            helpModal.show();
+        });
         el("btnSave").addEventListener("click", () => {
             if (state.mode !== "running") {
                 alert("Non c'è un quiz in corso da salvare!");
@@ -1736,6 +1832,12 @@
 
         // Inizializzazione
         loadAvailableDatasets();
+        
+        // Inizializza i tooltip Bootstrap
+        const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+        const tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl);
+        });
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
